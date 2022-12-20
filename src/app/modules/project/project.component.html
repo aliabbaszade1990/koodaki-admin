@@ -1,0 +1,62 @@
+<div>
+  <button mat-raised-button color="primary" (click)="createProject()">
+    افزودن
+  </button>
+</div>
+<!-- <mat-checkbox *ngIf="first && !row[column.columnDef][0]"></mat-checkbox> -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- isClosed Column -->
+  <ng-container matColumnDef="isClosed">
+    <th mat-header-cell *matHeaderCellDef>اتمام پروژه</th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        class="my-component"
+        [disabled]="disabled"
+        [checked]="row.isClosed"
+        color="primary"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>نام پروژه</th>
+    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+  </ng-container>
+
+  <!-- location Column -->
+  <ng-container matColumnDef="location">
+    <th mat-header-cell *matHeaderCellDef>موقعیت</th>
+    <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+  </ng-container>
+
+  <!-- startDate Column -->
+  <ng-container matColumnDef="startDate">
+    <th mat-header-cell *matHeaderCellDef>تاریخ شروع پروژه</th>
+    <td mat-cell *matCellDef="let element">{{ date }}</td>
+  </ng-container>
+
+  <!-- endDate Column -->
+  <ng-container matColumnDef="endDate">
+    <th mat-header-cell *matHeaderCellDef>تاریخ اتمام پروژه</th>
+    <td mat-cell *matCellDef="let element">{{ date }}</td>
+  </ng-container>
+
+  <!-- action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>عملیات</th>
+
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button color="primary" (click)="editProject(row)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteProject(row)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

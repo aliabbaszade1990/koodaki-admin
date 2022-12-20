@@ -1,0 +1,87 @@
+<h1 mat-dialog-title>اطلاعات تماس</h1>
+<div mat-dialog-content>
+  <form class="example-form" [formGroup]="form" (submit)="sendFormValue()">
+    <mat-form-field class="example-full-width">
+      <mat-label>نام</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="firstName"
+        placeholder="نام"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['firstName'].hasError('firstName') &&
+          !form.controls['firstName'].hasError('required')
+        "
+      >
+        Please enter a valid firstName
+      </mat-error>
+      <mat-error *ngIf="form.controls['firstName'].hasError('required')">
+        name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>نام خانوادگی</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="lastName"
+        placeholder="نام خانوادگی"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['lastName'].hasError('lastName') &&
+          !form.controls['lastName'].hasError('required')
+        "
+      >
+        Please enter a valid lastName
+      </mat-error>
+      <mat-error *ngIf="form.controls['lastName'].hasError('required')">
+        lastName is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>شماره تماس</mat-label>
+      <input
+        type="string"
+        matInput
+        formControlName="phoneNumber"
+        placeholder="09121234567"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['phoneNumber'].hasError('phoneNumber') &&
+          !form.controls['phoneNumber'].hasError('required')
+        "
+      >
+        Please enter a valid phoneNumber
+      </mat-error>
+      <mat-error *ngIf="form.controls['phoneNumber'].hasError('required')">
+        phoneNumber is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        mat-dialog-close
+        cdkFocusInitial
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        ثبت
+      </button>
+      <button
+        mat-raised-button
+        mat-dialog-close
+        color="warn"
+        (click)="closeDialog()"
+      >
+        انصراف
+      </button>
+    </div>
+  </form>
+</div>
