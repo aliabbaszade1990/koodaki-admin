@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  Actions,
+  ofActionCompleted,
+  ofActionDispatched,
+  ofActionSuccessful,
+} from '@ngxs/store';
+import { Login } from 'src/app/core/_NGXS/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +16,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private actions: Actions
+  ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -17,15 +28,20 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
+  // login() {
+  //   if (
+  //     this.form.value.username == 'admin' &&
+  //     this.form.value.password == 'admin'
+  //   ) {
+  //     this.router.navigate(['customer']);
+  //   } else {
+  //     alert('اطلاعات وارد شده صحیح نمی باشد');
+  //   }
+  // }
   login() {
-    if (
-      this.form.value.username == 'admin' &&
-      this.form.value.password == 'admin'
-    ) {
-      this.router.navigate(['customer']);
-    } else {
-      alert('اطلاعات وارد شده صحیح نمی باشد');
-    }
+    // this.actions.pipe(ofActionCompleted(Login)).subscribe(() => {
+    this.router.navigate(['customer']);
+    // });
   }
   // convenience getter for easy access to form fields
   get f() {

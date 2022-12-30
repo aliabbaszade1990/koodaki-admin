@@ -1,0 +1,116 @@
+@use 'sass:color';
+@import 'settings/settings.scss';
+
+// Colors
+.primary {
+  color: $primary;
+}
+
+.white {
+  color: white;
+}
+
+.red {
+  color: $red;
+}
+
+.blue {
+  color: $blue;
+}
+
+.light-blue {
+  color: $light-blue;
+}
+
+.dark-blue {
+  color: $dark-blue;
+}
+
+.green {
+  color: $green;
+}
+
+.grey {
+  color: $grey;
+}
+
+.main-grey {
+  color: $main-grey;
+}
+
+.main-grey-2 {
+  color: $main-grey-2;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.light-yellow {
+  color: $light-yellow;
+}
+
+.purple {
+  color: $purple;
+}
+
+.light-purple {
+  color: $light-purple;
+}
+
+.gold {
+  color: $gold;
+}
+
+// Text Colors
+.text-color {
+  color: $text-color;
+}
+
+.title-color {
+  color: $text-color;
+}
+
+// Backgroud Colors
+.bg {
+  &-first {
+    background-color: $background-first !important;
+  }
+
+  &-second {
+    background-color: $background-second;
+  }
+
+  &-third {
+    background-color: $background-third;
+  }
+
+  &-forth {
+    background-color: $background-forth;
+  }
+
+  &-yellow {
+    background-color: $yellow;
+  }
+
+  &-light-yellow {
+    background-color: $light-yellow;
+  }
+
+  &-light-blue {
+    background-color: $light-blue;
+  }
+
+  &-grey {
+    background-color: $main-grey;
+  }
+
+  &-purple {
+    background-color: $purple;
+    color: white;
+
+    &-light {
+      background-color: $light-purple;
+    }
+  }
+}

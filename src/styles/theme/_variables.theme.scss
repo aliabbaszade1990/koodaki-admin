@@ -1,0 +1,45 @@
+html {
+  // Colors
+  --primary: #d8795a;
+  --red: #d56565;
+  --blue: #6992b5;
+  --light-blue: #e9f7fb;
+  --dark-blue: #040f3d;
+  --green: #69b5a6;
+  --orange: #d5723e;
+  --grey: #dedede;
+  --main-grey: #7c797a;
+  --main-grey-2: #c6c4c5;
+  --yellow: #dfc44d;
+  --light-yellow: #fff8e7;
+  --purple: #8d7ac6;
+  --light-purple: rgba(57, 35, 150, 0.2);
+  --gold: #9c8400;
+
+  // Text
+  --title-color: #1a1a1a;
+  --text-color: #333;
+
+  // Background Colors
+  --background-first: #f5f6f7;
+  --background-second: #f2f2f2;
+  --background-third: #dedede;
+  --background-forth: white;
+
+  // Border Colors
+  --border-color: #ededed;
+
+  // Input Colors
+  --inactive-input-color: #272a29;
+  --hover-input-color: var(--dark-blue);
+  --focused-input-label: var(--yellow);
+  --focused-input-border: var(--yellow);
+  --focused-input-text: var(--dark-blue);
+  --disabled-color: rgba(124, 121, 122, 0.3);
+  --activated-input-label: var(--main-grey);
+  --activated-input-border: #4bffa5;
+  --activated-input-text: var(--dark-blue);
+  --error-input-label: var(--red);
+  --error-input-border: var(--red);
+  --error-input-text: var(--dark-blue);
+}

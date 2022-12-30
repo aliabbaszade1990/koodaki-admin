@@ -1,0 +1,70 @@
+@import 'settings/settings.scss';
+
+.container {
+  @extend .ma;
+  @extend .width-100;
+  max-width: 1240px;
+  &--xs {
+    @extend .ma;
+    @extend .width-100;
+    max-width: 400px;
+  }
+
+  &--sm {
+    @extend .ma;
+    @extend .width-100;
+    max-width: 900px;
+  }
+
+  &--xs {
+    @extend .ma;
+    @extend .width-100;
+    max-width: 400px;
+  }
+
+  &--fluid {
+    @extend .ma;
+    @extend .width-100;
+    width: 100%;
+  }
+}
+
+.blank-box {
+  background-color: $background-forth;
+  border-radius: $border-radius-md;
+  padding: 16px;
+}
+
+.info-box {
+  height: 200px;
+
+  .icon {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details {
+    span {
+      font-size: $font-size-tiny;
+      color: $purple;
+    }
+  }
+
+  .left,
+  .right {
+    > span:first-child {
+      min-height: 11px;
+    }
+  }
+}
+
+.validation-message {
+  font-size: $font-size-xs;
+  color: $red;
+  position: absolute;
+  bottom: 0;
+  line-height: 1;
+}

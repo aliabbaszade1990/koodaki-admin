@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
 }
-.mat-card {
-  width: 20%;
+mat-card-content {
+  display: flex;
+  flex-direction: column;
 }

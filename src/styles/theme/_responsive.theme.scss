@@ -1,0 +1,70 @@
+/* Writes styles for specific screen sizes */
+
+//*****************
+// Main Breakpoints
+//*****************
+@import 'tools/tools.scss';
+
+// Mobile
+@include xs {
+    .container {
+        max-width: 100%;
+        padding: 0 16px;
+    }
+}
+
+// Mobile && tablet
+@include sm {}
+
+// Tablet && laptop
+@include md {}
+
+// Laptop && Monitor
+@include lg {}
+
+// xLarge Monitor
+@include xl {
+    .container {
+        max-width: 1240px;
+    }
+}
+
+//***********
+// Lower Than
+//***********
+
+@include lt-sm {}
+
+@include lt-md {}
+
+@include lt-lg {}
+
+@include lt-xl {}
+
+
+//**************
+// Greaterr Than
+//**************
+@include gt-xs {
+    .container {
+        max-width: 568px;
+    }
+}
+
+@include gt-sm {
+    .container {
+        max-width: 920px;
+    }
+}
+
+@include gt-md {
+    .container {
+        max-width: 1240px;
+    }
+}
+
+@include gt-lg {
+    .container {
+        max-width: 1240px;
+    }
+}

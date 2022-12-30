@@ -1,5 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { CustomerService } from './customer.service';
@@ -12,6 +19,7 @@ import { ICustomer } from './dto/customer';
 })
 export class CustomerComponent implements OnInit {
   dataSource: ICustomer[] = [];
+  // dataSource = new MatTableDataSource<ICustomer>();
   columns = [
     {
       columnDef: 'firstName',
@@ -32,19 +40,24 @@ export class CustomerComponent implements OnInit {
     'action',
   ];
 
+  @ViewChild(MatTable) table: MatTable<ICustomer>;
+
   constructor(
     private customerService: CustomerService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private changeDetectorRefs: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.getAllCustomer();
   }
+
   getAllCustomer() {
     this.customerService.getAll().subscribe((res: ICustomer[]) => {
       this.dataSource = res;
     });
   }
+
   createCustomer() {
     this.dialog
       .open(CustomerFormComponent, {})
@@ -52,7 +65,8 @@ export class CustomerComponent implements OnInit {
       .subscribe((res: ICustomer) => {
         if (res) {
           this.dataSource.push(res);
-          this.dataSource = [...this.dataSource];
+          this.table.renderRows();
+          this.changeDetectorRefs.detectChanges();
         }
       });
   }
@@ -70,8 +84,7 @@ export class CustomerComponent implements OnInit {
             1,
             res
           );
-          // this.dataSource = [...this.dataSource];
-          this.getAllCustomer();
+          this.table.renderRows();
         }
       });
   }

@@ -14,8 +14,7 @@ export class ConfirmComponent implements OnInit {
   cancelButton: string;
   constructor(
     public dialogRef: MatDialogRef<ConfirmComponent>,
-    @Inject(MAT_DIALOG_DATA)
-    public data: IQuestion
+    @Inject(MAT_DIALOG_DATA) public data: IQuestion
   ) {
     ({
       header: this.header,

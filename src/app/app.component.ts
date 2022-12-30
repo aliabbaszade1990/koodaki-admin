@@ -29,5 +29,5 @@ export class AppComponent {
     // dt.setLocale('en-GB').toLocaleString(f)   //=> '14 September'
     // dt.setLocale('en-US').toLocaleString(f)
   }
-  title = 'koodaki-customer';
+  title = 'koodaki-admin';
 }

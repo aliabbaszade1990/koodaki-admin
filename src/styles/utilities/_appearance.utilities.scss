@@ -1,0 +1,56 @@
+@import 'settings/settings.scss';
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.box-shadow {
+    box-shadow: $box-shadow;
+
+    &-2 {
+        box-shadow: $box-shadow-2;
+    }
+
+    &-3 {
+        box-shadow: $box-shadow-3;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.move {
+    cursor: move;
+}
+
+.grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.grabbing {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+.default {
+    cursor: default;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.is-not-final {
+    filter: blur(1px);
+    opacity: .6;
+}
+
+.resize-y {
+    resize: vertical !important;
+}
+
+.resize-x {
+    resize: horizontal !important;
+}

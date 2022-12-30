@@ -1,0 +1,67 @@
+@use 'sass:math';
+@import 'settings/settings.scss';
+
+.swiper-slide {
+    &.swiper-slide--load-more {
+        // width: 200px !important;
+        text-align: center;
+        align-self: center;
+    }
+}
+
+$ripple-dimensions: 40;
+$scale: math.div($ripple-dimensions, 100);
+
+.ripple {
+    width: #{$ripple-dimensions}px;
+    height: #{$ripple-dimensions}px;
+    display: inline-block;
+    overflow: hidden;
+
+    &_inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: translateZ(0) scale($scale);
+        backface-visibility: hidden;
+        transform-origin: 0 0;
+
+        div {
+            position: absolute;
+            border-width: 2px;
+            border-style: solid;
+            opacity: 1;
+            border-radius: 50%;
+            animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+            box-sizing: content-box;
+
+            &:nth-child(1) {
+                border-color: $main-grey;
+                animation-delay: 0s;
+            }
+
+            &:nth-child(2) {
+                border-color: $main-grey;
+                animation-delay: -0.5s;
+            }
+        }
+    }
+}
+
+@keyframes ripple {
+    0% {
+        top: 48px;
+        left: 48px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 9px;
+        left: 9px;
+        width: 78px;
+        height: 78px;
+        opacity: 0;
+    }
+}

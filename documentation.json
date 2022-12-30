@@ -1,0 +1,3459 @@
+{
+  "pipes": [],
+  "interfaces": [
+    {
+      "name": "Customer",
+      "id": "interface-Customer-a24e0edcd0e6f7c12f6715763d8fef1d957a8f57b80d650317ed0a360522ffe10a39f1f9fb9fad19faa097c44679509494b67573dd4fee751189c72d6240d3f1",
+      "file": "src/app/modules/project/dto/project.ts",
+      "deprecated": false,
+      "deprecationMessage": "",
+      "type": "interface",
+      "sourceCode": "export interface IProject {\r\n  id: string;\r\n  title: string;\r\n  isClosed: boolean;\r\n  location: string;\r\n  filesAt: string;\r\n  createAt: Date;\r\n  startedAt: Date;\r\n  endedAt: Date;\r\n}\r\n\r\nexport interface Customer {\r\n  createAt: string;\r\n  firstName: string;\r\n  id: string;\r\n  lastName: string;\r\n  phoneNumber: string;\r\n}\r\n",
+      "properties": [
+        {
+          "name": "createAt",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 13
+        },
+        {
+          "name": "firstName",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 14
+        },
+        {
+          "name": "id",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 15
+        },
+        {
+          "name": "lastName",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 16
+        },
+        {
+          "name": "phoneNumber",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 17
+        }
+      ],
+      "indexSignatures": [],
+      "kind": 165,
+      "methods": []
+    },
+    {
+      "name": "ICustomer",
+      "id": "interface-ICustomer-7d9f9d836467817ec4acf8978743b40db7a469ecaba6648502bebbfeea438e66f7e37138eb3d9b5f7d1b26b7b94ad3ff3510a36e70efdee60b98b5e0d6809f08",
+      "file": "src/app/modules/customer/dto/customer.ts",
+      "deprecated": false,
+      "deprecationMessage": "",
+      "type": "interface",
+      "sourceCode": "export interface ICustomer {\r\n  id: string;\r\n  firstName: string;\r\n  lastName: string;\r\n  phoneNumber: string;\r\n  createAt: string;\r\n}\r\n",
+      "properties": [
+        {
+          "name": "createAt",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 6
+        },
+        {
+          "name": "firstName",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 3
+        },
+        {
+          "name": "id",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 2
+        },
+        {
+          "name": "lastName",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 4
+        },
+        {
+          "name": "phoneNumber",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 5
+        }
+      ],
+      "indexSignatures": [],
+      "kind": 165,
+      "methods": []
+    },
+    {
+      "name": "IProject",
+      "id": "interface-IProject-a24e0edcd0e6f7c12f6715763d8fef1d957a8f57b80d650317ed0a360522ffe10a39f1f9fb9fad19faa097c44679509494b67573dd4fee751189c72d6240d3f1",
+      "file": "src/app/modules/project/dto/project.ts",
+      "deprecated": false,
+      "deprecationMessage": "",
+      "type": "interface",
+      "sourceCode": "export interface IProject {\r\n  id: string;\r\n  title: string;\r\n  isClosed: boolean;\r\n  location: string;\r\n  filesAt: string;\r\n  createAt: Date;\r\n  startedAt: Date;\r\n  endedAt: Date;\r\n}\r\n\r\nexport interface Customer {\r\n  createAt: string;\r\n  firstName: string;\r\n  id: string;\r\n  lastName: string;\r\n  phoneNumber: string;\r\n}\r\n",
+      "properties": [
+        {
+          "name": "createAt",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Date",
+          "optional": false,
+          "description": "",
+          "line": 7
+        },
+        {
+          "name": "endedAt",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Date",
+          "optional": false,
+          "description": "",
+          "line": 9
+        },
+        {
+          "name": "filesAt",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 6
+        },
+        {
+          "name": "id",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 2
+        },
+        {
+          "name": "isClosed",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "boolean",
+          "optional": false,
+          "description": "",
+          "line": 4
+        },
+        {
+          "name": "location",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 5
+        },
+        {
+          "name": "startedAt",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Date",
+          "optional": false,
+          "description": "",
+          "line": 8
+        },
+        {
+          "name": "title",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 3
+        }
+      ],
+      "indexSignatures": [],
+      "kind": 165,
+      "methods": []
+    },
+    {
+      "name": "IQuestion",
+      "id": "interface-IQuestion-a3a772a87489039efc84acecd57b14f4980df0c9ba16f530359878d8659deea8b88d4f5c2adec242c48b65c7dfc606a35747938f0b6f8a90b0925d515aabe2d1",
+      "file": "src/app/shared/models/confirm-question.ts",
+      "deprecated": false,
+      "deprecationMessage": "",
+      "type": "interface",
+      "sourceCode": "export interface IQuestion {\r\n  header: string;\r\n  question: string;\r\n  confirmButton: string;\r\n  cancelButton: string;\r\n}\r\n",
+      "properties": [
+        {
+          "name": "cancelButton",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 5
+        },
+        {
+          "name": "confirmButton",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 4
+        },
+        {
+          "name": "header",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 2
+        },
+        {
+          "name": "question",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 3
+        }
+      ],
+      "indexSignatures": [],
+      "kind": 165,
+      "methods": []
+    },
+    {
+      "name": "User",
+      "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
+      "file": "src/stories/User.ts",
+      "deprecated": false,
+      "deprecationMessage": "",
+      "type": "interface",
+      "sourceCode": "export interface User {}\n",
+      "properties": [],
+      "indexSignatures": [],
+      "methods": []
+    }
+  ],
+  "injectables": [
+    {
+      "name": "CustomerService",
+      "id": "injectable-CustomerService-860cc350b6d7e7f5f9594774e5c6084f97d9b07932d412e5237c25e27fe7401471b1d236ec9635580db1b1a5239bcb68c9c5bdca3d9c375dad30e871ca38ca4e",
+      "file": "src/app/modules/customer/customer.service.ts",
+      "properties": [
+        {
+          "name": "apiUrl",
+          "defaultValue": "'http://localhost:3000/'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 10,
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "http",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "HttpClient",
+          "optional": false,
+          "description": "",
+          "line": 11,
+          "inheritance": {
+            "file": "BaseService"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "create",
+          "args": [
+            {
+              "name": "data",
+              "type": "Partial<T>",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 27,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "data",
+              "type": "Partial<T>",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "delete",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 36,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "error",
+          "args": [
+            {
+              "name": "error",
+              "type": "HttpErrorResponse",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "any",
+          "typeParameters": [],
+          "line": 41,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "error",
+              "type": "HttpErrorResponse",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "getAll",
+          "args": [],
+          "optional": false,
+          "returnType": "Observable<T[]>",
+          "typeParameters": [],
+          "line": 18,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "getById",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 22,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "update",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            },
+            {
+              "name": "data",
+              "type": "T",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 31,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "data",
+              "type": "T",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "description": "",
+      "rawdescription": "\n",
+      "sourceCode": "import { Injectable } from '@angular/core';\nimport { BaseService } from 'src/app/core/services/base.service';\nimport { ICustomer } from './dto/customer';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class CustomerService extends BaseService<ICustomer> {\n  constructor() {\n    super('customer');\n  }\n}\n",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [],
+        "line": 8
+      },
+      "extends": "BaseService",
+      "type": "injectable"
+    },
+    {
+      "name": "LoginService",
+      "id": "injectable-LoginService-5e520b61d4ccc327c464e0e1218bde18f7c9513377ff7504a89e8ab1f0e4c9df7a895373e33b58be4b345d8e1e0947aae8c68655961d643485300deae44e6ebd",
+      "file": "src/app/modules/auth/login/login.service.ts",
+      "properties": [],
+      "methods": [],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "description": "",
+      "rawdescription": "\n",
+      "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class LoginService {\n\n  constructor() { }\n}\n",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [],
+        "line": 6
+      },
+      "type": "injectable"
+    },
+    {
+      "name": "ProjectService",
+      "id": "injectable-ProjectService-672aa38ad81e9dbfb261c49b4a4c90120faddc83d120a9843bf521869c5be6e42211ec17bef1416ebaddaeaa728e209c7177cc77cb6667d4e410761df6290bf7",
+      "file": "src/app/modules/project/project.service.ts",
+      "properties": [
+        {
+          "name": "apiUrl",
+          "defaultValue": "'http://localhost:3000/'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 10,
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "http",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "HttpClient",
+          "optional": false,
+          "description": "",
+          "line": 11,
+          "inheritance": {
+            "file": "BaseService"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "create",
+          "args": [
+            {
+              "name": "data",
+              "type": "Partial<T>",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 27,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "data",
+              "type": "Partial<T>",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "delete",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 36,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "error",
+          "args": [
+            {
+              "name": "error",
+              "type": "HttpErrorResponse",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "any",
+          "typeParameters": [],
+          "line": 41,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "error",
+              "type": "HttpErrorResponse",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "getAll",
+          "args": [],
+          "optional": false,
+          "returnType": "Observable<T[]>",
+          "typeParameters": [],
+          "line": 18,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "getById",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 22,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        },
+        {
+          "name": "update",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            },
+            {
+              "name": "data",
+              "type": "T",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 31,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "data",
+              "type": "T",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ],
+          "inheritance": {
+            "file": "BaseService"
+          }
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "description": "",
+      "rawdescription": "\n",
+      "sourceCode": "import { Injectable } from '@angular/core';\nimport { BaseService } from 'src/app/core/services/base.service';\nimport { IProject } from './dto/project';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ProjectService extends BaseService<IProject> {\n  constructor() {\n    super('project');\n  }\n}\n",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [],
+        "line": 8
+      },
+      "extends": "BaseService",
+      "type": "injectable"
+    }
+  ],
+  "guards": [],
+  "interceptors": [],
+  "classes": [
+    {
+      "name": "BaseService",
+      "id": "class-BaseService-5632e7dfdfccd6fa9fa978e84214577bd2f2ff2e1b229a18217bd424d2b4a3d4c608073c57d7fb4667f7cf8134d41494cac76c983648a058ef4d6e6429365d0d",
+      "file": "src/app/core/services/base.service.ts",
+      "deprecated": false,
+      "deprecationMessage": "",
+      "type": "class",
+      "sourceCode": "import {\n  HttpClient,\n  HttpErrorResponse,\n  HttpHeaders,\n} from '@angular/common/http';\nimport { catchError, Observable, throwError } from 'rxjs';\nimport { AppModule } from 'src/app/app.module';\n\nexport class BaseService<T> {\n  apiUrl: string = 'http://localhost:3000/';\n  http: HttpClient;\n\n  constructor(private controllerName: string) {\n    this.apiUrl = this.apiUrl + controllerName + '/';\n    this.http = AppModule.injector.get(HttpClient);\n  }\n\n  getAll(): Observable<T[]> {\n    return this.http.get<T[]>(this.apiUrl).pipe(catchError(this.error));\n  }\n\n  getById(id: string): Observable<T> {\n    let API_URL = `${this.apiUrl}${id}`;\n    return this.http.get<T>(API_URL).pipe(catchError(this.error));\n  }\n\n  create(data: Partial<T>): Observable<T> {\n    return this.http.post<T>(this.apiUrl, data).pipe(catchError(this.error));\n  }\n\n  update(id: string, data: T): Observable<T> {\n    let API_URL = `${this.apiUrl}${id}`;\n    return this.http.put<T>(API_URL, data).pipe(catchError(this.error));\n  }\n\n  delete(id: string): Observable<T> {\n    let API_URL = `${this.apiUrl}${id}`;\n    return this.http.delete<T>(API_URL).pipe(catchError(this.error));\n  }\n\n  error(error: HttpErrorResponse) {\n    let errorMessage = '';\n    if (error.error instanceof ErrorEvent) {\n      errorMessage = error.error.message;\n    } else {\n      errorMessage = `Error Code: ${error.status}\\nMessage: ${error.message}`;\n    }\n    console.log(errorMessage);\n    return throwError(() => {\n      return errorMessage;\n    });\n  }\n}\n",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "controllerName",
+            "type": "string",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 11,
+        "jsdoctags": [
+          {
+            "name": "controllerName",
+            "type": "string",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "apiUrl",
+          "defaultValue": "'http://localhost:3000/'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 10
+        },
+        {
+          "name": "http",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "HttpClient",
+          "optional": false,
+          "description": "",
+          "line": 11
+        }
+      ],
+      "methods": [
+        {
+          "name": "create",
+          "args": [
+            {
+              "name": "data",
+              "type": "Partial<T>",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 27,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "data",
+              "type": "Partial<T>",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 36,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "error",
+          "args": [
+            {
+              "name": "error",
+              "type": "HttpErrorResponse",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "any",
+          "typeParameters": [],
+          "line": 41,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "error",
+              "type": "HttpErrorResponse",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "getAll",
+          "args": [],
+          "optional": false,
+          "returnType": "Observable<T[]>",
+          "typeParameters": [],
+          "line": 18,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "getById",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 22,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "args": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": ""
+            },
+            {
+              "name": "data",
+              "type": "T",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "Observable<T>",
+          "typeParameters": [],
+          "line": 31,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "id",
+              "type": "string",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "data",
+              "type": "T",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        }
+      ],
+      "indexSignatures": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "hostBindings": [],
+      "hostListeners": []
+    }
+  ],
+  "directives": [],
+  "components": [
+    {
+      "name": "AppComponent",
+      "id": "component-AppComponent-06f5b7d9f11404c19084dd44c64f1059b407ee1f2f0a020ad9a19f380bb2f37aba2977567a2bf0e5abeca35f45c1c511dc9b54cf6e0f830e59ae8aae82c739e1",
+      "file": "src/app/app.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-root",
+      "styleUrls": ["./app.component.scss"],
+      "styles": [],
+      "templateUrl": ["./app.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "date",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Date",
+          "optional": false,
+          "description": "",
+          "line": 10
+        },
+        {
+          "name": "title",
+          "defaultValue": "'koodaki-admin'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 32
+        }
+      ],
+      "methodsClass": [],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component } from '@angular/core';\nimport { DateTime } from 'luxon';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  date: Date;\n\n  constructor() {\n    let today = new Date().toLocaleDateString('fa-IR');\n    console.log('today', today);\n\n    // this.date = new Date();\n    // const dt = DateTime.local(2017, 5, 15, 8, 30);\n    // console.log('1', dt.toFormat('yyyy mm dd'));\n    // console.log('2', DateTime.fromISO('2017-05-15'));\n    // const d = DateTime.now();\n    // console.log('3', d.zoneName);\n    // console.log('4', dt.toLocaleString(DateTime.DATETIME_MED));\n    // console.log('4', dt.toISO());\n    // console.log('last', DateTime.now().toString());\n\n    //     var dt = DateTime.now();\n    // var f = {month: 'long', day: 'numeric'};\n    // dt.setLocale('fr').toLocaleString(f)      //=> '14 septembre'\n    // dt.setLocale('en-GB').toLocaleString(f)   //=> '14 September'\n    // dt.setLocale('en-US').toLocaleString(f)\n  }\n  title = 'koodaki-admin';\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": "",
+          "styleUrl": "./app.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [],
+        "line": 10
+      },
+      "templateData": "<router-outlet></router-outlet>\r\n"
+    },
+    {
+      "name": "ButtonComponent",
+      "id": "component-ButtonComponent-4ef205c97a334c309aa4001c8ab4a6d9571dcae18d0e85aaf0d367467ab5d3a9f13ab3573726f1fcb409bc9b49894dadfb80b1bbe1b6ba7041455ad9d4922004",
+      "file": "src/stories/button.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "storybook-button",
+      "styleUrls": ["./button.css"],
+      "styles": [],
+      "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "backgroundColor",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n\nWhat background color to use\n",
+          "description": "<p>What background color to use</p>\n",
+          "line": 26,
+          "type": "string",
+          "decorators": []
+        },
+        {
+          "name": "label",
+          "defaultValue": "'Button'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "pos": 711,
+              "end": 724,
+              "flags": 4227072,
+              "modifierFlagsCache": 0,
+              "transformFlags": 0,
+              "kind": 325,
+              "tagName": {
+                "pos": 712,
+                "end": 720,
+                "flags": 4227072,
+                "modifierFlagsCache": 0,
+                "transformFlags": 0,
+                "kind": 79,
+                "escapedText": "required"
+              },
+              "comment": ""
+            }
+          ],
+          "rawdescription": "\n\nButton contents\n\n",
+          "description": "<p>Button contents</p>\n",
+          "line": 40,
+          "type": "string",
+          "decorators": []
+        },
+        {
+          "name": "primary",
+          "defaultValue": "false",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n\nIs this the principal call to action on the page?\n",
+          "description": "<p>Is this the principal call to action on the page?</p>\n",
+          "line": 20,
+          "type": "boolean",
+          "decorators": []
+        },
+        {
+          "name": "size",
+          "defaultValue": "'medium'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n\nHow large should the button be?\n",
+          "description": "<p>How large should the button be?</p>\n",
+          "line": 32,
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "decorators": []
+        }
+      ],
+      "outputsClass": [
+        {
+          "name": "onClick",
+          "defaultValue": "new EventEmitter<Event>()",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n\nOptional click handler\n",
+          "description": "<p>Optional click handler</p>\n",
+          "line": 46,
+          "type": "EventEmitter"
+        }
+      ],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+          "styleUrl": "./button.css"
+        }
+      ],
+      "stylesData": "",
+      "accessors": {
+        "classes": {
+          "name": "classes",
+          "getSignature": {
+            "name": "classes",
+            "type": "[]",
+            "returnType": "string[]",
+            "line": 48
+          }
+        }
+      }
+    },
+    {
+      "name": "ConfirmComponent",
+      "id": "component-ConfirmComponent-c189bc2b88621cd057325d31c34da3bf65938d227213a230dc61b6e32d1e74b3015578fc3ccd534ab96d4f01b543f1fb7eecb4a04ab20a4482410da8bf8d7d66",
+      "file": "src/app/shared/components/confirm/confirm.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-confirm",
+      "styleUrls": ["./confirm.component.scss"],
+      "styles": [],
+      "templateUrl": ["./confirm.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "cancelButton",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 14
+        },
+        {
+          "name": "confirmButton",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 13
+        },
+        {
+          "name": "data",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "IQuestion",
+          "optional": false,
+          "description": "",
+          "line": 18,
+          "decorators": [
+            {
+              "name": "Inject",
+              "stringifiedArguments": "MAT_DIALOG_DATA"
+            }
+          ],
+          "modifierKind": [123]
+        },
+        {
+          "name": "dialogRef",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "MatDialogRef<ConfirmComponent>",
+          "optional": false,
+          "description": "",
+          "line": 16,
+          "modifierKind": [123]
+        },
+        {
+          "name": "header",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 11
+        },
+        {
+          "name": "question",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 12
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 28,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\nimport { IQuestion } from '../../models/confirm-question';\n\n@Component({\n  selector: 'app-confirm',\n  templateUrl: './confirm.component.html',\n  styleUrls: ['./confirm.component.scss'],\n})\nexport class ConfirmComponent implements OnInit {\n  header: string;\n  question: string;\n  confirmButton: string;\n  cancelButton: string;\n  constructor(\n    public dialogRef: MatDialogRef<ConfirmComponent>,\n    @Inject(MAT_DIALOG_DATA)\n    public data: IQuestion\n  ) {\n    ({\n      header: this.header,\n      question: this.question,\n      confirmButton: this.confirmButton,\n      cancelButton: this.cancelButton,\n    } = this.data);\n  }\n\n  ngOnInit(): void {}\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ":host button {\r\n  margin: 5px;\r\n}\r\n",
+          "styleUrl": "./confirm.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "dialogRef",
+            "type": "MatDialogRef<ConfirmComponent>",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "data",
+            "type": "IQuestion",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 14,
+        "jsdoctags": [
+          {
+            "name": "dialogRef",
+            "type": "MatDialogRef<ConfirmComponent>",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "data",
+            "type": "IQuestion",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "templateData": "<h1 mat-dialog-title>{{ header }}</h1>\n<div mat-dialog-content>\n  <h3>{{ question }}</h3>\n  <button mat-raised-button color=\"primary\" (click)=\"dialogRef.close(true)\">\n    {{ confirmButton }}\n  </button>\n  <button mat-raised-button color=\"warn\" (click)=\"dialogRef.close(false)\">\n    {{ cancelButton }}\n  </button>\n</div>\n"
+    },
+    {
+      "name": "CustomerComponent",
+      "id": "component-CustomerComponent-f2f8eec60173462aacd1c5c9e6831170b68c0d6d35bf60904f5a4ac159105e972c81348718693f559e549ff438e342d117cae3fb5a75f4abe44c5add8b0c9c03",
+      "file": "src/app/modules/customer/customer.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-customer",
+      "styleUrls": ["./customer.component.scss"],
+      "styles": [],
+      "templateUrl": ["./customer.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "columns",
+          "defaultValue": "[\n    {\n      columnDef: 'firstName',\n      header: 'نام',\n    },\n    {\n      columnDef: 'lastName',\n      header: 'نام خانوادگی',\n    },\n    {\n      columnDef: 'phoneNumber',\n      header: 'شماره تماس',\n    },\n  ]",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "[]",
+          "optional": false,
+          "description": "",
+          "line": 15
+        },
+        {
+          "name": "dataSource",
+          "defaultValue": "[]",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "ICustomer[]",
+          "optional": false,
+          "description": "",
+          "line": 14
+        },
+        {
+          "name": "dialog",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "MatDialog",
+          "optional": false,
+          "description": "",
+          "line": 37,
+          "modifierKind": [123]
+        },
+        {
+          "name": "displayedColumns",
+          "defaultValue": "[\n    ...this.columns.map((c) => c.columnDef),\n    'action',\n  ]",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string[]",
+          "optional": false,
+          "description": "",
+          "line": 30
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "createCustomer",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 48,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "deleteCustomer",
+          "args": [
+            {
+              "name": "row",
+              "type": "ICustomer",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 79,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "row",
+              "type": "ICustomer",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "editCustomer",
+          "args": [
+            {
+              "name": "row",
+              "type": "ICustomer",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 60,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "row",
+              "type": "ICustomer",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "getAllCustomer",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 43,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 40,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, OnInit, ChangeDetectorRef } from '@angular/core';\nimport { MatDialog } from '@angular/material/dialog';\nimport { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';\nimport { CustomerFormComponent } from './customer-form/customer-form.component';\nimport { CustomerService } from './customer.service';\nimport { ICustomer } from './dto/customer';\n\n@Component({\n  selector: 'app-customer',\n  templateUrl: './customer.component.html',\n  styleUrls: ['./customer.component.scss'],\n})\nexport class CustomerComponent implements OnInit {\n  dataSource: ICustomer[] = [];\n  columns = [\n    {\n      columnDef: 'firstName',\n      header: 'نام',\n    },\n    {\n      columnDef: 'lastName',\n      header: 'نام خانوادگی',\n    },\n    {\n      columnDef: 'phoneNumber',\n      header: 'شماره تماس',\n    },\n  ];\n\n  displayedColumns: string[] = [\n    ...this.columns.map((c) => c.columnDef),\n    'action',\n  ];\n\n  constructor(\n    private customerService: CustomerService,\n    public dialog: MatDialog\n  ) {}\n\n  ngOnInit(): void {\n    this.getAllCustomer();\n  }\n  getAllCustomer() {\n    this.customerService.getAll().subscribe((res: ICustomer[]) => {\n      this.dataSource = res;\n    });\n  }\n  createCustomer() {\n    this.dialog\n      .open(CustomerFormComponent, {})\n      .afterClosed()\n      .subscribe((res: ICustomer) => {\n        if (res) {\n          this.dataSource.push(res);\n          this.dataSource = [...this.dataSource];\n        }\n      });\n  }\n\n  editCustomer(row: ICustomer) {\n    this.dialog\n      .open(CustomerFormComponent, {\n        data: row,\n      })\n      .afterClosed()\n      .subscribe((res: ICustomer) => {\n        if (res) {\n          this.dataSource.splice(\n            this.dataSource.findIndex((item) => item.id === res.id),\n            1,\n            res\n          );\n          // this.dataSource = [...this.dataSource];\n          this.getAllCustomer();\n        }\n      });\n  }\n\n  deleteCustomer(row: ICustomer) {\n    this.dialog\n      .open(ConfirmComponent, {\n        data: {\n          header: 'حذف کاربر',\n          question: `آیااز حذف کاربر ${row.firstName} ${row.lastName} مطمئن هستید؟`,\n          confirmButton: 'بله',\n          cancelButton: 'خیر',\n        },\n      })\n      .afterClosed()\n      .subscribe((res) => {\n        if (res) {\n          this.customerService.delete(row.id).subscribe(() => {\n            this.dataSource.splice(\n              this.dataSource.findIndex((item) => item.id === row.id),\n              1\n            );\n            this.dataSource = [...this.dataSource];\n          });\n        }\n      });\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ":host {\r\n  padding: 50px;\r\n  display: block;\r\n}\r\n.mdc-button {\r\n  margin: 10px 0px;\r\n}\r\n",
+          "styleUrl": "./customer.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "customerService",
+            "type": "CustomerService",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "dialog",
+            "type": "MatDialog",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 33,
+        "jsdoctags": [
+          {
+            "name": "customerService",
+            "type": "CustomerService",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "dialog",
+            "type": "MatDialog",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "templateData": "<div>\n  <button mat-raised-button color=\"primary\" (click)=\"createCustomer()\">\n    افزودن\n  </button>\n</div>\n<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8 demo-table\">\n  <ng-container\n    *ngFor=\"let column of columns\"\n    [matColumnDef]=\"column.columnDef\"\n  >\n    <th mat-header-cell *matHeaderCellDef>\n      {{ column.header }}\n    </th>\n\n    <td mat-cell *matCellDef=\"let row\">\n      {{ row[column.columnDef] }}\n    </td>\n  </ng-container>\n\n  <ng-container matColumnDef=\"action\">\n    <th mat-header-cell *matHeaderCellDef>عملیات</th>\n\n    <td mat-cell *matCellDef=\"let row\">\n      <button mat-icon-button color=\"primary\" (click)=\"editCustomer(row)\">\n        <mat-icon>edit</mat-icon>\n      </button>\n      <button mat-icon-button color=\"warn\" (click)=\"deleteCustomer(row)\">\n        <mat-icon>delete</mat-icon>\n      </button>\n    </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\n</table>\n"
+    },
+    {
+      "name": "CustomerFormComponent",
+      "id": "component-CustomerFormComponent-f24e95f4060e8905e5f63befd5dcaed9cd9b4b42ba3b5108b07f2de3bc7a895a030b42b02fe0d230570b0fba26d3eca2293c6076255e87ed57118d20c448cc1c",
+      "file": "src/app/modules/customer/customer-form/customer-form.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-customer-form",
+      "styleUrls": ["./customer-form.component.scss"],
+      "styles": [],
+      "templateUrl": ["./customer-form.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "customer",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "ICustomer",
+          "optional": false,
+          "description": "",
+          "line": 15
+        },
+        {
+          "name": "data",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "ICustomer",
+          "optional": false,
+          "description": "",
+          "line": 19,
+          "decorators": [
+            {
+              "name": "Inject",
+              "stringifiedArguments": "MAT_DIALOG_DATA"
+            }
+          ],
+          "modifierKind": [123]
+        },
+        {
+          "name": "editMode",
+          "defaultValue": "false",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "boolean",
+          "optional": false,
+          "description": "",
+          "line": 16
+        },
+        {
+          "name": "form",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "FormGroup",
+          "optional": false,
+          "description": "",
+          "line": 14
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "closeDialog",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 67,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "creat",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 57,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 25,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "sendFormValue",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 40,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "update",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 48,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\nimport { CustomerService } from '../customer.service';\nimport { ICustomer } from '../dto/customer';\n\n@Component({\n  selector: 'app-customer-form',\n  templateUrl: './customer-form.component.html',\n  styleUrls: ['./customer-form.component.scss'],\n})\nexport class CustomerFormComponent implements OnInit {\n  form: FormGroup;\n  customer: ICustomer;\n  editMode: boolean = false;\n\n  constructor(\n    @Inject(MAT_DIALOG_DATA) public data: ICustomer,\n    private dialogRef: MatDialogRef<CustomerFormComponent>,\n    private fb: FormBuilder,\n    private customerService: CustomerService\n  ) {}\n\n  ngOnInit(): void {\n    const pattern = '^09[0|1|2|3][0-9]{8}$';\n    this.form = this.fb.group({\n      firstName: ['', Validators.required],\n      lastName: ['', Validators.required],\n      phoneNumber: ['', [Validators.required, Validators.pattern(pattern)]],\n    });\n\n    if (this.data) {\n      this.customer = this.data;\n      this.form.patchValue(this.customer);\n      this.editMode = true;\n    }\n  }\n\n  sendFormValue() {\n    if (this.editMode) {\n      this.update();\n      return;\n    }\n    this.creat();\n  }\n\n  update() {\n    this.customer = { ...this.customer, ...this.form.value };\n    this.customerService\n      .update(this.customer.id, this.customer)\n      .subscribe((res) => {\n        this.dialogRef.close(this.customer);\n      });\n  }\n\n  creat() {\n    this.customer = {} as ICustomer;\n    this.customer.firstName = this.form.value.firstName;\n    this.customer.lastName = this.form.value.lastName;\n    this.customer.phoneNumber = this.form.value.phoneNumber;\n\n    this.customerService.create(this.customer).subscribe((res) => {\n      this.dialogRef.close(res);\n    });\n  }\n  closeDialog() {\n    this.dialogRef.close();\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": "// mat-form-field {\r\n//   padding: 10px;\r\n// }\r\n",
+          "styleUrl": "./customer-form.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "data",
+            "type": "ICustomer",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "dialogRef",
+            "type": "MatDialogRef<CustomerFormComponent>",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "customerService",
+            "type": "CustomerService",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 16,
+        "jsdoctags": [
+          {
+            "name": "data",
+            "type": "ICustomer",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "dialogRef",
+            "type": "MatDialogRef<CustomerFormComponent>",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "customerService",
+            "type": "CustomerService",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "templateData": "<h1 mat-dialog-title>اطلاعات تماس</h1>\n<div mat-dialog-content>\n  <form class=\"example-form\" [formGroup]=\"form\" (submit)=\"sendFormValue()\">\n    <mat-form-field class=\"example-full-width\">\n      <mat-label>نام</mat-label>\n      <input\n        type=\"text\"\n        matInput\n        formControlName=\"firstName\"\n        placeholder=\"نام\"\n      />\n      <mat-error\n        *ngIf=\"\n          form.controls['firstName'].hasError('firstName') &&\n          !form.controls['firstName'].hasError('required')\n        \"\n      >\n        Please enter a valid firstName\n      </mat-error>\n      <mat-error *ngIf=\"form.controls['firstName'].hasError('required')\">\n        name is <strong>required</strong>\n      </mat-error>\n    </mat-form-field>\n\n    <mat-form-field class=\"example-full-width\">\n      <mat-label>نام خانوادگی</mat-label>\n      <input\n        type=\"text\"\n        matInput\n        formControlName=\"lastName\"\n        placeholder=\"نام خانوادگی\"\n      />\n      <mat-error\n        *ngIf=\"\n          form.controls['lastName'].hasError('lastName') &&\n          !form.controls['lastName'].hasError('required')\n        \"\n      >\n        Please enter a valid lastName\n      </mat-error>\n      <mat-error *ngIf=\"form.controls['lastName'].hasError('required')\">\n        lastName is <strong>required</strong>\n      </mat-error>\n    </mat-form-field>\n\n    <mat-form-field>\n      <mat-label>شماره تماس</mat-label>\n      <input\n        type=\"string\"\n        matInput\n        formControlName=\"phoneNumber\"\n        placeholder=\"09121234567\"\n      />\n      <mat-error\n        *ngIf=\"\n          form.controls['phoneNumber'].hasError('phoneNumber') &&\n          !form.controls['phoneNumber'].hasError('required')\n        \"\n      >\n        Please enter a valid phoneNumber\n      </mat-error>\n      <mat-error *ngIf=\"form.controls['phoneNumber'].hasError('required')\">\n        phoneNumber is <strong>required</strong>\n      </mat-error>\n    </mat-form-field>\n    <div mat-dialog-actions>\n      <button\n        mat-raised-button\n        color=\"primary\"\n        mat-dialog-close\n        cdkFocusInitial\n        type=\"submit\"\n        [disabled]=\"form.invalid\"\n      >\n        ثبت\n      </button>\n      <button\n        mat-raised-button\n        mat-dialog-close\n        color=\"warn\"\n        (click)=\"closeDialog()\"\n      >\n        انصراف\n      </button>\n    </div>\n  </form>\n</div>\n"
+    },
+    {
+      "name": "HeaderComponent",
+      "id": "component-HeaderComponent-a557eec14f72c438a8033301f4d6ce023e0a1844a3b06ec2b38794a612acc31735ae78a5ee10071b230c8c20d699eb914554e69d07ade54adb371da8efb464cc",
+      "file": "src/stories/header.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "storybook-header",
+      "styleUrls": ["./header.css"],
+      "styles": [],
+      "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            primary\n            size=\"small\"\n            primary=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "user",
+          "defaultValue": "null",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "line": 65,
+          "type": "User | null",
+          "decorators": []
+        }
+      ],
+      "outputsClass": [
+        {
+          "name": "onCreateAccount",
+          "defaultValue": "new EventEmitter<Event>()",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "line": 74,
+          "type": "EventEmitter"
+        },
+        {
+          "name": "onLogin",
+          "defaultValue": "new EventEmitter<Event>()",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "line": 68,
+          "type": "EventEmitter"
+        },
+        {
+          "name": "onLogout",
+          "defaultValue": "new EventEmitter<Event>()",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "line": 71,
+          "type": "EventEmitter"
+        }
+      ],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            primary\n            size=\"small\"\n            primary=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n\n.welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+          "styleUrl": "./header.css"
+        }
+      ],
+      "stylesData": ""
+    },
+    {
+      "name": "LoginComponent",
+      "id": "component-LoginComponent-cf3d0f6b3503ee02ff992b7b2fb8bc4b10fc4220cd8651f4cb9a9ae68674b53320abde6bbd3362c33d13ecbb466831cfc47632d8743026016347f73b21b688a7",
+      "file": "src/app/modules/auth/login/login.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-login",
+      "styleUrls": ["./login.component.scss"],
+      "styles": [],
+      "templateUrl": ["./login.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "form",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "FormGroup",
+          "optional": false,
+          "description": "",
+          "line": 11
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "goToRegister",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 34,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "login",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 20,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 14,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent implements OnInit {\n  form: FormGroup;\n  constructor(private router: Router, private fb: FormBuilder) {}\n\n  ngOnInit() {\n    this.form = this.fb.group({\n      username: ['', Validators.required],\n      password: ['', Validators.required],\n    });\n  }\n  login() {\n    if (\n      this.form.value.username == 'admin' &&\n      this.form.value.password == 'admin'\n    ) {\n      this.router.navigate(['customer']);\n    } else {\n      alert('اطلاعات وارد شده صحیح نمی باشد');\n    }\n  }\n  // convenience getter for easy access to form fields\n  get f() {\n    return this.form.controls;\n  }\n  goToRegister() {\n    this.router.navigate(['/register']);\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ":host {\r\n  padding: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\nmat-card-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n",
+          "styleUrl": "./login.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "router",
+            "type": "Router",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 11,
+        "jsdoctags": [
+          {
+            "name": "router",
+            "type": "Router",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "accessors": {
+        "f": {
+          "name": "f",
+          "getSignature": {
+            "name": "f",
+            "type": "",
+            "returnType": "",
+            "line": 31
+          }
+        }
+      },
+      "templateData": "<mat-card class=\"mat-card\">\n  <mat-card-header>\n    <mat-card-title> ورود کاربر </mat-card-title>\n  </mat-card-header>\n  <form class=\"example-form\" [formGroup]=\"form\" (submit)=\"login()\">\n    <mat-card-content>\n      <mat-form-field class=\"example-full-width\">\n        <mat-label>نام</mat-label>\n        <input\n          type=\"text\"\n          matInput\n          formControlName=\"username\"\n          placeholder=\"نام\"\n        />\n        <mat-error *ngIf=\"form.controls['username'].hasError('required')\">\n          name is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n      <mat-form-field class=\"example-full-width\">\n        <mat-label>رمز عبور</mat-label>\n        <input\n          type=\"password\"\n          matInput\n          formControlName=\"password\"\n          placeholder=\"رمز عبور\"\n        />\n        <mat-error *ngIf=\"form.controls['password'].hasError('required')\">\n          name is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n    </mat-card-content>\n    <mat-card-actions>\n      <button\n        mat-raised-button\n        color=\"primary\"\n        type=\"submit\"\n        [disabled]=\"form.invalid\"\n      >\n        ورود\n      </button>\n      <!-- <button mat-button color=\"primary\" type=\"button\" (click)=\"goToRegister()\">\n        ثبت نام\n      </button> -->\n    </mat-card-actions>\n  </form>\n  <!-- </mat-card> -->\n</mat-card>\n"
+    },
+    {
+      "name": "PageComponent",
+      "id": "component-PageComponent-7126d8c2607c946741c651482413b43feb72b2d63cac9d3ac173fde206a5e635eb4cdbf7ca7ac9327c7d4d05cf7ef619144c34c11609ad677081d0ee4e855064",
+      "file": "src/stories/page.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "storybook-page",
+      "styleUrls": ["./page.css"],
+      "styles": [],
+      "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "user",
+          "defaultValue": "null",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "User | null",
+          "optional": false,
+          "description": "",
+          "line": 64
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "doCreateAccount",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 74,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "doLogin",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 70,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "doLogout",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 66,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nsection h2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nsection p {\n  margin: 1em 0;\n}\n\nsection a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nsection ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nsection li {\n  margin-bottom: 8px;\n}\n\nsection .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\nsection .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\nsection .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\nsection .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+          "styleUrl": "./page.css"
+        }
+      ],
+      "stylesData": ""
+    },
+    {
+      "name": "PageNotFoundComponent",
+      "id": "component-PageNotFoundComponent-cf0edb3d77cb4c352d10e6f6aaef01caf05569b902523720c031d6f49a5ad04a9c275beec68832750584bf5f2201f365352f92f06687c9cb4614784ab4c1b1cb",
+      "file": "src/app/shared/components/page-not-found/page-not-found.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-page-not-found",
+      "styleUrls": ["./page-not-found.component.scss"],
+      "styles": [],
+      "templateUrl": ["./page-not-found.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [],
+      "methodsClass": [
+        {
+          "name": "routerComment",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 11,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component } from '@angular/core';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'app-page-not-found',\n  templateUrl: './page-not-found.component.html',\n  styleUrls: ['./page-not-found.component.scss'],\n})\nexport class PageNotFoundComponent {\n  constructor(private router: Router) {}\n  routerComment() {\n    this.router.navigateByUrl('/log-in');\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": "body {\r\n  background-color: #ff7f2e;\r\n  font-family: \"Concert One\", cursive;\r\n  margin: 0;\r\n  overflow: hidden;\r\n  padding: 0;\r\n}\r\n\r\n/*/////////////////// rules */\r\n$color-black: #13242c;\r\n$color-white: #fff;\r\n$color-red-1: #d13433;\r\n$color-red-2: #932422;\r\n$color-skin-1: #eab08c;\r\n$color-skin-2: #d9766c;\r\n$color-skin-3: #b2524d;\r\n$color-hair: #13242c;\r\n$color-wood-1: #601513;\r\n$color-wood-2: #410a09;\r\n\r\n@mixin position {\r\n  position: absolute;\r\n}\r\n@mixin top50 {\r\n  position: absolute;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n}\r\n@mixin left50 {\r\n  left: 50%;\r\n  position: absolute;\r\n  transform: translateX(-50%);\r\n}\r\n@mixin centered {\r\n  left: 50%;\r\n  position: absolute;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n/*/////////////////// scene */\r\n.text {\r\n  @include centered;\r\n  color: rgba($color-black, 0.1);\r\n  font-size: 30em;\r\n  text-align: center;\r\n  top: 40%;\r\n}\r\n.container {\r\n  @include centered;\r\n  height: 300px;\r\n  width: 500px;\r\n  &:after {\r\n    @include position;\r\n    content: \"\";\r\n    background-color: rgba($color-black, 0.1);\r\n    border-radius: 12px;\r\n    bottom: 40px;\r\n    height: 12px;\r\n    left: 80px;\r\n    width: 350px;\r\n    z-index: -1;\r\n  }\r\n}\r\n/*/////////////////// caveman */\r\n.caveman {\r\n  height: 300px;\r\n  position: absolute;\r\n  width: 250px;\r\n}\r\n.caveman:nth-child(1) {\r\n  right: 20px;\r\n}\r\n.caveman:nth-child(2) {\r\n  left: 20px;\r\n  transform: rotateY(180deg);\r\n}\r\n.head {\r\n  @include position;\r\n  background-color: $color-hair;\r\n  border-radius: 50px;\r\n  height: 140px;\r\n  left: 60px;\r\n  top: 25px;\r\n  width: 65px;\r\n  &:after,\r\n  &:before {\r\n    content: \"\";\r\n    @include position;\r\n    background-color: $color-black;\r\n    border-radius: 10px;\r\n    height: 20px;\r\n    width: 7px;\r\n  }\r\n  &:after {\r\n    left: 35px;\r\n    top: -8px;\r\n    transform: rotate(20deg);\r\n  }\r\n  &:before {\r\n    left: 30px;\r\n    top: -8px;\r\n    transform: rotate(-20deg);\r\n  }\r\n  .eye {\r\n    @include left50;\r\n    background-color: $color-skin-1;\r\n    border-radius: 50px;\r\n    height: 16px;\r\n    left: 45%;\r\n    top: 40px;\r\n    width: 48px;\r\n    &:after,\r\n    &:before {\r\n      content: \"\";\r\n      @include top50;\r\n      background-color: $color-black;\r\n      border-radius: 50%;\r\n      height: 5px;\r\n      width: 5px;\r\n    }\r\n    &:after {\r\n      left: 5px;\r\n    }\r\n    &:before {\r\n      right: 9px;\r\n    }\r\n    .nose {\r\n      @include centered;\r\n      background-color: $color-skin-2;\r\n      border-left: 8px solid rgba($color-black, 0.1);\r\n      border-radius: 10px;\r\n      box-sizing: border-box;\r\n      height: 35px;\r\n      left: 45%;\r\n      top: 12px;\r\n      width: 15px;\r\n    }\r\n  }\r\n}\r\n.shape {\r\n  @include left50;\r\n  border-radius: 50%;\r\n  height: 140px;\r\n  overflow: hidden;\r\n  top: 70px;\r\n  width: 140px;\r\n  .circle {\r\n    @include position;\r\n    border-radius: 50%;\r\n    height: 60px;\r\n    width: 60px;\r\n    &:after,\r\n    &:before {\r\n      content: \"\";\r\n      @include position;\r\n      border-radius: 50%;\r\n      height: 20px;\r\n      width: 20px;\r\n    }\r\n    &:after {\r\n      left: 50px;\r\n      top: 10px;\r\n    }\r\n    &:before {\r\n      left: 60px;\r\n      top: 45px;\r\n    }\r\n  }\r\n  .circle:nth-child(1) {\r\n    left: -12px;\r\n    top: 80px;\r\n  }\r\n  .circle:nth-child(2) {\r\n    right: 10px;\r\n    top: 0px;\r\n    transform: rotate(90deg);\r\n    &:after {\r\n      left: 65px;\r\n      top: 10px;\r\n    }\r\n    &:before {\r\n      display: none;\r\n    }\r\n  }\r\n}\r\n.caveman:nth-child(1) .shape {\r\n  background-color: $color-red-1;\r\n  .circle {\r\n    background-color: $color-red-2;\r\n    &:after,\r\n    &:before {\r\n      background-color: $color-red-2;\r\n    }\r\n  }\r\n}\r\n.caveman:nth-child(2) .shape {\r\n  background-color: $color-red-2;\r\n  .circle {\r\n    background-color: $color-red-1;\r\n    &:after,\r\n    &:before {\r\n      background-color: $color-red-1;\r\n    }\r\n  }\r\n}\r\n.arm-right {\r\n  @include position;\r\n  background-color: $color-skin-1;\r\n  border-left: 8px solid rgba($color-black, 0.1);\r\n  border-radius: 50px;\r\n  box-sizing: border-box;\r\n  height: 180px;\r\n  left: 135px;\r\n  top: 80px;\r\n  transform-origin: 30px 30px;\r\n  width: 60px;\r\n  z-index: 1;\r\n  .club {\r\n    @include position;\r\n    border-bottom: 110px solid $color-wood-1;\r\n    border-left: 10px solid transparent;\r\n    border-right: 10px solid transparent;\r\n    height: 0;\r\n    left: -60px;\r\n    top: 120px;\r\n    transform: rotate(70deg);\r\n    width: 20px;\r\n    &:after,\r\n    &:before {\r\n      @include position;\r\n      content: \"\";\r\n      background-color: $color-wood-1;\r\n      border-radius: 50%;\r\n      left: 0;\r\n    }\r\n    &:after {\r\n      height: 20px;\r\n      width: 20px;\r\n      top: -10px;\r\n    }\r\n    &:before {\r\n      height: 40px;\r\n      width: 40px;\r\n      left: -10px;\r\n      top: 90px;\r\n    }\r\n  }\r\n}\r\n.leg {\r\n  @include position;\r\n  border-radius: 10px;\r\n  height: 55px;\r\n  top: 200px;\r\n  width: 10px;\r\n  &:after {\r\n    @include position;\r\n    content: \"\";\r\n    border-radius: 50%;\r\n    height: 10px;\r\n    left: -5px;\r\n    top: 15px;\r\n    width: 10px;\r\n  }\r\n  .foot {\r\n    @include position;\r\n    border-radius: 25px 25px 0 0;\r\n    height: 25px;\r\n    left: -38px;\r\n    top: 30px;\r\n    width: 50px;\r\n    &:after,\r\n    &:before,\r\n    .fingers,\r\n    .fingers:after {\r\n      @include position;\r\n      background-color: $color-skin-1;\r\n      border-radius: 50%;\r\n      bottom: 0px;\r\n      height: 15px;\r\n      transform-origin: bottom;\r\n      width: 15px;\r\n    }\r\n    &:after {\r\n      left: -6px;\r\n      content: \"\";\r\n    }\r\n    &:before {\r\n      left: 8px;\r\n      transform: scale(0.6);\r\n      content: \"\";\r\n    }\r\n    .fingers {\r\n      left: 15px;\r\n      transform: scale(0.6);\r\n    }\r\n    .fingers:after {\r\n      left: 11px;\r\n      content: \"\";\r\n    }\r\n  }\r\n}\r\n.leg:nth-child(1) {\r\n  background-color: $color-skin-3;\r\n  left: 95px;\r\n  &:after {\r\n    background-color: $color-skin-3;\r\n  }\r\n  .foot {\r\n    background-color: $color-skin-3;\r\n    &:after {\r\n      background-color: $color-skin-3;\r\n    }\r\n    &:before {\r\n      display: none;\r\n    }\r\n  }\r\n}\r\n.leg:nth-child(2) {\r\n  background-color: $color-skin-2;\r\n  left: 115px;\r\n  &:after {\r\n    background-color: $color-skin-2;\r\n  }\r\n  .foot {\r\n    background-color: $color-skin-2;\r\n  }\r\n}\r\n/*/////////////////// animation */\r\n.caveman:nth-child(1) .arm-right {\r\n  animation: arm-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n}\r\n.caveman:nth-child(2) .arm-right {\r\n  animation: arm-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n  animation-delay: 0.6s;\r\n}\r\n@keyframes arm-anima {\r\n  0% {\r\n    transform: rotate(0);\r\n  }\r\n  100% {\r\n    transform: rotate(-360deg);\r\n  }\r\n}\r\n.caveman:nth-child(2) .head {\r\n  animation: head-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n}\r\n.caveman:nth-child(1) .head {\r\n  animation: head-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n  animation-delay: 0.6s;\r\n}\r\n@keyframes head-anima {\r\n  0% {\r\n    top: 25px;\r\n  }\r\n  42% {\r\n    top: 25px;\r\n  }\r\n  45% {\r\n    top: 50px;\r\n  }\r\n  100% {\r\n    top: 25px;\r\n  }\r\n}\r\n.caveman:nth-child(2) .eye:after,\r\n.caveman:nth-child(2) .eye:before {\r\n  animation: eye-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n}\r\n.caveman:nth-child(1) .eye:after,\r\n.caveman:nth-child(1) .eye:before {\r\n  animation: eye-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n  animation-delay: 0.6s;\r\n}\r\n@keyframes eye-anima {\r\n  0% {\r\n    height: 5px;\r\n  }\r\n  42% {\r\n    height: 5px;\r\n  }\r\n  45% {\r\n    height: 1px;\r\n  }\r\n  100% {\r\n    height: 5px;\r\n  }\r\n}\r\n.container {\r\n  &:after {\r\n    animation: shadow-anima 1.2s infinite cubic-bezier(0.55, 0.01, 0.16, 1.34);\r\n    animation-delay: 0.1s;\r\n  }\r\n}\r\n@keyframes shadow-anima {\r\n  0% {\r\n    width: 350px;\r\n    left: 80px;\r\n  }\r\n  25% {\r\n    width: 450px;\r\n    left: 80px;\r\n  }\r\n  50% {\r\n    width: 350px;\r\n    left: 80px;\r\n  }\r\n  75% {\r\n    width: 450px;\r\n    left: 0px;\r\n  }\r\n  100% {\r\n    width: 350px;\r\n    left: 80px;\r\n  }\r\n}\r\n/*/////////////////////// credit ////*/\r\n#link {\r\n  bottom: 20px;\r\n  color: #000;\r\n  opacity: 0.2;\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n}\r\n#link p {\r\n  margin: 0;\r\n  margin-left: 5px;\r\n}\r\n#link:hover {\r\n  opacity: 1;\r\n}\r\n",
+          "styleUrl": "./page-not-found.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "router",
+            "type": "Router",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 9,
+        "jsdoctags": [
+          {
+            "name": "router",
+            "type": "Router",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "templateData": "<div class=\"text\"><p>404</p></div>\n<div class=\"container\">\n  <!-- caveman left -->\n  <div class=\"caveman\">\n    <div class=\"leg\">\n      <div class=\"foot\"><div class=\"fingers\"></div></div>\n    </div>\n    <div class=\"leg\">\n      <div class=\"foot\"><div class=\"fingers\"></div></div>\n    </div>\n    <div class=\"shape\">\n      <div class=\"circle\"></div>\n      <div class=\"circle\"></div>\n    </div>\n    <div class=\"head\">\n      <div class=\"eye\"><div class=\"nose\"></div></div>\n      <div class=\"mouth\"></div>\n    </div>\n    <div class=\"arm-right\"><div class=\"club\"></div></div>\n  </div>\n  <!-- caveman right -->\n  <div class=\"caveman\">\n    <div class=\"leg\">\n      <div class=\"foot\"><div class=\"fingers\"></div></div>\n    </div>\n    <div class=\"leg\">\n      <div class=\"foot\"><div class=\"fingers\"></div></div>\n    </div>\n    <div class=\"shape\">\n      <div class=\"circle\"></div>\n      <div class=\"circle\"></div>\n    </div>\n    <div class=\"head\">\n      <div class=\"eye\"><div class=\"nose\"></div></div>\n      <div class=\"mouth\"></div>\n    </div>\n    <div class=\"arm-right\"><div class=\"club\"></div></div>\n  </div>\n</div>\n<!-- //////////////// CREDIT //////////////// -->\n<button id=\"link\" mat-raised-button color=\"primary\" (click)=\"routerComment()\">\n  بازگشت به سایت\n</button>\n"
+    },
+    {
+      "name": "ProjectComponent",
+      "id": "component-ProjectComponent-08d80b31486827f3c48a97011fcfbc0612a812cc59da8920bd08469d3449f179f5a1b4aac9da56dc0c7e0934a7d5548775a0d2dfd02aa57f47e5c947b47d5d6a",
+      "file": "src/app/modules/project/project.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-project",
+      "styleUrls": ["./project.component.scss"],
+      "styles": [],
+      "templateUrl": ["./project.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "dataSource",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "MatTableDataSource<IProject>",
+          "optional": false,
+          "description": "",
+          "line": 15
+        },
+        {
+          "name": "date",
+          "defaultValue": "''",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string",
+          "optional": false,
+          "description": "",
+          "line": 24
+        },
+        {
+          "name": "disabled",
+          "defaultValue": "true",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "optional": false,
+          "description": "",
+          "line": 25
+        },
+        {
+          "name": "displayedColumns",
+          "defaultValue": "[\n    'isClosed',\n    'title',\n    'location',\n    'startDate',\n    'endDate',\n    'action',\n  ]",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "string[]",
+          "optional": false,
+          "description": "",
+          "line": 16
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "createProject",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 46,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "deleteProject",
+          "args": [
+            {
+              "name": "row",
+              "type": "IProject",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 56,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "row",
+              "type": "IProject",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "editProject",
+          "args": [
+            {
+              "name": "row",
+              "type": "IProject",
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 50,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "jsdoctags": [
+            {
+              "name": "row",
+              "type": "IProject",
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
+          "name": "getAllProject",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 36,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 32,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { MatDialog } from '@angular/material/dialog';\nimport { MatTableDataSource } from '@angular/material/table';\nimport { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';\nimport { IProject } from './dto/project';\nimport { ProjectFormComponent } from './project-form/project-form.component';\nimport { ProjectService } from './project.service';\n\n@Component({\n  selector: 'app-project',\n  templateUrl: './project.component.html',\n  styleUrls: ['./project.component.scss'],\n})\nexport class ProjectComponent implements OnInit {\n  dataSource: MatTableDataSource<IProject>;\n  displayedColumns: string[] = [\n    'isClosed',\n    'title',\n    'location',\n    'startDate',\n    'endDate',\n    'action',\n  ];\n  date = '';\n  disabled = true;\n\n  constructor(\n    private projectService: ProjectService,\n    private dialog: MatDialog\n  ) {}\n\n  ngOnInit(): void {\n    this.getAllProject();\n  }\n\n  getAllProject() {\n    this.projectService.getAll().subscribe((res: IProject[]) => {\n      res.forEach((res: IProject) => {\n        this.date = new Date(res.createAt).toLocaleDateString('fa-IR');\n      });\n      this.dataSource = new MatTableDataSource(res);\n      // this.dataSource = new MatTableDataSource<IProject>(res);\n    });\n  }\n\n  createProject() {\n    this.dialog.open(ProjectFormComponent, {});\n  }\n\n  editProject(row: IProject) {\n    this.dialog.open(ProjectFormComponent),\n      {\n        data: row,\n      };\n  }\n  deleteProject(row: IProject) {\n    this.dialog\n      .open(ConfirmComponent, {\n        data: {\n          header: 'حذف پروژه',\n          question: `آیا از حذف پروژه ${row.title} مطمئن هستید؟`,\n          confirmButton: 'بله',\n          cancelButton: 'خیر',\n        },\n      })\n      .afterClosed()\n      .subscribe((res) => {\n        if (res) {\n          this.projectService.delete(row.id).subscribe(() => {\n            this.dataSource.data.splice(\n              this.dataSource.data.findIndex((item) => item.id === row.id),\n              1\n            );\n            this.dataSource.data = [...this.dataSource.data];\n          });\n        }\n      });\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ":host {\r\n  padding: 50px;\r\n  display: block;\r\n}\r\n.mdc-button {\r\n  margin: 10px 0px;\r\n}\r\n",
+          "styleUrl": "./project.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "projectService",
+            "type": "ProjectService",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "dialog",
+            "type": "MatDialog",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 25,
+        "jsdoctags": [
+          {
+            "name": "projectService",
+            "type": "ProjectService",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "dialog",
+            "type": "MatDialog",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "templateData": "<div>\n  <button mat-raised-button color=\"primary\" (click)=\"createProject()\">\n    افزودن\n  </button>\n</div>\n<!-- <mat-checkbox *ngIf=\"first && !row[column.columnDef][0]\"></mat-checkbox> -->\n<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8 demo-table\">\n  <!-- isClosed Column -->\n  <ng-container matColumnDef=\"isClosed\">\n    <th mat-header-cell *matHeaderCellDef>اتمام پروژه</th>\n    <td mat-cell *matCellDef=\"let row\">\n      <mat-checkbox\n        class=\"my-component\"\n        [disabled]=\"disabled\"\n        [checked]=\"row.isClosed\"\n        color=\"primary\"\n      >\n      </mat-checkbox>\n    </td>\n  </ng-container>\n\n  <!-- title Column -->\n  <ng-container matColumnDef=\"title\">\n    <th mat-header-cell *matHeaderCellDef>نام پروژه</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.title }}</td>\n  </ng-container>\n\n  <!-- location Column -->\n  <ng-container matColumnDef=\"location\">\n    <th mat-header-cell *matHeaderCellDef>موقعیت</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.location }}</td>\n  </ng-container>\n\n  <!-- startDate Column -->\n  <ng-container matColumnDef=\"startDate\">\n    <th mat-header-cell *matHeaderCellDef>تاریخ شروع پروژه</th>\n    <td mat-cell *matCellDef=\"let element\">{{ date }}</td>\n  </ng-container>\n\n  <!-- endDate Column -->\n  <ng-container matColumnDef=\"endDate\">\n    <th mat-header-cell *matHeaderCellDef>تاریخ اتمام پروژه</th>\n    <td mat-cell *matCellDef=\"let element\">{{ date }}</td>\n  </ng-container>\n\n  <!-- action Column -->\n  <ng-container matColumnDef=\"action\">\n    <th mat-header-cell *matHeaderCellDef>عملیات</th>\n\n    <td mat-cell *matCellDef=\"let row\">\n      <button mat-icon-button color=\"primary\" (click)=\"editProject(row)\">\n        <mat-icon>edit</mat-icon>\n      </button>\n      <button mat-icon-button color=\"warn\" (click)=\"deleteProject(row)\">\n        <mat-icon>delete</mat-icon>\n      </button>\n    </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\n</table>\n"
+    },
+    {
+      "name": "ProjectFormComponent",
+      "id": "component-ProjectFormComponent-bf85c2b0339a560ed5069432666e98e240ec8d74ac354319aa1291f73dcb443bdb1693da464c8ba7674f175cf4da669deeecd8963af86c3317387d5750fac15f",
+      "file": "src/app/modules/project/project-form/project-form.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-project-form",
+      "styleUrls": ["./project-form.component.scss"],
+      "styles": [],
+      "templateUrl": ["./project-form.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "data",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "IProject",
+          "optional": false,
+          "description": "",
+          "line": 19,
+          "decorators": [
+            {
+              "name": "Inject",
+              "stringifiedArguments": "MAT_DIALOG_DATA"
+            }
+          ],
+          "modifierKind": [123]
+        },
+        {
+          "name": "editMode",
+          "defaultValue": "false",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "boolean",
+          "optional": false,
+          "description": "",
+          "line": 16
+        },
+        {
+          "name": "form",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "FormGroup",
+          "optional": false,
+          "description": "",
+          "line": 14
+        },
+        {
+          "name": "project",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "IProject",
+          "optional": false,
+          "description": "",
+          "line": 15
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "closeDialog",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 48,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 25,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "sendFormValue",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 46,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { createInjectableType } from '@angular/compiler';\nimport { Component, Inject, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\nimport { IProject } from '../dto/project';\nimport { ProjectService } from '../project.service';\n\n@Component({\n  selector: 'app-project-form',\n  templateUrl: './project-form.component.html',\n  styleUrls: ['./project-form.component.scss'],\n})\nexport class ProjectFormComponent implements OnInit {\n  form: FormGroup;\n  project: IProject;\n  editMode: boolean = false;\n\n  constructor(\n    @Inject(MAT_DIALOG_DATA) public data: IProject,\n    private dialogRef: MatDialogRef<ProjectFormComponent>,\n    private fb: FormBuilder,\n    private projectService: ProjectService\n  ) {}\n\n  ngOnInit(): void {\n    const pattern = '^09[0|1|2|3][0-9]{8}$';\n    this.form = this.fb.group({\n      firstName: ['', Validators.required],\n      lastName: ['', Validators.required],\n      phoneNumber: [\n        '',\n        [\n          Validators.required,\n          //  Validators.pattern(pattern)\n        ],\n      ],\n    });\n\n    if (this.data) {\n      this.project = this.data;\n      this.form.patchValue(this.project);\n      this.editMode = true;\n    }\n  }\n\n  sendFormValue() {}\n\n  closeDialog() {\n    this.dialogRef.close();\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": "",
+          "styleUrl": "./project-form.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "data",
+            "type": "IProject",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "dialogRef",
+            "type": "MatDialogRef<ProjectFormComponent>",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "projectService",
+            "type": "ProjectService",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 16,
+        "jsdoctags": [
+          {
+            "name": "data",
+            "type": "IProject",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "dialogRef",
+            "type": "MatDialogRef<ProjectFormComponent>",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "projectService",
+            "type": "ProjectService",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "templateData": "<h1 mat-dialog-title>اطلاعات پروژه</h1>\n<div mat-dialog-content>\n  <form class=\"example-form\" [formGroup]=\"form\" (submit)=\"sendFormValue()\">\n    <mat-form-field class=\"example-full-width\">\n      <mat-label>نام</mat-label>\n      <input\n        type=\"text\"\n        matInput\n        formControlName=\"firstName\"\n        placeholder=\"نام\"\n      />\n      <mat-error\n        *ngIf=\"\n          form.controls['firstName'].hasError('firstName') &&\n          !form.controls['firstName'].hasError('required')\n        \"\n      >\n        Please enter a valid firstName\n      </mat-error>\n      <mat-error *ngIf=\"form.controls['firstName'].hasError('required')\">\n        name is <strong>required</strong>\n      </mat-error>\n    </mat-form-field>\n\n    <mat-form-field class=\"example-full-width\">\n      <mat-label>نام خانوادگی</mat-label>\n      <input\n        type=\"text\"\n        matInput\n        formControlName=\"lastName\"\n        placeholder=\"نام خانوادگی\"\n      />\n      <mat-error\n        *ngIf=\"\n          form.controls['lastName'].hasError('lastName') &&\n          !form.controls['lastName'].hasError('required')\n        \"\n      >\n        Please enter a valid lastName\n      </mat-error>\n      <mat-error *ngIf=\"form.controls['lastName'].hasError('required')\">\n        lastName is <strong>required</strong>\n      </mat-error>\n    </mat-form-field>\n\n    <mat-form-field>\n      <mat-label>شماره تماس</mat-label>\n      <input\n        type=\"string\"\n        matInput\n        formControlName=\"phoneNumber\"\n        placeholder=\"09121234567\"\n      />\n      <mat-error\n        *ngIf=\"\n          form.controls['phoneNumber'].hasError('phoneNumber') &&\n          !form.controls['phoneNumber'].hasError('required')\n        \"\n      >\n        Please enter a valid phoneNumber\n      </mat-error>\n      <mat-error *ngIf=\"form.controls['phoneNumber'].hasError('required')\">\n        phoneNumber is <strong>required</strong>\n      </mat-error>\n    </mat-form-field>\n    <div mat-dialog-actions>\n      <button\n        mat-raised-button\n        color=\"primary\"\n        mat-dialog-close\n        cdkFocusInitial\n        type=\"submit\"\n        [disabled]=\"form.invalid\"\n      >\n        ثبت\n      </button>\n      <button\n        mat-raised-button\n        mat-dialog-close\n        color=\"warn\"\n        (click)=\"closeDialog()\"\n      >\n        انصراف\n      </button>\n    </div>\n  </form>\n</div>\n"
+    },
+    {
+      "name": "RegisterComponent",
+      "id": "component-RegisterComponent-f36ce3085ff2e5e866d4c62ed37c11e7d2888edbcdb4f797e25554fb94d21a46956733e76d00322d892f59f66987f7f9127704d1ad45005cbebe1d3871379e73",
+      "file": "src/app/modules/register/register.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "app-register",
+      "styleUrls": ["./register.component.scss"],
+      "styles": [],
+      "templateUrl": ["./register.component.html"],
+      "viewProviders": [],
+      "inputsClass": [],
+      "outputsClass": [],
+      "propertiesClass": [
+        {
+          "name": "form",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "FormGroup",
+          "optional": false,
+          "description": "",
+          "line": 11
+        }
+      ],
+      "methodsClass": [
+        {
+          "name": "ngOnInit",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 15,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "save",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 23,
+          "deprecated": false,
+          "deprecationMessage": ""
+        },
+        {
+          "name": "toLogin",
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 25,
+          "deprecated": false,
+          "deprecationMessage": ""
+        }
+      ],
+      "deprecated": false,
+      "deprecationMessage": "",
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "\n",
+      "type": "component",
+      "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'app-register',\n  templateUrl: './register.component.html',\n  styleUrls: ['./register.component.scss'],\n})\nexport class RegisterComponent implements OnInit {\n  form: FormGroup;\n\n  constructor(private router: Router, private fb: FormBuilder) {}\n\n  ngOnInit(): void {\n    const pattern = '^09[0|1|2|3][0-9]{8}$';\n    this.form = this.fb.group({\n      firstName: ['', Validators.required],\n      lastName: ['', Validators.required],\n      phoneNumber: ['', [Validators.required, Validators.pattern(pattern)]],\n    });\n  }\n  save() {}\n\n  toLogin() {\n    this.router.navigate(['log-in']);\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": ":host {\r\n  padding: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\nmat-card-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n",
+          "styleUrl": "./register.component.scss"
+        }
+      ],
+      "stylesData": "",
+      "constructorObj": {
+        "name": "constructor",
+        "description": "",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "args": [
+          {
+            "name": "router",
+            "type": "Router",
+            "deprecated": false,
+            "deprecationMessage": ""
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": ""
+          }
+        ],
+        "line": 11,
+        "jsdoctags": [
+          {
+            "name": "router",
+            "type": "Router",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          },
+          {
+            "name": "fb",
+            "type": "FormBuilder",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "tagName": {
+              "text": "param"
+            }
+          }
+        ]
+      },
+      "implements": ["OnInit"],
+      "templateData": "<mat-card class=\"mat-card\">\n  <mat-card-header>\n    <mat-card-title>ثبت نام کاربر</mat-card-title>\n  </mat-card-header>\n  <form class=\"example-form\" [formGroup]=\"form\" (submit)=\"save()\">\n    <mat-card-content>\n      <mat-form-field class=\"example-full-width\">\n        <mat-label>نام</mat-label>\n        <input\n          type=\"text\"\n          matInput\n          formControlName=\"firstName\"\n          placeholder=\"نام\"\n        />\n        <mat-error\n          *ngIf=\"\n            form.controls['firstName'].hasError('firstName') &&\n            !form.controls['firstName'].hasError('required')\n          \"\n        >\n          Please enter a valid firstName\n        </mat-error>\n        <mat-error *ngIf=\"form.controls['firstName'].hasError('required')\">\n          name is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n      <mat-form-field class=\"example-full-width\">\n        <mat-label>نام خانوادگی</mat-label>\n        <input\n          type=\"text\"\n          matInput\n          formControlName=\"lastName\"\n          placeholder=\"نام خانوادگی\"\n        />\n        <mat-error\n          *ngIf=\"\n            form.controls['lastName'].hasError('lastName') &&\n            !form.controls['lastName'].hasError('required')\n          \"\n        >\n          Please enter a valid lastName\n        </mat-error>\n        <mat-error *ngIf=\"form.controls['lastName'].hasError('required')\">\n          lastName is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-label>شماره تماس</mat-label>\n        <input\n          type=\"string\"\n          matInput\n          formControlName=\"phoneNumber\"\n          placeholder=\"09121234567\"\n        />\n        <mat-error\n          *ngIf=\"\n            form.controls['phoneNumber'].hasError('phoneNumber') &&\n            !form.controls['phoneNumber'].hasError('required')\n          \"\n        >\n          Please enter a valid phoneNumber\n        </mat-error>\n        <mat-error *ngIf=\"form.controls['phoneNumber'].hasError('required')\">\n          phoneNumber is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n    </mat-card-content>\n    <mat-card-actions>\n      <button\n        mat-raised-button\n        color=\"primary\"\n        mat-dialog-close\n        cdkFocusInitial\n        type=\"submit\"\n        [disabled]=\"form.invalid\"\n      >\n        ثبت\n      </button>\n      <button mat-button color=\"primary\" (click)=\"toLogin()\">انصراف</button>\n    </mat-card-actions>\n  </form>\n</mat-card>\n"
+    }
+  ],
+  "modules": [
+    {
+      "name": "AppModule",
+      "id": "module-AppModule-a71968a68c7c8067c73d2eac401f4b439bd1dfba6740e8807bd8a58a3265a3905f088a90ae9e0000937d0fbccc158ab44e6c83912325a74febb6700550985ec8",
+      "description": "",
+      "deprecationMessage": "",
+      "deprecated": false,
+      "file": "src/app/app.module.ts",
+      "methods": [],
+      "sourceCode": "import { Injector, NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport { AppRoutes } from './app-routing';\nimport { RouterModule } from '@angular/router';\nimport { AppComponent } from './app.component';\nimport { HttpClientModule } from '@angular/common/http';\nimport { LuxonModule } from 'luxon-angular';\nimport { FormsModule } from '@angular/forms';\n// import { LuxonFormatPipe } from './luxon-format.pipe';\n// import { LuxonFromNowPipe } from './luxon-from-now.pipe';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    RouterModule.forRoot(AppRoutes),\n    BrowserAnimationsModule,\n    HttpClientModule,\n    LuxonModule,\n    FormsModule,\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {\n  static injector: Injector;\n  constructor(private injector: Injector) {\n    AppModule.injector = injector;\n  }\n}\n",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "AppComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": []
+        },
+        {
+          "type": "bootstrap",
+          "elements": [
+            {
+              "name": "AppComponent"
+            }
+          ]
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "CustomerModule",
+      "id": "module-CustomerModule-ab7e32c9a0fc1e7064f6b381ab7a7d8b2c3abb7d74bcf6c0fac51f066ca5f20359d24efd68e6cdf482a87c12b9788b002424f18e800a73d4e1c2d1cb75db3610",
+      "description": "",
+      "deprecationMessage": "",
+      "deprecated": false,
+      "file": "src/app/modules/customer/customer.module.ts",
+      "methods": [],
+      "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { CustomerRoute } from './customer.routing';\r\nimport { RouterModule } from '@angular/router';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport { SharedModule } from 'src/app/shared/shared.module';\r\nimport { CustomerComponent } from './customer.component';\r\nimport { CustomerFormComponent } from './customer-form/customer-form.component';\r\n\r\n@NgModule({\r\n  imports: [\r\n    CommonModule,\r\n    RouterModule.forChild(CustomerRoute),\r\n    ReactiveFormsModule,\r\n    SharedModule,\r\n  ],\r\n  declarations: [CustomerComponent, CustomerFormComponent],\r\n  providers: [],\r\n})\r\nexport class CustomerModule {}\r\n",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "CustomerComponent"
+            },
+            {
+              "name": "CustomerFormComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "SharedModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": []
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "LoginModule",
+      "id": "module-LoginModule-fa854da7ddad8478763be931ab4789ca23a490ac5c35fa2de4ce0e67ca668013b1e0bf20f9bf7d56e1c7a4cfdfa57b8c7b8958b6e875c291fc6529621c0a7021",
+      "description": "",
+      "deprecationMessage": "",
+      "deprecated": false,
+      "file": "src/app/modules/auth/login/login.module.ts",
+      "methods": [],
+      "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LoginRoutes } from './login.routing';\nimport { RouterModule } from '@angular/router';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { SharedModule } from 'src/app/shared/shared.module';\nimport { MatTableModule } from '@angular/material/table';\n\nimport { LoginComponent } from './login.component';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    RouterModule.forChild(LoginRoutes),\n    ReactiveFormsModule,\n    FormsModule,\n    SharedModule,\n    MatTableModule,\n  ],\n  declarations: [LoginComponent],\n  providers: [],\n})\nexport class LoginModule {}\n",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "LoginComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "SharedModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": []
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "ProjectModule",
+      "id": "module-ProjectModule-f6c9ed3aab6db4a040089a896ab24dfcafb1d1b2c2fa66ba3dd07c9549ebbc3dc693f6d72ecda7cae709bd8f67e6f3cbd669ab51b69849904a60e808aeb0dc68",
+      "description": "",
+      "deprecationMessage": "",
+      "deprecated": false,
+      "file": "src/app/modules/project/project.module.ts",
+      "methods": [],
+      "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectComponent } from './project.component';\nimport { ProjectFormComponent } from './project-form/project-form.component';\nimport { RouterModule } from '@angular/router';\nimport { ProjectRoute } from './project.routing';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { SharedModule } from 'src/app/shared/shared.module';\n\n@NgModule({\n  declarations: [ProjectComponent, ProjectFormComponent],\n  imports: [\n    CommonModule,\n    RouterModule.forChild(ProjectRoute),\n    ReactiveFormsModule,\n    SharedModule,\n    MatCheckboxModule,\n  ],\n})\nexport class ProjectModule {}\n",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "ProjectComponent"
+            },
+            {
+              "name": "ProjectFormComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "SharedModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": []
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "RegisterModule",
+      "id": "module-RegisterModule-d24faad80603ff81622dc53597ec8ef2038edd0d823de8e3678eaa09ede5e402114c3c8c53d7b557cf5c25d9b09af36d860d3aff2e837e34b0732ab8f6d1fd0d",
+      "description": "",
+      "deprecationMessage": "",
+      "deprecated": false,
+      "file": "src/app/modules/register/register.module.ts",
+      "methods": [],
+      "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { RouterModule } from '@angular/router';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { SharedModule } from 'src/app/shared/shared.module';\nimport { RegisterComponent } from './register.component';\nimport { RegisterRoute } from './register.routing';\n\n@NgModule({\n  declarations: [RegisterComponent],\n  imports: [\n    CommonModule,\n    RouterModule.forChild(RegisterRoute),\n    SharedModule,\n    ReactiveFormsModule,\n  ],\n})\nexport class RegisterModule {}\n",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "RegisterComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": [
+            {
+              "name": "SharedModule"
+            }
+          ]
+        },
+        {
+          "type": "exports",
+          "elements": []
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "name": "SharedModule",
+      "id": "module-SharedModule-0b818451c2332a081c6066de1a261fa603f61d64a2c1d11c8c6d771cb26a6dff4c843e12232939d75f1082c9bf18e1b6c2cd3df2a5c7d907da2c31e7cfe20d78",
+      "description": "",
+      "deprecationMessage": "",
+      "deprecated": false,
+      "file": "src/app/shared/shared.module.ts",
+      "methods": [],
+      "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatDialogModule } from '@angular/material/dialog';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\nimport { ConfirmComponent } from './components/confirm/confirm.component';\nimport { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';\nimport { MatTableModule } from '@angular/material/table';\nconst modules = [\n  MatCardModule,\n  MatButtonModule,\n  MatDialogModule,\n  MatInputModule,\n  MatFormFieldModule,\n  MatIconModule,\n  MatProgressSpinnerModule,\n  MatTableModule,\n];\n\n@NgModule({\n  declarations: [ConfirmComponent, PageNotFoundComponent],\n  imports: [CommonModule, modules],\n  exports: [modules],\n})\nexport class SharedModule {}\n",
+      "children": [
+        {
+          "type": "providers",
+          "elements": []
+        },
+        {
+          "type": "declarations",
+          "elements": [
+            {
+              "name": "ConfirmComponent"
+            },
+            {
+              "name": "PageNotFoundComponent"
+            }
+          ]
+        },
+        {
+          "type": "imports",
+          "elements": []
+        },
+        {
+          "type": "exports",
+          "elements": []
+        },
+        {
+          "type": "bootstrap",
+          "elements": []
+        },
+        {
+          "type": "classes",
+          "elements": []
+        }
+      ]
+    }
+  ],
+  "miscellaneous": {
+    "variables": [
+      {
+        "name": "Large",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "LoggedIn",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Header.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "LoggedIn",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Page.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "LoggedOut",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Header.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "LoggedOut",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Page.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "modules",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/app/shared/shared.module.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "[]",
+        "defaultValue": "[\n  MatCardModule,\n  MatButtonModule,\n  MatDialogModule,\n  MatInputModule,\n  MatFormFieldModule,\n  MatIconModule,\n  MatProgressSpinnerModule,\n  MatTableModule,\n]"
+      },
+      {
+        "name": "Primary",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Secondary",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Small",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Template",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "Story<Button>",
+        "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+      },
+      {
+        "name": "Template",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Header.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "Story<Header>",
+        "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+      },
+      {
+        "name": "Template",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Page.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "Story<Page>",
+        "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+      }
+    ],
+    "functions": [],
+    "typealiases": [],
+    "enumerations": [],
+    "groupedVariables": {
+      "src/stories/Button.stories.ts": [
+        {
+          "name": "Large",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Primary",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Secondary",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Small",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Story<Button>",
+          "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+        }
+      ],
+      "src/stories/Header.stories.ts": [
+        {
+          "name": "LoggedIn",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Header.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "LoggedOut",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Header.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Header.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Story<Header>",
+          "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+        }
+      ],
+      "src/stories/Page.stories.ts": [
+        {
+          "name": "LoggedIn",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Page.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "LoggedOut",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Page.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Page.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "Story<Page>",
+          "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+        }
+      ],
+      "src/app/shared/shared.module.ts": [
+        {
+          "name": "modules",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/app/shared/shared.module.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "[]",
+          "defaultValue": "[\n  MatCardModule,\n  MatButtonModule,\n  MatDialogModule,\n  MatInputModule,\n  MatFormFieldModule,\n  MatIconModule,\n  MatProgressSpinnerModule,\n  MatTableModule,\n]"
+        }
+      ]
+    },
+    "groupedFunctions": {},
+    "groupedEnumerations": {},
+    "groupedTypeAliases": {}
+  },
+  "routes": {
+    "name": "<root>",
+    "kind": "module",
+    "className": "AppModule",
+    "children": [
+      {
+        "kind": "component",
+        "component": "PageNotFoundComponent",
+        "path": "**"
+      }
+    ]
+  },
+  "coverage": {
+    "count": 2,
+    "status": "low",
+    "files": [
+      {
+        "filePath": "src/app/app.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "AppComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/4",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/core/services/base.service.ts",
+        "type": "class",
+        "linktype": "classe",
+        "name": "BaseService",
+        "coveragePercent": 0,
+        "coverageCount": "0/10",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/auth/login/login.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "LoginComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/6",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/auth/login/login.service.ts",
+        "type": "injectable",
+        "linktype": "injectable",
+        "name": "LoginService",
+        "coveragePercent": 0,
+        "coverageCount": "0/2",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/customer/customer-form/customer-form.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "CustomerFormComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/11",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/customer/customer.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "CustomerComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/11",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/customer/customer.service.ts",
+        "type": "injectable",
+        "linktype": "injectable",
+        "name": "CustomerService",
+        "coveragePercent": 0,
+        "coverageCount": "0/10",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/customer/dto/customer.ts",
+        "type": "interface",
+        "linktype": "interface",
+        "name": "ICustomer",
+        "coveragePercent": 0,
+        "coverageCount": "0/6",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/project/dto/project.ts",
+        "type": "interface",
+        "linktype": "interface",
+        "name": "Customer",
+        "coveragePercent": 0,
+        "coverageCount": "0/6",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/project/dto/project.ts",
+        "type": "interface",
+        "linktype": "interface",
+        "name": "IProject",
+        "coveragePercent": 0,
+        "coverageCount": "0/9",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/project/project-form/project-form.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "ProjectFormComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/9",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/project/project.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "ProjectComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/11",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/project/project.service.ts",
+        "type": "injectable",
+        "linktype": "injectable",
+        "name": "ProjectService",
+        "coveragePercent": 0,
+        "coverageCount": "0/10",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/modules/register/register.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "RegisterComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/6",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/shared/components/confirm/confirm.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "ConfirmComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/9",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/shared/components/page-not-found/page-not-found.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "PageNotFoundComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/3",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/shared/models/confirm-question.ts",
+        "type": "interface",
+        "linktype": "interface",
+        "name": "IQuestion",
+        "coveragePercent": 0,
+        "coverageCount": "0/5",
+        "status": "low"
+      },
+      {
+        "filePath": "src/app/shared/shared.module.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "modules",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Large",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Primary",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Secondary",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Small",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Template",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Header.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "LoggedIn",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Header.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "LoggedOut",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Header.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Template",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Page.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "LoggedIn",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Page.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "LoggedOut",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Page.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Template",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/User.ts",
+        "type": "interface",
+        "linktype": "interface",
+        "name": "User",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/button.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "ButtonComponent",
+        "coveragePercent": 83,
+        "coverageCount": "5/6",
+        "status": "very-good"
+      },
+      {
+        "filePath": "src/stories/header.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "HeaderComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/5",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/page.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "PageComponent",
+        "coveragePercent": 0,
+        "coverageCount": "0/5",
+        "status": "low"
+      }
+    ]
+  }
+}

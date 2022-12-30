@@ -1,0 +1,22 @@
+@import "settings/settings.scss";
+
+th.mdc-data-table__header-cell {
+  font-family: "iranSans";
+  font-weight: $font-weight-bold;
+}
+
+td.mdc-data-table__cell {
+  font-family: "iranSans";
+}
+
+.mat-mdc-dialog-container .mdc-dialog__title {
+  font-family: "iranSans" !important;
+}
+
+.mat-mdc-card-title {
+  font-family: "iranSans" !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+  font-family: "IranSans";
+}

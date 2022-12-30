@@ -10,6 +10,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MatTableModule } from '@angular/material/table';
+import { ShowRequestResultComponent } from './components/show-request-result/show-request-result.component';
+
 const modules = [
   MatCardModule,
   MatButtonModule,
@@ -22,7 +24,11 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [ConfirmComponent, PageNotFoundComponent],
+  declarations: [
+    ConfirmComponent,
+    PageNotFoundComponent,
+    ShowRequestResultComponent,
+  ],
   imports: [CommonModule, modules],
   exports: [modules],
 })
