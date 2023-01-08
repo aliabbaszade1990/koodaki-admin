@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { IProject } from './dto/project';
 import { ProjectFormComponent } from './project-form/project-form.component';
@@ -26,7 +27,8 @@ export class ProjectComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -75,5 +77,12 @@ export class ProjectComponent implements OnInit {
           });
         }
       });
+  }
+  goToCustomerPage() {
+    this.router.navigate(['customer']);
+  }
+
+  goTUploadFilePage() {
+    this.router.navigate(['upload-file']);
   }
 }

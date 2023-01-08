@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { CustomerService } from './customer.service';
@@ -45,7 +46,8 @@ export class CustomerComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     public dialog: MatDialog,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -111,5 +113,12 @@ export class CustomerComponent implements OnInit {
           });
         }
       });
+  }
+
+  goToProjectPage() {
+    this.router.navigate(['project']);
+  }
+  goTUploadFilePage() {
+    this.router.navigate(['upload-file']);
   }
 }
