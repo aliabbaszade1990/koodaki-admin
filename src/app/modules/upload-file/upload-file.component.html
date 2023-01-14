@@ -17,6 +17,7 @@
         <i class="material-icons white">add</i>
       </button>
       <input
+        #fileInput
         #chooseMultipleFile
         type="file"
         ng2FileSelect
@@ -69,6 +70,8 @@
             mode="determinate"
             [value]="element.uploader.progress"
           ></mat-progress-bar>
+          {{ element.progress }}
+          {{ element.uploader.progress }}
         </td>
       </ng-container>
 
@@ -80,7 +83,7 @@
           <button
             mat-icon-button
             color="primary"
-            (click)="uploadFile(row)"
+            (click)="row.upload()"
             [disabled]="row.isReady || row.isUploading || row.isSuccess"
           >
             <i class="material-icons">upload</i>
