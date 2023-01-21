@@ -7,10 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ConfirmComponent } from './components/confirm/confirm.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ShowRequestResultComponent } from './components/show-request-result/show-request-result.component';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 const modules = [
   MatCardModule,
@@ -21,6 +23,7 @@ const modules = [
   MatIconModule,
   MatProgressSpinnerModule,
   MatTableModule,
+  MatTooltipModule,
 ];
 
 @NgModule({

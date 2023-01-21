@@ -3,7 +3,7 @@ import { UploadFileComponent } from './upload-file.component';
 
 export const UploadFileRoute: Routes = [
   {
-    path: '',
+    path: ':id',
     component: UploadFileComponent,
   },
 ];

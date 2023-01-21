@@ -85,4 +85,7 @@ export class ProjectComponent implements OnInit {
   goTUploadFilePage() {
     this.router.navigate(['upload-file']);
   }
+  uploadProject(row: IProject) {
+    this.router.navigate(['upload-file', row.id]);
+  }
 }
