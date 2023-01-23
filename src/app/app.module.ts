@@ -20,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { AuthState } from './core/_NGXS/auth.state';
+import { DashboardLayoutModule } from './modules/layout/dashboard-layout/dashboard-layout.module';
 
 // import { LuxonFormatPipe } from './luxon-format.pipe';
 // import { LuxonFromNowPipe } from './luxon-from-now.pipe';
@@ -42,6 +43,7 @@ import { AuthState } from './core/_NGXS/auth.state';
     MatSnackBarModule,
     NgxsModule.forRoot([AuthState]),
     NgxsStoragePluginModule.forRoot({ key: 'auth.token' }),
+    DashboardLayoutModule,
   ],
   providers: [
     AuthService,

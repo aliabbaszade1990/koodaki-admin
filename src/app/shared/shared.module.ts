@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ShowRequestResultComponent } from './components/show-request-result/show-request-result.component';
@@ -24,6 +26,8 @@ const modules = [
   MatProgressSpinnerModule,
   MatTableModule,
   MatTooltipModule,
+  MatToolbarModule,
+  MatExpansionModule,
 ];
 
 @NgModule({

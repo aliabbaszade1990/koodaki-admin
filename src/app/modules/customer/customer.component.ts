@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
@@ -113,12 +113,5 @@ export class CustomerComponent implements OnInit {
           });
         }
       });
-  }
-
-  goToProjectPage() {
-    this.router.navigate(['project']);
-  }
-  goTUploadFilePage() {
-    this.router.navigate(['upload-file']);
   }
 }

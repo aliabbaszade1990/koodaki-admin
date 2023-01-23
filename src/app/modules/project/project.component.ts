@@ -78,13 +78,6 @@ export class ProjectComponent implements OnInit {
         }
       });
   }
-  goToCustomerPage() {
-    this.router.navigate(['customer']);
-  }
-
-  goTUploadFilePage() {
-    this.router.navigate(['upload-file']);
-  }
   uploadProject(row: IProject) {
     this.router.navigate(['upload-file', row.id]);
   }
