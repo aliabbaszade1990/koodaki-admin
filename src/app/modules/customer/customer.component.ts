@@ -67,8 +67,7 @@ export class CustomerComponent implements OnInit {
       .subscribe((res: ICustomer) => {
         if (res) {
           this.dataSource.push(res);
-          this.table.renderRows();
-          this.changeDetectorRefs.detectChanges();
+          this.dataSource = [...this.dataSource];
         }
       });
   }
@@ -86,7 +85,7 @@ export class CustomerComponent implements OnInit {
             1,
             res
           );
-          this.table.renderRows();
+          this.dataSource = [...this.dataSource];
         }
       });
   }
@@ -105,11 +104,9 @@ export class CustomerComponent implements OnInit {
       .subscribe((res) => {
         if (res) {
           this.customerService.delete(row.id).subscribe(() => {
-            this.dataSource.splice(
-              this.dataSource.findIndex((item) => item.id === row.id),
-              1
-            );
-            this.dataSource = [...this.dataSource];
+            this.dataSource = [
+              ...this.dataSource.filter((item) => item.id !== row.id),
+            ];
           });
         }
       });

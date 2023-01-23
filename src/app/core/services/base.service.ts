@@ -30,7 +30,7 @@ export class BaseService<T> {
 
   update(id: string, data: T): Observable<T> {
     let API_URL = `${this.apiUrl}${id}`;
-    return this.http.put<T>(API_URL, data).pipe(catchError(this.error));
+    return this.http.patch<T>(API_URL, data).pipe(catchError(this.error));
   }
 
   delete(id: string): Observable<T> {
