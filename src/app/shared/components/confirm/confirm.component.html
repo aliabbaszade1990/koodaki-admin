@@ -1,10 +1,12 @@
 <h1 mat-dialog-title>{{ header }}</h1>
 <div mat-dialog-content>
   <p>{{ question }}</p>
-  <button mat-raised-button color="primary" (click)="dialogRef.close(true)">
-    {{ confirmButton }}
-  </button>
-  <button mat-raised-button color="warn" (click)="dialogRef.close(false)">
-    {{ cancelButton }}
-  </button>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="dialogRef.close(true)">
+      {{ confirmButton }}
+    </button>
+    <button mat-raised-button color="warn" (click)="dialogRef.close(false)">
+      {{ cancelButton }}
+    </button>
+  </div>
 </div>

@@ -1,14 +1,21 @@
-<!-- <mat-toolbar class="flex justify-between h-10 bg-white">
+<mat-toolbar class="flex justify-between h-10 bg-white">
   <div>
-    <a mat-button routerLink="/customer">مشتری</a>
-    <a mat-button routerLink="/project">پروژه ها</a>
+    <a
+      mat-button
+      *ngFor="let item of menuItems"
+      [routerLink]="item.route"
+      routerLinkActive="activated"
+    >
+      {{ item.label }}
+    </a>
   </div>
+
   <div>
     <div class="relative">
       <div
         class="user-account my-custom-button cursor-pointer"
         #userAccount
-        (click)="toggleDropdown($event)"
+        (click)="toggleDropdown()"
       >
         <mat-icon *ngIf="!avatar">account_circle</mat-icon>
         <img *ngIf="avatar" [src]="avatar" />
@@ -29,6 +36,4 @@
       </div>
     </div>
   </div>
-</mat-toolbar> -->
-<app-header></app-header>
-<router-outlet></router-outlet>
+</mat-toolbar>

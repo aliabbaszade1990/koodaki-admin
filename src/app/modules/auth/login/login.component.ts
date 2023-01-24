@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   // }
   login() {
     // this.actions.pipe(ofActionCompleted(Login)).subscribe(() => {
-    this.router.navigate(['customer']);
+    this.router.navigate(['customer/list']);
     // });
   }
   // convenience getter for easy access to form fields

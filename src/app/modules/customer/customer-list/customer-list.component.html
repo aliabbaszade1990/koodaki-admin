@@ -1,1 +1,40 @@
-<p>customer-list works!</p>
+<div class="flex justify-between">
+  <button
+    mat-raised-button
+    class="my-3"
+    color="primary"
+    (click)="createCustomer()"
+  >
+    افزودن
+  </button>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.columnDef"
+  >
+    <th mat-header-cell *matHeaderCellDef>
+      {{ column.header }}
+    </th>
+
+    <td mat-cell *matCellDef="let row">
+      {{ row[column.columnDef] }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>عملیات</th>
+
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button color="primary" (click)="editCustomer(row)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteCustomer(row)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
