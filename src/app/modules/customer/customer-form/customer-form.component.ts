@@ -70,6 +70,7 @@ export class CustomerFormComponent implements OnInit {
       this.dialogRef.close(res);
     });
   }
+
   closeDialog() {
     this.dialogRef.close();
   }

@@ -28,6 +28,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   date = '';
   disabled = true;
   isLoading = true;
+  customerId: string = '9fc89fb1-1a5a-4054-9836-9c7d46a70dd6';
 
   constructor(
     private projectService: ProjectService,
@@ -37,16 +38,26 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.projectServiceSubscription = this.projectService
-      .getAll()
-      .subscribe((res: IProject[]) => {
-        res.forEach((res: IProject) => {
-          this.date = new Date(res.createAt).toLocaleDateString('fa-IR');
+    if (this.customerId) {
+      this.projectService
+        .getByCustomerId(this.customerId)
+        .subscribe((res: IProject[]) => {
+          this.dataSource = new MatTableDataSource(res);
+          this.isLoading = false;
         });
-        this.dataSource = new MatTableDataSource(res);
-        this.isLoading = false;
-        // this.dataSource = new MatTableDataSource<IProject>(res);
-      });
+    } else {
+      this.projectServiceSubscription = this.projectService
+        .getAll()
+        .subscribe((res: IProject[]) => {
+          res.forEach((res: IProject) => {
+            //TODO:
+            this.date = new Date(res.createAt).toLocaleDateString('fa-IR');
+          });
+          this.dataSource = new MatTableDataSource(res);
+          this.isLoading = false;
+          // this.dataSource = new MatTableDataSource<IProject>(res);
+        });
+    }
   }
 
   createProject() {
@@ -88,6 +99,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   uploadProject(row: IProject) {
     this.router.navigate(['upload-file', row.id]);
   }
+
   ngOnDestroy(): void {
     this.projectServiceSubscription.unsubscribe();
   }

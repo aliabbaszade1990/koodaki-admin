@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { catchError } from 'rxjs';
 import { BaseService } from 'src/app/core/services/base.service';
 import { IProject } from './dto/project';
 
@@ -8,5 +9,11 @@ import { IProject } from './dto/project';
 export class ProjectService extends BaseService<IProject> {
   constructor() {
     super('project');
+  }
+
+  getByCustomerId(id: string) {
+    return this.http
+      .get<IProject[]>(`${this.apiUrl}getProjectsByCustomer/${id}`)
+      .pipe(catchError(this.error));
   }
 }

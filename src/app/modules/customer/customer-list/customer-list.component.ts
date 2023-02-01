@@ -95,7 +95,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .open(ConfirmComponent, {
         data: {
           header: 'حذف کاربر',
-          question: `آیااز حذف کاربر ${row.lastName} ${row.firstName} مطمئن هستید؟`,
+          question: `با حذف مشتری پروژه های مشتری نیز حذف میشود.
+          آیااز حذف ${row.firstName} ${row.lastName} مطمئن هستید؟`,
           confirmButton: 'بله',
           cancelButton: 'خیر',
         },
