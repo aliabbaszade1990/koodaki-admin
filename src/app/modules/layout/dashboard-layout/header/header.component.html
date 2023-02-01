@@ -11,29 +11,14 @@
   </div>
 
   <div>
-    <div class="relative">
-      <div
-        class="user-account my-custom-button cursor-pointer"
-        #userAccount
-        (click)="toggleDropdown()"
-      >
-        <mat-icon *ngIf="!avatar">account_circle</mat-icon>
-        <img *ngIf="avatar" [src]="avatar" />
-        <span class="material-icons" *ngIf="!dropdownOpen"
-          >arrow_drop_down</span
-        >
-        <span class="material-icons" *ngIf="dropdownOpen">arrow_drop_up</span>
-      </div>
-      <div
-        class="dropdown bg-slate-200 rounded-lg py-2"
-        [style.top.px]="dropdownY"
-        [style.left.px]="dropdownX"
-        *ngIf="dropdownOpen"
-      >
-        <a href="#" class="block px-4 py-2 text-black">Profile</a>
-        <a href="#" class="block px-4 py-2 text-black">Settings</a>
-        <a href="#" class="block px-4 py-2 text-black">Logout</a>
-      </div>
-    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="my-custom-button">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon class="icont_exit">logout</mat-icon>
+        <span>خروج</span>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>

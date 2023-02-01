@@ -1,4 +1,3 @@
-import { createInjectableType } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -23,7 +22,6 @@ export class ProjectFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const pattern = '^09[0|1|2|3][0-9]{8}$';
     this.form = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

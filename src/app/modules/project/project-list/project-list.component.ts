@@ -54,11 +54,13 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
 
   editProject(row: IProject) {
-    this.dialog.open(ProjectFormComponent),
-      {
+    this.dialog
+      .open(ProjectFormComponent, {
         data: row,
-      };
+      })
+      .afterClosed();
   }
+
   deleteProject(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {

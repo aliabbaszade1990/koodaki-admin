@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
+import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
@@ -33,8 +34,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     ...this.columns.map((c) => c.columnDef),
     'action',
   ];
-
-  @ViewChild(MatTable) table: MatTable<ICustomer>;
 
   /**
    *
@@ -68,6 +67,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     this.dialog
       .open(CustomerFormComponent, {
         data: row,
+        // maxWidth: '470px',
       })
       .afterClosed()
       .subscribe((res: ICustomer) => {
@@ -82,12 +82,20 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       });
   }
 
+  addProjectToCustomer(row: ICustomer) {
+    this.dialog
+      .open(AddProjectToCustomerComponent, {
+        data: row,
+      })
+      .afterClosed();
+  }
+
   deleteCustomer(row: ICustomer) {
     this.dialog
       .open(ConfirmComponent, {
         data: {
           header: 'حذف کاربر',
-          question: `آیااز حذف کاربر ${row.firstName} ${row.lastName} مطمئن هستید؟`,
+          question: `آیااز حذف کاربر ${row.lastName} ${row.firstName} مطمئن هستید؟`,
           confirmButton: 'بله',
           cancelButton: 'خیر',
         },

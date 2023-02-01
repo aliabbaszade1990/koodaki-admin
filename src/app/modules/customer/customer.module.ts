@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerService } from './customer.service';
+import { AddProjectToCustomerComponent } from './add-project-to-customer/add-project-to-customer.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,11 @@ import { CustomerService } from './customer.service';
     ReactiveFormsModule,
     SharedModule,
   ],
-  declarations: [CustomerFormComponent, CustomerListComponent],
+  declarations: [
+    CustomerFormComponent,
+    CustomerListComponent,
+    AddProjectToCustomerComponent,
+  ],
   providers: [CustomerService],
 })
 export class CustomerModule {}

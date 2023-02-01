@@ -1,10 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  host: {
+    '(document:click)': 'clickToCloseDropdownAnyWhere($event)',
+  },
 })
 export class HeaderComponent implements OnInit {
   avatar: string;
@@ -16,14 +17,15 @@ export class HeaderComponent implements OnInit {
     { label: 'پروژه ها', route: 'project/list' },
   ];
 
-  @ViewChild('userAccount', { static: true }) userAccount: ElementRef;
-  @ViewChild('dropdown') dropdown: ElementRef;
-
   constructor() {}
 
   ngOnInit() {}
 
-  toggleDropdown() {
+  clickToCloseDropdownAnyWhere() {
+    this.dropdownOpen = false;
+  }
+
+  toggleDropdown(event: Event) {
     this.dropdownOpen = !this.dropdownOpen;
     setTimeout(() => {
       let dropdown = document.querySelector('.dropdown');
@@ -35,5 +37,6 @@ export class HeaderComponent implements OnInit {
         }
       }
     }, 0);
+    event.stopPropagation();
   }
 }

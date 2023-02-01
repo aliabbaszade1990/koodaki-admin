@@ -11,6 +11,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ShowRequestResultComponent } from './components/show-request-result/show-request-result.component';
@@ -28,6 +30,8 @@ const modules = [
   MatTooltipModule,
   MatToolbarModule,
   MatExpansionModule,
+  MatMenuModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({
