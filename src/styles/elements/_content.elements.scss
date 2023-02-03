@@ -1,63 +1,39 @@
-@import 'settings/settings.scss';
+@import "settings/settings.scss";
+@tailwind components;
 
-* {
-  box-sizing: border-box;
+@layer components {
+  * {
+    @apply box-border;
 
-  &::-webkit-scrollbar {
-    width: 7px;
+    &::-webkit-scrollbar {
+      @apply w-[7px];
+    }
+
+    &::-webkit-scrollbar-track {
+      @apply bg-white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply bg-neutral-300;
+    }
   }
 
-  &::-webkit-scrollbar-track {
-    background-color: $background-forth;
+  // Base root element
+  html {
+    @apply text-base bg-gray-100;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: $background-third;
+  a {
+    @apply no-underline outline-none to-blue-500 cursor-pointer;
+    transition: color 0.3s ease-in-out;
+
+    &:active,
+    &:focus {
+      @apply to-blue-500 outline-none;
+    }
   }
-}
 
-// Base root element
-html {
-  font-size: 16px;
-  color: $dark-blue;
-  background-color: $background-first;
-}
-
-// Bare HTML elements
-p,
-h6,
-h5,
-h4,
-h3,
-h2,
-h1,
-li,
-div,
-a,
-span,
-strong,
-table,
-th,
-tr,
-td {
-  color: inherit;
-}
-
-a {
-  text-decoration: none;
-  outline: none;
-  transition: color 0.3s ease-in-out;
-  color: $blue;
-  cursor: pointer;
-
-  &:active,
-  &:focus {
-    color: $text-color;
-    outline: none;
+  table {
+    @apply border-collapse border-spacing-0;
   }
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: unset;
 }

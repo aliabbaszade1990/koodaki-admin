@@ -1,5 +1,11 @@
 @import "settings/settings.scss";
 
+//#region mat-form-field
+.mat-mdc-form-field {
+  width: 100%;
+}
+//#endregion
+
 th.mdc-data-table__header-cell {
   font-family: "iranSans";
   font-weight: $font-weight-bold;
