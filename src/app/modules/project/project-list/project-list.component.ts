@@ -1,21 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-
-import { IProject } from '../dto/project';
-import { ProjectService } from '../project.service';
-import { ProjectFormComponent } from '../project-form/project-form.component';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
-import { Subscription } from 'rxjs';
+import { IProject } from '../dto/project';
+import { ProjectFormComponent } from '../project-form/project-form.component';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
 })
-export class ProjectListComponent implements OnInit, OnDestroy {
-  private projectServiceSubscription: Subscription;
+export class ProjectListComponent implements OnInit {
   dataSource: MatTableDataSource<IProject>;
   displayedColumns: string[] = [
     'isClosed',
@@ -27,37 +23,23 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   ];
   date = '';
   disabled = true;
-  isLoading = true;
-  customerId: string = '9fc89fb1-1a5a-4054-9836-9c7d46a70dd6';
 
   constructor(
     private projectService: ProjectService,
-    private dialog: MatDialog,
-    private router: Router
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.isLoading = true;
-    if (this.customerId) {
-      this.projectService
-        .getByCustomerId(this.customerId)
-        .subscribe((res: IProject[]) => {
-          this.dataSource = new MatTableDataSource(res);
-          this.isLoading = false;
-        });
-    } else {
-      this.projectServiceSubscription = this.projectService
-        .getAll()
-        .subscribe((res: IProject[]) => {
-          res.forEach((res: IProject) => {
-            //TODO:
-            this.date = new Date(res.createAt).toLocaleDateString('fa-IR');
-          });
-          this.dataSource = new MatTableDataSource(res);
-          this.isLoading = false;
-          // this.dataSource = new MatTableDataSource<IProject>(res);
-        });
-    }
+    this.getAllProject();
+  }
+
+  getAllProject() {
+    this.projectService.getAll().subscribe((res: IProject[]) => {
+      res.forEach((res: IProject) => {
+        this.date = new Date(res.createAt).toLocaleDateString('fa-IR');
+      });
+      this.dataSource = new MatTableDataSource(res);
+    });
   }
 
   createProject() {
@@ -65,13 +47,11 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
 
   editProject(row: IProject) {
-    this.dialog
-      .open(ProjectFormComponent, {
+    this.dialog.open(ProjectFormComponent),
+      {
         data: row,
-      })
-      .afterClosed();
+      };
   }
-
   deleteProject(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {
@@ -94,13 +74,5 @@ export class ProjectListComponent implements OnInit, OnDestroy {
           });
         }
       });
-  }
-
-  uploadProject(row: IProject) {
-    this.router.navigate(['upload-file', row.id]);
-  }
-
-  ngOnDestroy(): void {
-    this.projectServiceSubscription.unsubscribe();
   }
 }

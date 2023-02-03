@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
-import { BaseService } from 'src/app/core/services/base.service';
+import { BaseService } from 'src/app/modules/core/services/base.service';
 import { IProject } from './dto/project';
 
 @Injectable({

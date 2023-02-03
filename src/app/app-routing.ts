@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './modules/core/guards/auth.guard';
 // import { AuthGuard } from './core/_NGXS/authenticated.guard';
-import { AuthGuard } from './core/services/auth.guard';
 import { DashboardLayoutComponent } from './modules/layout/dashboard-layout/dashboard-layout.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 export const AppRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'log-in',
+    redirectTo: 'project/list',
     pathMatch: 'full',
   },
   {
