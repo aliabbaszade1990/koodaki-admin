@@ -1,20 +1,23 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
-      "type": "pwa-chrome",
+      "command": "npm run start",
+      "name": "start:local",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "type": "node-terminal"
     },
     {
-      "name": "ng test",
-      "type": "chrome",
+      "command": "npm run serve:dev",
+      "name": "serve:dev",
       "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run build:prod",
+      "name": "build:prod",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }
