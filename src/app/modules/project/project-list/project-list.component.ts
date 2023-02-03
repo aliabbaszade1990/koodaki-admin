@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
-import { IProject } from './dto/project';
-import { ProjectFormComponent } from './project-form/project-form.component';
-import { ProjectService } from './project.service';
+import { IProject } from '../dto/project';
+import { ProjectFormComponent } from '../project-form/project-form.component';
+import { ProjectService } from '../project.service';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss'],
+  selector: 'app-project-list',
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.scss'],
 })
-export class ProjectComponent implements OnInit {
+export class ProjectListComponent implements OnInit {
   dataSource: MatTableDataSource<IProject>;
   displayedColumns: string[] = [
     'isClosed',
@@ -39,7 +39,6 @@ export class ProjectComponent implements OnInit {
         this.date = new Date(res.createAt).toLocaleDateString('fa-IR');
       });
       this.dataSource = new MatTableDataSource(res);
-      // this.dataSource = new MatTableDataSource<IProject>(res);
     });
   }
 
