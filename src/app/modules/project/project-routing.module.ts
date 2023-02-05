@@ -12,7 +12,7 @@ export const ROUTES: Routes = [
     component: ProjectListComponent,
   },
   {
-    path: 'files',
+    path: ':id/files',
     component: ProjectFilesComponent,
     pathMatch: 'full',
   },
