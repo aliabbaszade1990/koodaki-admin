@@ -6,7 +6,7 @@
   [id]="image.id"
 >
   <img
-    [src]="'./assets/images/saeidifar/' + image.src"
+    [src]="image.url"
     class="image block cursor-pointer max-w-full max-h-full w-full rounded-sm"
     (click)="onClickImage(image)"
     alt=""
@@ -14,7 +14,7 @@
 
   <div class="image-wrapper_icons flex gap-3">
     <mat-icon
-      *ngIf="image.comment.length"
+      *ngIf="image && image.commnet && image.comment.length"
       class="image-warpper_icon image-warpper_icon--comment"
       fontSet="fas"
       fontIcon="fa-comment"
