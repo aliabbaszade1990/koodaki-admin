@@ -22,7 +22,6 @@ export class ProjectListComponent implements OnInit {
     'endDate',
     'action',
   ];
-  date = '';
   disabled = true;
   customerId: string;
 

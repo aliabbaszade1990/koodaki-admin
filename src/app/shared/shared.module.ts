@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ShowRequestResultComponent } from './components/show-request-result/show-request-result.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ToaterService } from './services/toater.service';
+import { PersianDateConvertor as PersianDateConvertorPipe } from './pipes/persian-date-convertor.pipe';
 
 const modules = [
   MatCardModule,
@@ -40,9 +41,10 @@ const modules = [
     ConfirmComponent,
     PageNotFoundComponent,
     ShowRequestResultComponent,
+    PersianDateConvertorPipe,
   ],
   imports: [CommonModule, modules],
-  exports: [modules],
+  exports: [modules, PersianDateConvertorPipe],
   providers: [ToaterService],
 })
 export class SharedModule {}
