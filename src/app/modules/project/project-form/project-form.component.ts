@@ -22,15 +22,13 @@ export class ProjectFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    debugger;
     this.form = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       phoneNumber: [
         '',
-        [
-          Validators.required,
-          //  Validators.pattern(pattern)
-        ],
+        [Validators.required, Validators.pattern('^09[0|1|2|3][0-9]{8}$')],
       ],
     });
 

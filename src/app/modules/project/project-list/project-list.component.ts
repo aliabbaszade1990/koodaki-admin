@@ -51,14 +51,19 @@ export class ProjectListComponent implements OnInit {
   }
 
   createProject() {
-    this.dialog.open(ProjectFormComponent, {});
+    this.dialog
+      .open(ProjectFormComponent, {})
+      .afterClosed()
+      .subscribe((result) => {});
   }
 
   editProject(row: IProject) {
-    this.dialog.open(ProjectFormComponent),
-      {
+    this.dialog
+      .open(ProjectFormComponent, {
         data: row,
-      };
+      })
+      .afterClosed()
+      .subscribe((result) => {});
   }
 
   deleteProject(row: IProject) {
