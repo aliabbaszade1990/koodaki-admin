@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
-import { IProject } from '../dto/project';
+import { IProject } from '../../dtos/project';
+import { ProjectService } from '../../project.service';
 import { ProjectFormComponent } from '../project-form/project-form.component';
-import { ProjectService } from '../project.service';
 
 @Component({
-  selector: 'app-project-list',
+  selector: 'koodaki-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
 })
@@ -28,7 +28,8 @@ export class ProjectListComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private dialog: MatDialog,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,17 +52,22 @@ export class ProjectListComponent implements OnInit {
   }
 
   createProject() {
-    this.dialog.open(ProjectFormComponent, {});
+    this.dialog
+      .open(ProjectFormComponent, {})
+      .afterClosed()
+      .subscribe((result) => {});
   }
 
-  editProject(row: IProject) {
-    this.dialog.open(ProjectFormComponent),
-      {
+  onClickEdit(row: IProject) {
+    this.dialog
+      .open(ProjectFormComponent, {
         data: row,
-      };
+      })
+      .afterClosed()
+      .subscribe((result) => {});
   }
 
-  deleteProject(row: IProject) {
+  onClickDelete(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {
         data: {
@@ -83,5 +89,9 @@ export class ProjectListComponent implements OnInit {
           });
         }
       });
+  }
+
+  onClickManageFiles(row: IProject) {
+    this.router.navigate([`project/${row.id}/files`]);
   }
 }

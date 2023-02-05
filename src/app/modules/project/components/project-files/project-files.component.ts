@@ -1,39 +1,46 @@
-import { formatCurrency } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
-import { Form, FormBuilder, FormGroup } from '@angular/forms';
-import { TransitionCheckState } from '@angular/material/checkbox';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Duration } from 'luxon';
-import {
-  FileItem,
-  FileLikeObject,
-  FileUploader,
-  ParsedResponseHeaders,
-} from 'ng2-file-upload';
-import { IUploadData } from './dto/upload-data';
-import { UploadFileService } from './upload-file.service';
+import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
+import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
+import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
+import { UploadFileService } from '../../services/upload-file.service';
 
 const URL =
   'http://localhost:3000/file?projectId=578dba98-d093-4e81-a8a7-810793d93dba';
-// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
-  selector: 'app-upload-file',
-  templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.scss'],
+  selector: 'koodaki-project-files',
+  templateUrl: './project-files.component.html',
+  styleUrls: ['./project-files.component.scss'],
 })
-export class UploadFileComponent implements OnInit {
+export class ProjectFilesComponent {
+  images: GetFileDto[] = [];
+  paginatorConfig: PaginatorConfig = {
+    total: 1230,
+    page: 1,
+    size: 20,
+    hasNext: true,
+  };
+  currentItem: GetFileDto = this.images[0];
+  choosenOnesControl = new FormControl(false);
+
+  onClickImage(image: GetFileDto) {
+    this.currentItem.isCurrentItem = false;
+    this.currentItem = image;
+    this.currentItem.isCurrentItem = true;
+  }
+
+  onClickNext(page: number) {
+    this.paginatorConfig.page = page;
+  }
+
+  onClickPrevious(page: number) {
+    this.paginatorConfig.page = page;
+  }
+
   uploader: FileUploader = new FileUploader({ url: URL });
-  // fileItem: FileItem = new FileItem(this.uploader, File, FileUploaderOptions)
   hasBaseDropZoneOver: boolean;
   response: string;
   errorMessage: string;
@@ -54,7 +61,7 @@ export class UploadFileComponent implements OnInit {
   displayedColumns: string[] = ['name', 'size', 'progress', 'action'];
   @ViewChild('fileInput') fileInput: any;
   formData: FormData = new FormData();
-  id: string;
+  projectId: string;
   fileItem: File;
 
   constructor(
@@ -62,7 +69,6 @@ export class UploadFileComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  //for prevetn CORS error
   ngAfterViewInit() {
     this.uploader.onAfterAddingFile = (item) => {
       item.withCredentials = false;
@@ -71,8 +77,9 @@ export class UploadFileComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
+      this.projectId = params['id'];
     });
+
     this.uploader = new FileUploader({
       url: URL,
       disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
@@ -110,7 +117,6 @@ export class UploadFileComponent implements OnInit {
       },
     });
 
-    this.hasBaseDropZoneOver = false;
     this.response = '';
     this.uploader.response.subscribe((res) => (this.response = res));
 
@@ -173,6 +179,7 @@ export class UploadFileComponent implements OnInit {
   removeFromQueue(item: FileItem) {
     this.uploader.removeFromQueue(item);
   }
+
   newFormData() {
     this.formData = new FormData();
   }
@@ -185,7 +192,7 @@ export class UploadFileComponent implements OnInit {
 
   uploadAllFile() {
     this.appendToFile();
-    this.uploadFileService.upload(this.formData, this.id).subscribe({
+    this.uploadFileService.upload(this.formData, this.projectId).subscribe({
       next: (result) => {
         this.newFormData();
         for (const key in result) {
@@ -209,7 +216,7 @@ export class UploadFileComponent implements OnInit {
 
   uploadFileItem(row: FileItem) {
     this.formData.append('files', row._file);
-    this.uploadFileService.upload(this.formData, this.id).subscribe({
+    this.uploadFileService.upload(this.formData, this.projectId).subscribe({
       next: (result) => {
         this.newFormData();
         for (const key in result) {
@@ -241,14 +248,9 @@ export class UploadFileComponent implements OnInit {
   onFileSelected(event: File[]) {
     this.removeDuplicatItemFromQueue();
     this.dataSource = new MatTableDataSource(this.uploader.queue);
-    console.log(this.uploader.queue);
-
-    // this.appendToFile();
   }
 
   public fileOverBase(e: any): void {
-    console.log('fileoverbase', e);
-
     this.hasBaseDropZoneOver = e;
   }
 

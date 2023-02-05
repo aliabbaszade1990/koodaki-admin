@@ -6,6 +6,12 @@
 }
 //#endregion
 
+//#region Button
+.mdc-button__label {
+  letter-spacing: 0;
+}
+//#endregion
+
 th.mdc-data-table__header-cell {
   font-family: "iranSans";
   font-weight: $font-weight-bold;

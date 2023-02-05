@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { DateTime } from 'luxon';
 
 @Component({
-  selector: 'app-root',
+  selector: 'koodaki-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
