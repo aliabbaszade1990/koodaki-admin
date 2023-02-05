@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
-import { UploadFileService } from '../../services/upload-file.service';
+import { FileService } from '../../services/file.service';
 
 const URL =
   'http://localhost:3000/file?projectId=578dba98-d093-4e81-a8a7-810793d93dba';
@@ -50,6 +50,7 @@ export class ProjectFilesComponent {
     'image/jpeg',
     'image/png',
     'application/x-zip-compressed',
+    'application/zip',
   ];
   typeFileZipe = 'application/x-zip-compressed';
   errorMessageMaxSize = 'File size great than 1MB';
@@ -65,7 +66,7 @@ export class ProjectFilesComponent {
   fileItem: File;
 
   constructor(
-    private uploadFileService: UploadFileService,
+    private fileService: FileService,
     private route: ActivatedRoute
   ) {}
 
@@ -78,6 +79,8 @@ export class ProjectFilesComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.projectId = params['id'];
+
+      this.getFiles();
     });
 
     this.uploader = new FileUploader({
@@ -192,7 +195,7 @@ export class ProjectFilesComponent {
 
   uploadAllFile() {
     this.appendToFile();
-    this.uploadFileService.upload(this.formData, this.projectId).subscribe({
+    this.fileService.upload(this.formData, this.projectId).subscribe({
       next: (result) => {
         this.newFormData();
         for (const key in result) {
@@ -216,7 +219,7 @@ export class ProjectFilesComponent {
 
   uploadFileItem(row: FileItem) {
     this.formData.append('files', row._file);
-    this.uploadFileService.upload(this.formData, this.projectId).subscribe({
+    this.fileService.upload(this.formData, this.projectId).subscribe({
       next: (result) => {
         this.newFormData();
         for (const key in result) {
@@ -281,5 +284,11 @@ export class ProjectFilesComponent {
     this.checkFileTypeWhenSelectFile();
     this.dataSource = new MatTableDataSource(this.uploader.queue);
     // this.appendToFile();
+  }
+
+  getFiles() {
+    this.fileService.getFiles(this.projectId).subscribe((result) => {
+      this.images = result;
+    });
   }
 }
