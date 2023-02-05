@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'src/app/shared/interfaces/menu-item.interface';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,9 +13,9 @@ export class HeaderComponent implements OnInit {
   dropdownOpen = false;
   dropdownX: number;
   dropdownY: number;
-  menuItems = [
-    { label: 'مشتری', route: 'customer' },
-    { label: 'پروژه ها', route: 'project' },
+  menuItems: MenuItem[] = [
+    { text: 'مشتری', link: 'customer/list', icon: '' },
+    { text: 'پروژه ها', link: 'project/list', icon: '' },
   ];
 
   constructor() {}

@@ -1,24 +1,28 @@
-<mat-toolbar class="flex justify-between h-10 bg-white">
-  <div>
-    <a
-      mat-button
-      *ngFor="let item of menuItems"
-      [routerLink]="item.route"
-      routerLinkActive="activated"
+<mat-toolbar class="bg-white">
+  <button
+    *ngFor="let item of menuItems"
+    mat-button
+    [routerLink]="'/' + item.link"
+    [routerLinkActiveOptions]="{ exact: false }"
+    routerLinkActive="menu-item--active"
+    class="py-2 px-4 ml-2"
+  >
+    <mat-icon
+      *ngIf="item.icon"
+      fontSet="fas"
+      [fontIcon]="item.icon"
+      class="align-middle ml-2"
     >
-      {{ item.label }}
-    </a>
-  </div>
-
-  <div>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="my-custom-button">
-      <mat-icon>account_circle</mat-icon>
+    </mat-icon>
+    <span class="menu-item_title">{{ item.text }}</span>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="mr-auto">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon class="icont_exit">logout</mat-icon>
+      <span>خروج</span>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon class="icont_exit">logout</mat-icon>
-        <span>خروج</span>
-      </button>
-    </mat-menu>
-  </div>
+  </mat-menu>
 </mat-toolbar>
