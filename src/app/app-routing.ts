@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 export const AppRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'project/list',
+    redirectTo: 'project',
     pathMatch: 'full',
   },
   {
@@ -32,14 +32,6 @@ export const AppRoutes: Routes = [
         loadChildren: () =>
           import('./modules/project/project.module').then(
             (m) => m.ProjectModule
-          ),
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'upload-file',
-        loadChildren: () =>
-          import('./modules/upload-file/upload-file.module').then(
-            (m) => m.UploadFileModule
           ),
         canActivate: [AuthGuard],
       },

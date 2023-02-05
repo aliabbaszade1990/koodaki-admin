@@ -1,0 +1,24 @@
+<div
+  class="image-wrapper mb-3 relative"
+  *ngFor="let image of list; let i = index"
+  [class.is-current]="image.isCurrentItem"
+  [class.is-selected]="image.selected"
+  [id]="image.id"
+>
+  <img
+    [src]="'./assets/images/saeidifar/' + image.src"
+    class="image block cursor-pointer max-w-full max-h-full w-full rounded-sm"
+    (click)="onClickImage(image)"
+    alt=""
+  />
+
+  <div class="image-wrapper_icons flex gap-3">
+    <mat-icon
+      *ngIf="image.comment.length"
+      class="image-warpper_icon image-warpper_icon--comment"
+      fontSet="fas"
+      fontIcon="fa-comment"
+      color="accent"
+    ></mat-icon>
+  </div>
+</div>

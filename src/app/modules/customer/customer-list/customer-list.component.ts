@@ -1,19 +1,17 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { ToaterService } from 'src/app/shared/services/toater.service';
-import { IProject } from '../../project/dto/project';
+import { IProject } from '../../project/dtos/project';
 import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
 
 @Component({
-  selector: 'app-customer-list',
+  selector: 'koodaki-customer-list',
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.scss'],
 })

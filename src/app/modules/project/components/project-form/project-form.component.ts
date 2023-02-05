@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IProject } from '../dto/project';
-import { ProjectService } from '../project.service';
+import { IProject } from '../../dtos/project';
+import { ProjectService } from '../../project.service';
 
 @Component({
-  selector: 'app-project-form',
+  selector: 'koodaki-project-form',
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss'],
 })

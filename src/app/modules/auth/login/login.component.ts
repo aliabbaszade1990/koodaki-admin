@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/modules/core/services/auth.service';
 import { LoginResultDTO } from '../dtos/auth.dto';
 
 @Component({
-  selector: 'app-login',
+  selector: 'koodaki-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

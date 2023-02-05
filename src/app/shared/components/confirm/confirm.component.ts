@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IQuestion } from '../../models/confirm-question';
 
 @Component({
-  selector: 'app-confirm',
+  selector: 'koodaki-confirm',
   templateUrl: './confirm.component.html',
   styleUrls: ['./confirm.component.scss'],
 })

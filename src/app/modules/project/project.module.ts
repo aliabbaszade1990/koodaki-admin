@@ -2,21 +2,33 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { RouterModule } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FileUploadModule } from 'ng2-file-upload';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ProjectFormComponent } from './project-form/project-form.component';
-import { ProjectListComponent } from './project-list/project-list.component';
-import { ProjectRoute } from './project.routing';
+import { ProjectFilesComponent } from './components/project-files/project-files.component';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ImageListModule } from './image-list/image-list.module';
+import { PaginatorModule } from './paginator/paginator.module';
+import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectService } from './project.service';
 
 @NgModule({
-  declarations: [ProjectListComponent, ProjectFormComponent],
+  declarations: [
+    ProjectListComponent,
+    ProjectFormComponent,
+    ProjectFilesComponent,
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild(ProjectRoute),
+    ProjectRoutingModule,
     ReactiveFormsModule,
     SharedModule,
     MatCheckboxModule,
+    FileUploadModule,
+    MatProgressBarModule,
+    ImageListModule,
+    PaginatorModule,
   ],
   providers: [ProjectService],
 })

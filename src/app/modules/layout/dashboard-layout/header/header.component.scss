@@ -1,70 +1,7 @@
-@use "@material/icon-button";
+@tailwind components;
 
-.my-custom-button {
-  @include icon-button.density(-1);
+@layer components {
+  .menu-item--active {
+    @apply bg-gray-100;
+  }
 }
-
-.dropdown {
-  position: absolute;
-  top: 37px;
-  // left: 40 !important;
-  // transition: all 0.7s ease-in-out;
-  transition: transform 0.5s;
-  opacity: 0;
-  transform: scale(0.95);
-}
-.dropdown.dropdown-down {
-  opacity: 1;
-  transform: scale(0.7);
-  left: 38px;
-}
-
-a.activated {
-  background-color: #937d7d;
-}
-.material-icons {
-  font-size: 32px !important;
-  width: 30px;
-  height: 40px;
-}
-
-.custom_icon {
-  font-size: 20px !important;
-  width: 20px;
-  height: 35px;
-  line-height: inherit;
-}
-.icont_exit {
-  font-size: 24px !important;
-  margin-left: 8px !important;
-  width: 25px;
-  height: 22px;
-}
-.mat-mdc-menu-content {
-  padding: 0 0 !important;
-}
-.cdk-overlay-connected-position-bounding-box {
-  top: 41px !important;
-  right: 1366px !important;
-  height: 393.5px;
-  width: 204.95px;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-// .enter-menu::before {
-//   content: "";
-//   background: #ffffff;
-//   width: 12px;
-//   border-left: 2px solid;
-//   border-top: 2px solid;
-//   height: 12px;
-//   position: absolute;
-//   transform: rotate(45deg);
-//   top: -7px;
-//   left: 40px;
-//   color: white;
-// }
-// .enter-menu {
-//   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-//     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
-// }
