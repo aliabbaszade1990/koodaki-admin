@@ -9,7 +9,7 @@ import { ProjectFilesComponent } from './components/project-files/project-files.
 import { ProjectFormComponent } from './components/project-form/project-form.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ImageListModule } from './image-list/image-list.module';
-import { PaginatorModule } from './paginator/ui-paginator.module';
+import { PaginatorModule } from './paginator/paginator.module';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectService } from './project.service';
 

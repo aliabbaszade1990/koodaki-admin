@@ -1,416 +1,88 @@
-@import 'settings/settings.scss';
-@import 'theme/_variables.theme.scss';
+@tailwind components;
 
-.box {
-  border: $border;
-  border-radius: $border-radius-md;
-  padding: 16px;
-  background-color: $background-forth;
-}
+@layer components {
+  //#region Snackbar
 
-//#region Dialog
-.ins-backdrop {
-  background-color: rgba($primary, 0.75);
-  backdrop-filter: blur(0.125rem);
-}
-
-.ins-dialog-panel {
-  width: calc(100% - 16px);
-  max-width: 320px;
-}
-
-@media screen and (min-width: 600px) {
-  .ins-dialog-panel {
-    max-width: 480px;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .ins-dialog-panel:not(.ins-dialog-panel--medium) {
-    max-width: 720px;
-  }
-}
-
-//#endregion
-
-//#region Menu
-.ins-menu-backdrop + .cdk-overlay-connected-position-bounding-box {
-  div.mat-menu-panel {
-    width: 15em !important;
-
-    div.mat-menu-content {
-      user-select: none;
-      background-color: #fff;
-      padding: 0;
-    }
-  }
-}
-
-.ins-menu-backdrop--sm + .cdk-overlay-connected-position-bounding-box {
-  div.mat-menu-panel {
-    width: 10em !important;
-
-    div.mat-menu-content {
-      user-select: none;
-      background-color: #fff;
-      padding: 0;
-    }
-  }
-}
-
-//#endregion
-
-//#region Scrollbar
-[customScrollbar] {
-  &.custom-scrollbar {
-    scrollbar-width: none;
-
-    &:hover {
-      scrollbar-width: thin;
-    }
-
-    &::-webkit-scrollbar {
-      opacity: 0;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border: $border;
-      background-clip: padding-box;
-      border-radius: 0.5em;
-      background-color: transparent;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.15);
-      }
-    }
-  }
-
-  &.custom-scrollbar--scrolling {
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-      opacity: 1;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.15) !important;
-    }
-  }
-}
-
-//#endregion
-
-//#region Snackbar
-
-.mat-snack-bar-container.ins-snackbar {
-  button {
-    background-color: rgba(#333, 0.2);
-    color: #fff;
-  }
-
-  &--fail {
-    background-color: $red;
-  }
-
-  &--info {
-    background-color: $light-blue;
-    color: $title-color;
-  }
-
-  &--warn {
-    background-color: $warn;
-  }
-
-  &--succeed {
-    background-color: $green;
-    color: $title-color;
-  }
-}
-
-//#endregion
-
-//#region Spinner
-
-.koodaki-global-spinner {
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: $background-third;
-  background: linear-gradient(
-    to bottom right,
-    $background-third 0%,
-    $background-forth 100%
-  );
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s all ease-out;
-  transform: scale(1);
-  opacity: 1;
-
-  &--hide {
-    opacity: 0;
-    transform: scale(1);
-    pointer-events: none;
-  }
-
-  img {
-    height: 60px;
-    object-fit: contain;
-    animation: opening-image 0.5s infinite;
-  }
-}
-
-@keyframes opening-image {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.025);
-  }
-}
-
-//#endregion
-
-//#region Sheet
-.ins-editor {
-  width: $pdf-width + 40px;
-  max-width: 100%;
-}
-
-//#endregion
-
-//#region Sidenav
-.ins-sidenav {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  &_logo {
-    flex: 0 0 $navbar-height;
-  }
-
-  &_primary-action {
+  .mat-snack-bar-container.ins-snackbar {
     button {
-      border: 0;
-      border-radius: 0;
+      background-color: rgba(#333, 0.2);
+      color: #fff;
+    }
 
-      mat-icon {
-        font-size: 1.5rem;
-        height: 1.5rem;
-        width: 1.5rem;
-      }
+    &--fail {
+      @apply bg-red-500;
+    }
+
+    &--info {
+      @apply bg-blue-400 text-black;
+    }
+
+    &--warn {
+      @apply bg-orange-400;
+    }
+
+    &--succeed {
+      @apply bg-green-500 text-black;
     }
   }
 
-  &__actions--profile {
-    flex: 0 0 $navbar-height;
-  }
+  //#endregion
 
-  &__unit {
-    flex: 1 0;
+  //#region Spinner
 
-    mat-icon.main-grey-2 {
-      transition: color 0.1s ease-out;
-
-      &:hover {
-        color: $main-grey;
-      }
-    }
-  }
-}
-
-.ins-action {
-  display: flex !important;
-  justify-content: flex-start !important;
-  align-items: center;
-
-  border-radius: 0;
-
-  &:hover {
-    background-color: $background-second;
-  }
-
-  &--active {
-    background-color: $background-first;
-
-    &:hover {
-      background-color: $background-first;
-    }
-
-    .mat-icon {
-      font-weight: $font-weight-semi-bold;
-      color: $accent;
-    }
-  }
-
-  &__icon {
-    display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0.75em;
-    font-size: 1.25em;
-    height: 1em !important;
-    width: 1em !important;
-  }
-
-  &__avatar {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0.5em;
-    margin-left: -0.25em;
-    margin-top: -0.25em;
-    font-size: 1.25em;
-    height: 1.5em;
-    width: 1.5em;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  &__title {
-    &--name {
-      line-height: 1.5rem;
-    }
-  }
-}
-
-.account-menu-header {
-  cursor: pointer;
-  padding: 12px 16px 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  border-bottom: $border;
-  // color: darken($primary, 20%);
-  background: red;
-  outline: none !important;
-
-  &__image {
-    object-fit: cover;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    margin-bottom: 0.5em;
-  }
-
-  &__details {
-    span {
-      font-size: 0.875rem;
-      font-weight: 500;
-    }
-
-    h5 {
-      margin: 0;
-      font-size: 1.125rem;
-      font-weight: 300;
-    }
-  }
-}
-
-.account-menu-workspaces {
-  button {
-    &:hover {
-      background: $background-second;
-    }
-
-    &.active {
-      background: $background-first;
-    }
-  }
-}
-
-@mixin menu-style {
-  div.mat-menu-panel {
-    width: 13em !important;
-    box-shadow: $box-shadow-3;
-  }
-}
-
-.menu-backdrop--account + .cdk-overlay-connected-position-bounding-box {
-  top: -0.5rem !important;
-  margin-left: 0.5rem;
-
-  @include menu-style;
-}
-
-.menu-backdrop--team + .cdk-overlay-connected-position-bounding-box {
-  @include menu-style;
-}
-
-.isu-card {
-  display: flex;
-  cursor: pointer;
-  user-select: none;
-  padding: 4px 4px 6px 1rem;
-  width: 100%;
-  background: $background-forth;
-  transition: 0.1s all ease;
-  position: relative;
-
-  &:hover {
-    background-color: $background-second;
-  }
-
-  &.isu-card--loading:hover,
-  &.isu-card--active:hover {
-    background-color: $background-first;
-  }
-
-  &--active {
-    background-color: $background-first;
-  }
-
-  &--inaccessible {
-    cursor: not-allowed;
-  }
-
-  &:not(.isu-card--inaccessible) {
-    &::before {
-      content: '';
-      width: 2px;
-      background-color: $yellow;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-  }
-
-  &__left {
-    flex: 1 0;
+  .koodaki-global-spinner {
+    @apply bg-gray-300;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, gray 0%, white 100%);
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    transition: 0.5s all ease-out;
+    transform: scale(1);
+    opacity: 1;
 
-    h5 {
-      color: $dark-blue;
-      font-weight: 500;
-      font-size: 0.825rem;
-      margin: 0 0 4px;
+    &--hide {
+      opacity: 0;
+      transform: scale(1);
+      pointer-events: none;
+    }
+
+    img {
+      height: 60px;
+      object-fit: contain;
+      animation: opening-image 0.5s infinite;
     }
   }
 
-  &__right {
-    display: flex;
-    align-items: center;
+  @keyframes opening-image {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(1.025);
+    }
   }
-}
 
-.isu-title {
-  user-select: none;
-  color: $dark-blue;
-  text-transform: uppercase;
-}
+  //#endregion
 
-//#endregion
+  //#region
+  .h-navbar {
+    height: $navbar-height !important;
+  }
+  .h-screen-minus-navbar {
+    height: calc(100vh - #{$navbar-height}) !important;
+  }
+  .w-sidenav {
+    width: $sidenav-width !important;
+  }
+  //#endregion
+}
