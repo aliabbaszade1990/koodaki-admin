@@ -1,7 +1,9 @@
-<div class="page-choose-files flex flex-row">
+<div
+  class="page-choose-files flex flex-row h-screen-minus-navbar overflow-hidden"
+>
   <!-- List -->
-  <div class="list basis-[15rem]">
-    <div class="list_items p-3 relative overflow-y-auto" #imageList>
+  <div class="list basis-[15rem] border-l">
+    <div class="list_items p-3 relative overflow-y-auto bg-white" #imageList>
       <koodaki-image-list
         [list]="images"
         (clickImage)="onClickImage($event)"
@@ -15,27 +17,66 @@
         (clickPrevious)="onClickPrevious($event)"
       ></koodaki-paginator>
     </div>
+    <!-- Filter -->
+    <div class="h-navbar bg-white flex flex-col justify-center">
+      <mat-checkbox color="primary" [formControl]="choosenOnesControl">
+        انتخاب شده ها
+      </mat-checkbox>
+    </div>
   </div>
   <!-- Files -->
-  <div class="content border-r bg-gray-100 flex-auto border-green-500">
-    <div class="w-1/2 mx-auto mt-10">
-      <mat-card class="md:h-full mb-8">
+  <div
+    class="
+      flex-auto flex
+      overflow-y-auto
+      items-stretch
+      h-screen-minus-navbar
+      p-4
+    "
+  >
+    <!-- Selected File -->
+    <div class="flex-none w-1/2 bg-gray-300 flex flex-col justify-center">
+      <div
+        *ngIf="!currentItem; else selectedItem"
+        class="no-file-selected text-center pt-10"
+      >
+        <mat-icon>panorama</mat-icon>
+        <p class="text-gray-400 pt-2">فایلی موجود نیست</p>
+      </div>
+      <ng-template #selectedItem>
+        <img [src]="currentItem.src" [alt]="" />
+      </ng-template>
+    </div>
+    <!-- Upload -->
+    <div class="flex-none w-1/2 mx-auto p-4 bg-gray-200">
+      <mat-card class="mb-8">
         <div
           #selectedFile
-          class="h-24"
+          class="p-4"
           #fileInput
           ng2FileDrop
-          [ngClass]="{
-            'border-2 broder-solid border-green-500': hasBaseDropZoneOver
-          }"
           (fileOver)="fileOverBase($event)"
           (onFileDrop)="droppedFile($event)"
           [uploader]="uploader"
         >
-          <p class="text-center p-5">فایل را اینجا رها کنید</p>
+          <p
+            class="
+              text-center
+              p-5
+              h-24
+              border-4 border-dashed border-gray-300
+              rounded-xl
+              flex flex-col
+              justify-center
+              text-gray-500
+            "
+          >
+            فایل را اینجا رها کنید
+          </p>
         </div>
-        <div class="" (click)="chooseMultipleFile.click()">
+        <div class="">
           <button
+            (click)="chooseMultipleFile.click()"
             class="
               py-1
               px-2
@@ -48,7 +89,7 @@
               focus:ring-2 focus:ring-green-400 focus:ring-opacity-75
             "
           >
-            <i class="material-icons white">add</i>
+            <mat-icon>add</mat-icon>
           </button>
           <input
             #file
@@ -61,7 +102,7 @@
             (onFileSelected)="onFileSelected($event)"
             accept="image/x-png,image/gif,image/jpeg,image/png,application/x-zip-compressed"
           />
-          <p class="text-xs text-slate-300 mr-3 align-super inline-block">
+          <p class="text-xs mr-3 align-super inline-block text-gray-500">
             برای انتخاب فایل اینجا کلیک کنید
           </p>
         </div>
@@ -70,7 +111,7 @@
         mat-flat-button
         color="primary"
         (click)="uploadAllFile()"
-        [disabled]="!uploader.getNotUploadedItems().length"
+        [disabled]="uploader.getNotUploadedItems().length === 0"
       >
         <i class="material-icons align-middle">upload</i
         ><span>بارگذاری همه</span>

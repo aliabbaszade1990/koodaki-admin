@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
@@ -23,6 +24,7 @@ export class ProjectFilesComponent {
     hasNext: true,
   };
   currentItem: GetFileDto = this.images[0];
+  choosenOnesControl = new FormControl(false);
 
   onClickImage(image: GetFileDto) {
     this.currentItem.isCurrentItem = false;
@@ -39,7 +41,6 @@ export class ProjectFilesComponent {
   }
 
   uploader: FileUploader = new FileUploader({ url: URL });
-  // fileItem: FileItem = new FileItem(this.uploader, File, FileUploaderOptions)
   hasBaseDropZoneOver: boolean;
   response: string;
   errorMessage: string;
@@ -60,7 +61,7 @@ export class ProjectFilesComponent {
   displayedColumns: string[] = ['name', 'size', 'progress', 'action'];
   @ViewChild('fileInput') fileInput: any;
   formData: FormData = new FormData();
-  id: string;
+  projectId: string;
   fileItem: File;
 
   constructor(
@@ -68,7 +69,6 @@ export class ProjectFilesComponent {
     private route: ActivatedRoute
   ) {}
 
-  //for prevetn CORS error
   ngAfterViewInit() {
     this.uploader.onAfterAddingFile = (item) => {
       item.withCredentials = false;
@@ -77,8 +77,9 @@ export class ProjectFilesComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
+      this.projectId = params['id'];
     });
+
     this.uploader = new FileUploader({
       url: URL,
       disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
@@ -116,7 +117,6 @@ export class ProjectFilesComponent {
       },
     });
 
-    this.hasBaseDropZoneOver = false;
     this.response = '';
     this.uploader.response.subscribe((res) => (this.response = res));
 
@@ -179,6 +179,7 @@ export class ProjectFilesComponent {
   removeFromQueue(item: FileItem) {
     this.uploader.removeFromQueue(item);
   }
+
   newFormData() {
     this.formData = new FormData();
   }
@@ -191,7 +192,7 @@ export class ProjectFilesComponent {
 
   uploadAllFile() {
     this.appendToFile();
-    this.uploadFileService.upload(this.formData, this.id).subscribe({
+    this.uploadFileService.upload(this.formData, this.projectId).subscribe({
       next: (result) => {
         this.newFormData();
         for (const key in result) {
@@ -215,7 +216,7 @@ export class ProjectFilesComponent {
 
   uploadFileItem(row: FileItem) {
     this.formData.append('files', row._file);
-    this.uploadFileService.upload(this.formData, this.id).subscribe({
+    this.uploadFileService.upload(this.formData, this.projectId).subscribe({
       next: (result) => {
         this.newFormData();
         for (const key in result) {
@@ -247,14 +248,9 @@ export class ProjectFilesComponent {
   onFileSelected(event: File[]) {
     this.removeDuplicatItemFromQueue();
     this.dataSource = new MatTableDataSource(this.uploader.queue);
-    console.log(this.uploader.queue);
-
-    // this.appendToFile();
   }
 
   public fileOverBase(e: any): void {
-    console.log('fileoverbase', e);
-
     this.hasBaseDropZoneOver = e;
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { IProject } from '../../dtos/project';
 import { ProjectService } from '../../project.service';
@@ -28,7 +28,8 @@ export class ProjectListComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private dialog: MatDialog,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -54,14 +55,14 @@ export class ProjectListComponent implements OnInit {
     this.dialog.open(ProjectFormComponent, {});
   }
 
-  editProject(row: IProject) {
+  onClickEdit(row: IProject) {
     this.dialog.open(ProjectFormComponent),
       {
         data: row,
       };
   }
 
-  deleteProject(row: IProject) {
+  onClickDelete(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {
         data: {
@@ -83,5 +84,9 @@ export class ProjectListComponent implements OnInit {
           });
         }
       });
+  }
+
+  onClickManageFiles(row: IProject) {
+    this.router.navigate([`project/${row.id}/files`]);
   }
 }
