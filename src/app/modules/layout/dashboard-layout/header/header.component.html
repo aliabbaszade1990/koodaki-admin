@@ -7,14 +7,10 @@
     routerLinkActive="menu-item--active"
     class="py-2 px-4 ml-2"
   >
-    <mat-icon
-      *ngIf="item.icon"
-      fontSet="fas"
-      [fontIcon]="item.icon"
-      class="align-middle ml-2"
-    >
+    <mat-icon *ngIf="item.icon">
+      {{ item.icon }}
     </mat-icon>
-    <span class="menu-item_title">{{ item.text }}</span>
+    {{ item.text }}
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu" class="mr-auto">
     <mat-icon>account_circle</mat-icon>
