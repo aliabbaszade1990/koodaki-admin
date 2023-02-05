@@ -11,7 +11,7 @@ import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
 
 @Component({
-  selector: 'app-customer-form',
+  selector: 'koodaki-customer-form',
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

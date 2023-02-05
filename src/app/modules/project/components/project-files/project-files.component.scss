@@ -1,0 +1,33 @@
+@tailwind components;
+
+@layer components {
+  $page-height: calc(100vh - $navbar-height);
+  .page-choose-files {
+    height: $page-height;
+    .list {
+      height: $page-height;
+
+      &_bottom {
+        height: $navbar-height;
+      }
+
+      &_items {
+        height: calc($page-height - $navbar-height);
+        scroll-behavior: smooth;
+        -moz-box-shadow: inset 0 10px 10px -10px #ddd,
+          inset 0 -10px 10px -10px #ddd;
+        -webkit-box-shadow: inset 0 10px 10px -10px #ddd,
+          inset 0 -10px 10px -10px #ddd;
+        box-shadow: inset 0 10px 10px -10px #ddd, inset 0 -10px 10px -10px #ddd;
+      }
+
+      &_pagination {
+        height: $navbar-height;
+      }
+    }
+
+    .is-selected {
+      border: 5px solid green;
+    }
+  }
+}

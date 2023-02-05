@@ -8,7 +8,7 @@ import {
 import { IRequestResult } from '../../models/request-result';
 
 @Component({
-  selector: 'app-show-request-result',
+  selector: 'koodaki-show-request-result',
   templateUrl: './show-request-result.component.html',
   styleUrls: ['./show-request-result.component.scss'],
 })

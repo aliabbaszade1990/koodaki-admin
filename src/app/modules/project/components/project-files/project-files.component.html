@@ -1,0 +1,157 @@
+<div class="page-choose-files flex flex-row">
+  <!-- List -->
+  <div class="list basis-[15rem]">
+    <div class="list_items p-3 relative overflow-y-auto" #imageList>
+      <koodaki-image-list
+        [list]="images"
+        (clickImage)="onClickImage($event)"
+      ></koodaki-image-list>
+    </div>
+    <!-- Pagination -->
+    <div class="list_pagination">
+      <koodaki-paginator
+        [config]="paginatorConfig"
+        (clickNext)="onClickNext($event)"
+        (clickPrevious)="onClickPrevious($event)"
+      ></koodaki-paginator>
+    </div>
+  </div>
+  <!-- Files -->
+  <div class="content border-r bg-gray-100 flex-auto border-green-500">
+    <div class="w-1/2 mx-auto mt-10">
+      <mat-card class="md:h-full mb-8">
+        <div
+          #selectedFile
+          class="h-24"
+          #fileInput
+          ng2FileDrop
+          [ngClass]="{
+            'border-2 broder-solid border-green-500': hasBaseDropZoneOver
+          }"
+          (fileOver)="fileOverBase($event)"
+          (onFileDrop)="droppedFile($event)"
+          [uploader]="uploader"
+        >
+          <p class="text-center p-5">فایل را اینجا رها کنید</p>
+        </div>
+        <div class="" (click)="chooseMultipleFile.click()">
+          <button
+            class="
+              py-1
+              px-2
+              bg-green-500
+              text-white
+              rounded-sm
+              shadow-md
+              w-20
+              leading-none
+              focus:ring-2 focus:ring-green-400 focus:ring-opacity-75
+            "
+          >
+            <i class="material-icons white">add</i>
+          </button>
+          <input
+            #file
+            #chooseMultipleFile
+            type="file"
+            ng2FileSelect
+            [uploader]="uploader"
+            multiple
+            style="display: none"
+            (onFileSelected)="onFileSelected($event)"
+            accept="image/x-png,image/gif,image/jpeg,image/png,application/x-zip-compressed"
+          />
+          <p class="text-xs text-slate-300 mr-3 align-super inline-block">
+            برای انتخاب فایل اینجا کلیک کنید
+          </p>
+        </div>
+      </mat-card>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="uploadAllFile()"
+        [disabled]="!uploader.getNotUploadedItems().length"
+      >
+        <i class="material-icons align-middle">upload</i
+        ><span>بارگذاری همه</span>
+      </button>
+      <section class="example-container mt-2" tabindex="0">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8 empty:hidden"
+        >
+          <!-- name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>نام</th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              matTooltip="{{ element.file.name }}"
+            >
+              {{ (element.file.name | slice: 0:55) + "..." }}
+            </td>
+          </ng-container>
+
+          <!-- size Column -->
+          <ng-container matColumnDef="size">
+            <th mat-header-cell *matHeaderCellDef>حجم MB</th>
+            <td mat-cell *matCellDef="let element" nowrap>
+              {{ element?.file?.size / 1024 / 1024 | number: ".2" }}
+            </td>
+          </ng-container>
+
+          <!-- progress Column -->
+          <ng-container matColumnDef="progress">
+            <th mat-header-cell *matHeaderCellDef>پیشرفت</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-progress-bar
+                mode="determinate"
+                [value]="element.uploader.progress"
+              ></mat-progress-bar>
+              {{ element.progress }}
+              {{ element.uploader.progress }}
+            </td>
+          </ng-container>
+
+          <!-- action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>عملیات</th>
+
+            <td mat-cell *matCellDef="let row">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="uploadFileItem(row)"
+                [disabled]="row.isReady || row.isUploading || row.isSuccess"
+              >
+                <i class="material-icons">upload</i>
+                <!-- (click)="uploadFile(row)" -->
+                <!-- <span class="material-icons"> upload_file </span> -->
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="row.cancel()"
+                [disabled]="!row.isUploading"
+              >
+                <i class="material-icons">cancel</i>
+                <!-- <span class="material-icons"> cancel </span> -->
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteFile(row)">
+                <i class="material-icons">delete</i>
+                <!-- <span class="material-icons"> delete </span> -->
+              </button>
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>

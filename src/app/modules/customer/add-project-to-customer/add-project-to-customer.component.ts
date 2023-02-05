@@ -2,11 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjectService } from '../../project/project.service';
-import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
 
 @Component({
-  selector: 'app-add-project-to-customer',
+  selector: 'koodaki-add-project-to-customer',
   templateUrl: './add-project-to-customer.component.html',
   styleUrls: ['./add-project-to-customer.component.scss'],
 })

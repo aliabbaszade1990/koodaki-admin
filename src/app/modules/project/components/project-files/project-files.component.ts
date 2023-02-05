@@ -1,37 +1,43 @@
-import { formatCurrency } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
-import { Form, FormBuilder, FormGroup } from '@angular/forms';
-import { TransitionCheckState } from '@angular/material/checkbox';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Duration } from 'luxon';
-import {
-  FileItem,
-  FileLikeObject,
-  FileUploader,
-  ParsedResponseHeaders,
-} from 'ng2-file-upload';
-import { IUploadData } from './dto/upload-data';
-import { UploadFileService } from './upload-file.service';
+import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
+import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
+import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
+import { UploadFileService } from '../../services/upload-file.service';
 
 const URL =
   'http://localhost:3000/file?projectId=578dba98-d093-4e81-a8a7-810793d93dba';
-// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
-  selector: 'app-upload-file',
-  templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.scss'],
+  selector: 'koodaki-project-files',
+  templateUrl: './project-files.component.html',
+  styleUrls: ['./project-files.component.scss'],
 })
-export class UploadFileComponent implements OnInit {
+export class ProjectFilesComponent {
+  images: GetFileDto[] = [];
+  paginatorConfig: PaginatorConfig = {
+    total: 1230,
+    page: 1,
+    size: 20,
+    hasNext: true,
+  };
+  currentItem: GetFileDto = this.images[0];
+
+  onClickImage(image: GetFileDto) {
+    this.currentItem.isCurrentItem = false;
+    this.currentItem = image;
+    this.currentItem.isCurrentItem = true;
+  }
+
+  onClickNext(page: number) {
+    this.paginatorConfig.page = page;
+  }
+
+  onClickPrevious(page: number) {
+    this.paginatorConfig.page = page;
+  }
+
   uploader: FileUploader = new FileUploader({ url: URL });
   // fileItem: FileItem = new FileItem(this.uploader, File, FileUploaderOptions)
   hasBaseDropZoneOver: boolean;

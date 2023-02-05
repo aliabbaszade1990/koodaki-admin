@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'src/app/shared/interfaces/menu-item.interface';
 @Component({
-  selector: 'app-header',
+  selector: 'koodaki-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   host: {
