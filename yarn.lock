@@ -4009,10 +4009,10 @@
   "resolved" "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.191.tgz"
   "version" "4.14.191"
 
-"@types/luxon@^3.1.0":
-  "integrity" "sha512-gCd/HcCgjqSxfMrgtqxCgYk/22NBQfypwFUG7ZAyG/4pqs51WLTcUzVp1hqTbieDYeHS3WoVEh2Yv/2l+7B0Vg=="
-  "resolved" "https://registry.npmjs.org/@types/luxon/-/luxon-3.1.0.tgz"
-  "version" "3.1.0"
+"@types/luxon@^3.2.0":
+  "integrity" "sha512-lGmaGFoaXHuOLXFvuju2bfvZRqxAqkHPx9Y9IQdQABrinJJshJwfNCKV+u7rR3kJbiqfTF/NhOkcxxAFrObyaA=="
+  "resolved" "https://registry.npmjs.org/@types/luxon/-/luxon-3.2.0.tgz"
+  "version" "3.2.0"
 
 "@types/mdast@^3.0.0":
   "integrity" "sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA=="
@@ -6020,6 +6020,11 @@
   "integrity" "sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA=="
   "resolved" "https://registry.npmjs.org/commander/-/commander-6.2.1.tgz"
   "version" "6.2.1"
+
+"commander@^7.0.0":
+  "integrity" "sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw=="
+  "resolved" "https://registry.npmjs.org/commander/-/commander-7.2.0.tgz"
+  "version" "7.2.0"
 
 "commander@^8.3.0":
   "integrity" "sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww=="
@@ -8737,7 +8742,7 @@
   "resolved" "https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.1.1.tgz"
   "version" "0.1.1"
 
-"inquirer@8.2.4":
+"inquirer@^8.0.0", "inquirer@8.2.4":
   "integrity" "sha512-nn4F01dxU8VeKfq192IjLsxu0/OmMZ4Lg3xKAns148rCaXP6ntAoEkVYZThWjwON8AlzdZZi6oqnhNbxUG9hVg=="
   "resolved" "https://registry.npmjs.org/inquirer/-/inquirer-8.2.4.tgz"
   "version" "8.2.4"
@@ -9298,6 +9303,15 @@
     "es-get-iterator" "^1.0.2"
     "iterate-iterator" "^1.0.1"
 
+"jalali-moment@^3.3.11":
+  "integrity" "sha512-tdSaRs9cjWjOIaWhcsGFZMhZQhfgok5J0TwqFpBIZPudZxxa6yjUPoLCOwuvbAtRpiZn7k/mvazAJh+vEN5suw=="
+  "resolved" "https://registry.npmjs.org/jalali-moment/-/jalali-moment-3.3.11.tgz"
+  "version" "3.3.11"
+  dependencies:
+    "commander" "^7.0.0"
+    "inquirer" "^8.0.0"
+    "moment" "^2.26.0"
+
 "jasmine-core@^4.1.0", "jasmine-core@~4.5.0":
   "integrity" "sha512-9PMzyvhtocxb3aXJVOPqBDswdgyAeSB81QnLop4npOpbqnheaTEwPc9ZloQeVswugPManznQBjD8kWDTjlnHuw=="
   "resolved" "https://registry.npmjs.org/jasmine-core/-/jasmine-core-4.5.0.tgz"
@@ -9803,6 +9817,11 @@
   dependencies:
     "tslib" "^2.0.0"
 
+"luxon@^3.2.1":
+  "integrity" "sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg=="
+  "resolved" "https://registry.npmjs.org/luxon/-/luxon-3.2.1.tgz"
+  "version" "3.2.1"
+
 "lz-string@^1.4.4":
   "integrity" "sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ=="
   "resolved" "https://registry.npmjs.org/lz-string/-/lz-string-1.4.4.tgz"
@@ -10302,6 +10321,11 @@
   "integrity" "sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw=="
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   "version" "1.0.4"
+
+"moment@^2.26.0":
+  "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
+  "version" "2.29.4"
 
 "morgan@^1.10.0":
   "integrity" "sha512-AbegBVI4sh6El+1gNwvD5YIck7nSA36weD7xvIxG4in80j/UoK8AEGaWnnz8v1GxonMCltmlNs5ZKbGvl9b1XQ=="

@@ -19,6 +19,17 @@ import { ShowRequestResultComponent } from './components/show-request-result/sho
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ToaterService } from './services/toater.service';
 import { PersianDateConvertor as PersianDateConvertorPipe } from './pipes/persian-date-convertor.pipe';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  MatNativeDateModule,
+} from '@angular/material/core';
+import {
+  MaterialPersianDateAdapter,
+  PERSIAN_DATE_FORMATS,
+} from './material/persian-date.adapter';
 
 const modules = [
   MatCardModule,
@@ -34,6 +45,8 @@ const modules = [
   MatExpansionModule,
   MatMenuModule,
   MatCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
@@ -45,6 +58,15 @@ const modules = [
   ],
   imports: [CommonModule, modules],
   exports: [modules, PersianDateConvertorPipe],
-  providers: [ToaterService],
+  providers: [
+    ToaterService,
+    { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },
+    {
+      provide: DateAdapter,
+      useClass: MaterialPersianDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS },
+  ],
 })
 export class SharedModule {}

@@ -49,15 +49,13 @@
       <mat-form-field appearance="outline">
         <mat-label>تاریخ شروع</mat-label>
         <input
-          type="text"
           matInput
-          formControlName="startedAt"
+          formControlName="startDate"
           placeholder="تاریخ شروع"
+          [matDatepicker]="picker"
         />
-
-        <mat-error *ngIf="form.controls['startedAt'].hasError('required')">
-          startDate is <strong>required</strong>
-        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker dir="rtl"></mat-datepicker>
       </mat-form-field>
     </div>
   </form>

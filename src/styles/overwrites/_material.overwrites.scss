@@ -19,7 +19,10 @@ td.mdc-data-table__cell {
   font-family: "iranSans" !important;
 }
 
-.mat-mdc-card-title {
+.mat-mdc-card-title,
+.mat-mdc-button,
+.mdc-button__label,
+mat-calendar {
   font-family: "iranSans" !important;
 }
 
