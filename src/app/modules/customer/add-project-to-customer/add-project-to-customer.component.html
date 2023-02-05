@@ -2,7 +2,7 @@
   افزودن پروژه برای {{ data.lastName }} {{ data.firstName }}
 </h1>
 <div mat-dialog-content>
-  <form class="" [formGroup]="form" (submit)="sendFormValue()">
+  <form id="project-form" [formGroup]="form" (submit)="sendFormValue()">
     <div class="flex flex-gap-12 flex-col">
       <mat-form-field appearance="outline">
         <mat-label>عنوان</mat-label>
@@ -51,46 +51,30 @@
         <input
           type="text"
           matInput
-          formControlName="startDate"
+          formControlName="startedAt"
           placeholder="تاریخ شروع"
         />
-        <mat-error
-          *ngIf="
-            form.controls['startDate'].hasError('startDate') &&
-            !form.controls['startDate'].hasError('required')
-          "
-        >
-          Please enter a valid startDate
-        </mat-error>
-        <mat-error *ngIf="form.controls['startDate'].hasError('required')">
+
+        <mat-error *ngIf="form.controls['startedAt'].hasError('required')">
           startDate is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-
-      <mat-checkbox color="primary" formControlName="isClosed"
-        ><span>بسته شده</span>
-      </mat-checkbox>
     </div>
   </form>
 </div>
+
 <div mat-dialog-actions class="flex justify-between">
   <button
     mat-raised-button
     color="primary"
-    mat-dialog-close
     cdkFocusInitial
     type="submit"
     [disabled]="form.invalid"
+    form="project-form"
   >
     ثبت
   </button>
-  <button
-    type="button"
-    mat-raised-button
-    mat-dialog-close
-    color="warn"
-    (click)="closeDialog()"
-  >
+  <button type="button" mat-raised-button mat-dialog-close color="warn">
     انصراف
   </button>
 </div>

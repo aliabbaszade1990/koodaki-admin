@@ -17,6 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ShowRequestResultComponent } from './components/show-request-result/show-request-result.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { ToaterService } from './services/toater.service';
 
 const modules = [
   MatCardModule,
@@ -42,5 +43,6 @@ const modules = [
   ],
   imports: [CommonModule, modules],
   exports: [modules],
+  providers: [ToaterService],
 })
 export class SharedModule {}

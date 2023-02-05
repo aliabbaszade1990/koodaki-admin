@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { IProject } from '../dto/project';
 import { ProjectFormComponent } from '../project-form/project-form.component';
@@ -23,23 +24,31 @@ export class ProjectListComponent implements OnInit {
   ];
   date = '';
   disabled = true;
+  customerId: string;
 
   constructor(
     private projectService: ProjectService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private activateRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.customerId = this.activateRoute.snapshot.params['customerId'];
     this.getAllProject();
   }
 
   getAllProject() {
-    this.projectService.getAll().subscribe((res: IProject[]) => {
-      res.forEach((res: IProject) => {
-        this.date = new Date(res.createAt).toLocaleDateString('fa-IR');
+    if (this.customerId) {
+      this.projectService
+        .getByCustomerId(this.customerId)
+        .subscribe((res: IProject[]) => {
+          this.dataSource = new MatTableDataSource(res);
+        });
+    } else {
+      this.projectService.getAll().subscribe((res: IProject[]) => {
+        this.dataSource = new MatTableDataSource(res);
       });
-      this.dataSource = new MatTableDataSource(res);
-    });
+    }
   }
 
   createProject() {
@@ -52,6 +61,7 @@ export class ProjectListComponent implements OnInit {
         data: row,
       };
   }
+
   deleteProject(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {

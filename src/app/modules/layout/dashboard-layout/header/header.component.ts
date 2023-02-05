@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
   dropdownX: number;
   dropdownY: number;
   menuItems = [
-    { label: 'مشتری', route: 'customer/list' },
-    { label: 'پروژه ها', route: 'project/list' },
+    { label: 'مشتری', route: 'customer' },
+    { label: 'پروژه ها', route: 'project' },
   ];
 
   constructor() {}

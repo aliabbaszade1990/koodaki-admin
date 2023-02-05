@@ -46,3 +46,25 @@ table {
   min-width: 90px;
   border-radius: 1px;
 }
+
+//#region snackbar
+.success .mdc-snackbar__surface {
+  background-color: rgb(59, 177, 23) !important;
+}
+
+.warning .mdc-snackbar__surface {
+  background-color: rgb(234, 123, 12) !important;
+}
+
+.error .mdc-snackbar__surface {
+  background-color: rgb(246, 0, 0) !important;
+}
+
+.info .mdc-snackbar__surface {
+  background-color: rgb(111, 165, 236) !important;
+}
+
+.mdc-snackbar__action {
+  color: #ffffff !important;
+}
+//#endregion

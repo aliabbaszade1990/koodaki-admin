@@ -1,8 +1,12 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
+import { ToaterService } from 'src/app/shared/services/toater.service';
+import { IProject } from '../../project/dto/project';
 import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 import { CustomerService } from '../customer.service';
@@ -40,7 +44,9 @@ export class CustomerListComponent implements OnInit, OnDestroy {
    */
   constructor(
     private customerService: CustomerService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toasterService: ToaterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +65,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         if (res) {
           this.dataSource.push(res);
           this.dataSource = [...this.dataSource];
+
+          this.toasterService.success(
+            `کاربر ${res.firstName} ${res.lastName} ذخیره شد .`
+          );
         }
       });
   }
@@ -78,6 +88,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
             res
           );
           this.dataSource = [...this.dataSource];
+
+          this.toasterService.success(
+            `کاربر ${res.firstName} ${res.lastName} ویرایش شد .`
+          );
         }
       });
   }
@@ -87,7 +101,14 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .open(AddProjectToCustomerComponent, {
         data: row,
       })
-      .afterClosed();
+      .afterClosed()
+      .subscribe((result: IProject) => {
+        if (result) {
+          this.toasterService.success(
+            `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد .`
+          );
+        }
+      });
   }
 
   deleteCustomer(row: ICustomer) {
@@ -108,10 +129,19 @@ export class CustomerListComponent implements OnInit, OnDestroy {
             this.dataSource = [
               ...this.dataSource.filter((item) => item.id !== row.id),
             ];
+
+            this.toasterService.success(
+              `کاربر ${row.firstName} ${row.lastName} حذف شد .`
+            );
           });
         }
       });
   }
+
+  customerProjects(row: ICustomer) {
+    this.router.navigate([`/project/${row.id}`]);
+  }
+
   ngOnDestroy(): void {
     this.customerServiceSubscription.unsubscribe();
   }

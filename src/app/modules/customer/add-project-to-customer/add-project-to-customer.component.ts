@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProjectService } from '../../project/project.service';
 import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
 
@@ -16,18 +17,22 @@ export class AddProjectToCustomerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ICustomer,
     private dialogRef: MatDialogRef<AddProjectToCustomerComponent>,
     private fb: FormBuilder,
-    private customerService: CustomerService
+    private projectService: ProjectService
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       title: ['', Validators.required],
       location: ['', Validators.required],
-      startDate: ['', Validators.required],
-      isClosed: [''],
+      startedAt: [new Date(), Validators.required],
+      customerId: [''],
     });
+    this.form.controls['customerId'].setValue(this.data.id);
   }
 
-  sendFormValue() {}
-  closeDialog() {}
+  sendFormValue() {
+    this.projectService.create(this.form.value).subscribe((result) => {
+      this.dialogRef.close(result);
+    });
+  }
 }
