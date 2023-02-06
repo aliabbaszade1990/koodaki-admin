@@ -99,14 +99,16 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .open(AddProjectToCustomerComponent, {
         data: row,
       })
-      .afterClosed()
-      .subscribe((result: IProject) => {
-        if (result) {
-          this.toasterService.success(
-            `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد .`
-          );
-        }
-      });
+      .afterClosed();
+    // .subscribe(
+    //   (result: IProject) => {
+    //     if (result) {
+    //       this.toasterService.success(
+    //         `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد .`
+    //       );
+    //     }
+    //   }
+    // );
   }
 
   deleteCustomer(row: ICustomer) {
