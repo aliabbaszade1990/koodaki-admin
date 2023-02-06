@@ -1,3 +1,5 @@
+import { ICustomer } from '../../customer/dto/customer';
+
 export interface IProject {
   id: string;
   title: string;
@@ -7,12 +9,5 @@ export interface IProject {
   createAt: Date;
   startedAt: Date;
   endedAt: Date;
-}
-
-export interface Customer {
-  createAt: string;
-  firstName: string;
-  id: string;
-  lastName: string;
-  phoneNumber: string;
+  customer: ICustomer;
 }

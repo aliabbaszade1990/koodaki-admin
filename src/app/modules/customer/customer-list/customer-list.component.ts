@@ -137,7 +137,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   }
 
   customerProjects(row: ICustomer) {
-    this.router.navigate([`/project/${row.id}`]);
+    this.router.navigate([`/project/list/${row.id}`]);
   }
 
   ngOnDestroy(): void {

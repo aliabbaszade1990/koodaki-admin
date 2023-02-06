@@ -12,6 +12,8 @@ import { ImageListModule } from './image-list/image-list.module';
 import { PaginatorModule } from './paginator/paginator.module';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectService } from './project.service';
+import { MatSelectModule } from '@angular/material/select';
+import { CustomerService } from '../customer/customer.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ProjectService } from './project.service';
     MatProgressBarModule,
     ImageListModule,
     PaginatorModule,
+    MatSelectModule,
   ],
-  providers: [ProjectService],
+  providers: [ProjectService, CustomerService],
 })
 export class ProjectModule {}
