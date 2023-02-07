@@ -2,7 +2,9 @@
   <button mat-raised-button color="primary" (click)="createProject()">
     افزودن
   </button>
-  <p>نمایش پروژه های {{ firstName }} {{ lastName }}</p>
+  <p class="inline-block mr-4" *ngIf="customerId">
+    پروژه های {{ firstName }} {{ lastName }}
+  </p>
   <table
     mat-table
     [dataSource]="dataSource"
