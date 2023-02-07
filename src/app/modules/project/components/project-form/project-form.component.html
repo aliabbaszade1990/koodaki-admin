@@ -10,7 +10,7 @@
           </mat-option>
         </mat-select>
         <mat-error *ngIf="form.controls['location'].hasError('required')">
-          وارد کردن مکان اجباری است .
+          وارد کردن کاربر اجباری است .
         </mat-error>
       </mat-form-field>
 
@@ -43,15 +43,18 @@
       <mat-form-field appearance="outline">
         <mat-label>تاریخ شروع</mat-label>
         <input
-          type="text"
           matInput
           formControlName="startedAt"
           placeholder="تاریخ شروع"
+          [matDatepicker]="picker"
         />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker dir="rtl"></mat-datepicker>
         <mat-error *ngIf="form.controls['startedAt'].hasError('required')">
           وارد کردن تاریخ شروع اجباری است .
         </mat-error>
       </mat-form-field>
+      <p><mat-checkbox formControlName="isClosed">فعال</mat-checkbox></p>
     </div>
   </form>
 </div>
