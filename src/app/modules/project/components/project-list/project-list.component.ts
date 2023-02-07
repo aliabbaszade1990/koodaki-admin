@@ -41,7 +41,10 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
     this.getAllProject();
-    console.log(this.customerId);
+    this.getCustomer();
+  }
+
+  getCustomer() {
     this.customerService.getAll().subscribe((res: ICustomer[]) => {
       const customer = res.find(
         (item: ICustomer) => item.id === this.customerId
