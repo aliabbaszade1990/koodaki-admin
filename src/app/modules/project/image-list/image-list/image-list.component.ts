@@ -7,7 +7,7 @@ import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
   styleUrls: ['./image-list.component.scss'],
 })
 export class ImageListComponent {
-  @Input() list: GetFileDto[] = [];
+  @Input() list: any[] = [];
   @Output() clickImage: EventEmitter<GetFileDto> = new EventEmitter();
   onClickImage(image: GetFileDto) {
     this.clickImage.emit(image);
