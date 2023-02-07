@@ -38,7 +38,7 @@ export class ProjectFormComponent implements OnInit {
     this.form.patchValue(this.data);
 
     if (this.data.id) {
-      this.title = 'ویرایش پروژه';
+      this.title = `ویرایش پروژه ${this.data.title}`;
       this.editMode = true;
       this.form.controls['customerId'].setValue(this.data.customer.id);
     }
