@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from 'src/app/modules/customer/customer.service';
+import { ICustomer } from 'src/app/modules/customer/dto/customer';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { ToaterService } from 'src/app/shared/services/toater.service';
 import { IProject } from '../../dtos/project';
@@ -32,12 +34,21 @@ export class ProjectListComponent implements OnInit {
     private dialog: MatDialog,
     private activateRoute: ActivatedRoute,
     private router: Router,
-    private toasterService: ToaterService
+    private toasterService: ToaterService,
+    private customerService: CustomerService
   ) {}
 
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
     this.getAllProject();
+    console.log(this.customerId);
+    this.customerService.getAll().subscribe((res: ICustomer[]) => {
+      const customer = res.find(
+        (item: ICustomer) => item.id === this.customerId
+      );
+      this.firstName = customer?.firstName as string;
+      this.lastName = customer?.lastName as string;
+    });
   }
 
   getAllProject() {
@@ -45,8 +56,6 @@ export class ProjectListComponent implements OnInit {
       this.projectService
         .getByCustomerId(this.customerId)
         .subscribe((res: IProject[]) => {
-          console.log('res', res);
-
           this.dataSource = new MatTableDataSource(res);
         });
     } else {
