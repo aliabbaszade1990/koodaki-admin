@@ -20,6 +20,8 @@ export class CustomerFormComponent implements OnInit {
   form: FormGroup;
   customer: ICustomer;
   editMode: boolean = false;
+  fName: string;
+  lName: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ICustomer,
@@ -29,6 +31,8 @@ export class CustomerFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fName = this.data.firstName;
+    this.lName = this.data.lastName;
     const pattern = '^09[0|1|2|3][0-9]{8}$';
     this.form = this.fb.group({
       firstName: ['', Validators.required],
