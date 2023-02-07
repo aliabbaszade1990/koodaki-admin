@@ -9,7 +9,7 @@
     [src]="image.url"
     class="image block cursor-pointer max-w-full max-h-full w-full rounded-sm"
     (click)="onClickImage(image)"
-    alt=""
+    [alt]="image.name"
   />
 
   <div class="image-wrapper_icons flex gap-3">

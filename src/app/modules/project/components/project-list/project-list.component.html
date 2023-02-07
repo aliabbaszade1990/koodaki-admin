@@ -63,12 +63,15 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
+            <mat-icon>photo_library</mat-icon>
             <span (click)="onClickManageFiles(row)">مدیرت فایل ها</span>
           </button>
           <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
             <span (click)="onClickEdit(row)">ویرایش</span>
           </button>
           <button mat-menu-item>
+            <mat-icon color="warn">delete</mat-icon>
             <span (click)="onClickDelete(row)">حذف</span>
           </button>
         </mat-menu>

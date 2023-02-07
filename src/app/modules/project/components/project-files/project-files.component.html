@@ -35,16 +35,18 @@
     "
   >
     <!-- Selected File -->
-    <div class="flex-none w-1/2 bg-gray-300 flex flex-col justify-center">
+    <div class="flex-none w-1/2 bg-gray-300 flex flex-col justify-center p-4">
       <div
         *ngIf="!currentItem; else selectedItem"
         class="no-file-selected text-center pt-10"
       >
-        <mat-icon>panorama</mat-icon>
-        <p class="text-gray-400 pt-2">فایلی موجود نیست</p>
+        <mat-icon class="text-[100px] w-[100px] h-[90px] text-gray-200"
+          >panorama</mat-icon
+        >
+        <p class="text-gray-400 pt-2">فایلی برای مشاهده موجود نیست</p>
       </div>
       <ng-template #selectedItem>
-        <img [src]="currentItem.src" [alt]="" />
+        <img [src]="currentItem.url" [alt]="" />
       </ng-template>
     </div>
     <!-- Upload -->

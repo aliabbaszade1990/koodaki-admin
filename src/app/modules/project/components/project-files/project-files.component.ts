@@ -23,7 +23,7 @@ export class ProjectFilesComponent {
     size: 20,
     hasNext: true,
   };
-  currentItem: GetFileDto = this.images[0];
+  currentItem: GetFileDto;
   choosenOnesControl = new FormControl(false);
 
   onClickImage(image: GetFileDto) {
@@ -289,6 +289,8 @@ export class ProjectFilesComponent {
   getFiles() {
     this.fileService.getFiles(this.projectId).subscribe((result) => {
       this.images = result;
+      this.currentItem = this.images[0];
+      this.currentItem.isCurrentItem = true;
     });
   }
 }
