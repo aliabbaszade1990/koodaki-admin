@@ -36,21 +36,21 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="editCustomer(row)">
             <mat-icon>edit</mat-icon>
-            <span (click)="editCustomer(row)">ویرایش مشتری</span>
+            <span>ویرایش مشتری</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="addProjectToCustomer(row)">
             <mat-icon>add</mat-icon>
-            <span (click)="addProjectToCustomer(row)">افزودن پروژه</span>
+            <span>افزودن پروژه</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="customerProjects(row)">
             <mat-icon>photo-library</mat-icon>
-            <span (click)="customerProjects(row)">نمایش پروژه ها</span>
+            <span>نمایش پروژه ها</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="deleteCustomer(row)">
             <mat-icon color="warn">delete</mat-icon>
-            <span (click)="deleteCustomer(row)">حذف مشتری</span>
+            <span>حذف مشتری</span>
           </button>
         </mat-menu>
       </td>

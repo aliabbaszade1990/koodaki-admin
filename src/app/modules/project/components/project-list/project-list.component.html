@@ -57,17 +57,17 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="onClickManageFiles(row)">
             <mat-icon>photo_library</mat-icon>
-            <span (click)="onClickManageFiles(row)">مدیرت فایل ها</span>
+            <span>مدیرت فایل ها</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="onClickEdit(row)">
             <mat-icon>edit</mat-icon>
-            <span (click)="onClickEdit(row)">ویرایش</span>
+            <span>ویرایش</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="onClickDelete(row)">
             <mat-icon color="warn">delete</mat-icon>
-            <span (click)="onClickDelete(row)">حذف</span>
+            <span>حذف</span>
           </button>
         </mat-menu>
       </td>
