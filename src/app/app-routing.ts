@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 export const AppRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'project',
+    redirectTo: 'customer/list',
     pathMatch: 'full',
   },
   {

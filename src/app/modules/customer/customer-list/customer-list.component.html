@@ -15,7 +15,11 @@
         {{ column.header }}
       </th>
 
-      <td mat-cell *matCellDef="let row">
+      <td
+        mat-cell
+        *matCellDef="let row"
+        [dir]="column.columnDef === 'phoneNumber' ? 'ltr' : 'rtl'"
+      >
         {{ row[column.columnDef] }}
       </td>
     </ng-container>
@@ -33,15 +37,19 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
             <span (click)="editCustomer(row)">ویرایش مشتری</span>
           </button>
           <button mat-menu-item>
+            <mat-icon>add</mat-icon>
             <span (click)="addProjectToCustomer(row)">افزودن پروژه</span>
           </button>
           <button mat-menu-item>
+            <mat-icon>photo-library</mat-icon>
             <span (click)="customerProjects(row)">نمایش پروژه ها</span>
           </button>
           <button mat-menu-item>
+            <mat-icon color="warn">delete</mat-icon>
             <span (click)="deleteCustomer(row)">حذف مشتری</span>
           </button>
         </mat-menu>
