@@ -1,17 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CustomerService } from '../customer.service';
 import { ProjectService } from '../../project/project.service';
+import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
 
 @Component({
-  selector: 'koodaki-add-project-to-customer',
+  selector: 'app-add-project-to-customer',
   templateUrl: './add-project-to-customer.component.html',
   styleUrls: ['./add-project-to-customer.component.scss'],
 })
@@ -22,25 +17,22 @@ export class AddProjectToCustomerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ICustomer,
     private dialogRef: MatDialogRef<AddProjectToCustomerComponent>,
     private fb: FormBuilder,
-    private customerService: CustomerService
+    private projectService: ProjectService
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       title: ['', Validators.required],
       location: ['', Validators.required],
-      startDate: ['', Validators.required],
+      startedAt: [new Date(), Validators.required],
+      customerId: [''],
     });
+    this.form.controls['customerId'].setValue(this.data.id);
   }
 
   sendFormValue() {
-    const form = {
-      title: this.form.controls['title'].value,
-      location: this.form.controls['location'].value,
-      startDate: this.form.controls['startDate'].value._d,
-    };
-    console.log(form);
-    this.form.reset();
+    this.projectService.create(this.form.value).subscribe((result) => {
+      this.dialogRef.close(result);
+    });
   }
-  closeDialog() {}
 }

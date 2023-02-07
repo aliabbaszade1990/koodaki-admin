@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  افزودن پروژه برای {{ data.lastName }} {{ data.firstName }}
+  افزودن پروژه برای {{ data.firstName }} {{ data.lastName }}
 </h1>
 <div mat-dialog-content>
   <form id="project-form" [formGroup]="form" (submit)="sendFormValue()">
@@ -50,12 +50,15 @@
         <mat-label>تاریخ شروع</mat-label>
         <input
           matInput
-          formControlName="startDate"
+          formControlName="startedAt"
           placeholder="تاریخ شروع"
           [matDatepicker]="picker"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker dir="rtl"></mat-datepicker>
+        <mat-error *ngIf="form.controls['startedAt'].hasError('required')">
+          وارد کردن تاریخ شروع اجباری است .
+        </mat-error>
       </mat-form-field>
     </div>
   </form>

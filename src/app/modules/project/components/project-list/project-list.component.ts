@@ -20,11 +20,12 @@ export class ProjectListComponent implements OnInit {
     'title',
     'location',
     'startDate',
-    'endDate',
     'action',
   ];
   disabled = true;
   customerId: string;
+  firstName: string;
+  lastName: string;
 
   constructor(
     private projectService: ProjectService,
@@ -44,6 +45,8 @@ export class ProjectListComponent implements OnInit {
       this.projectService
         .getByCustomerId(this.customerId)
         .subscribe((res: IProject[]) => {
+          console.log('res', res);
+
           this.dataSource = new MatTableDataSource(res);
         });
     } else {
@@ -82,6 +85,7 @@ export class ProjectListComponent implements OnInit {
             1,
             result
           );
+          this.dataSource.data = [...this.dataSource.data];
           this.toasterService.success(`پروژه ${result.title} ویرایش شد .`);
         }
       });

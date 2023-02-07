@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { ToaterService } from 'src/app/shared/services/toater.service';
-import { IProject } from '../../project/dtos/project';
 import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 import { CustomerService } from '../customer.service';
@@ -17,7 +17,8 @@ import { ICustomer } from '../dto/customer';
 })
 export class CustomerListComponent implements OnInit, OnDestroy {
   private customerServiceSubscription: Subscription;
-  dataSource: ICustomer[] = [];
+  // dataSource: ICustomer[] = [];
+  dataSource: MatTableDataSource<ICustomer>;
   columns = [
     {
       columnDef: 'firstName',
@@ -48,10 +49,14 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.getAllCustomer();
+  }
+
+  getAllCustomer() {
     this.customerServiceSubscription = this.customerService
       .getAll()
       .subscribe((res: ICustomer[]) => {
-        this.dataSource = res;
+        this.dataSource = new MatTableDataSource(res);
       });
   }
 
@@ -61,8 +66,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
-          this.dataSource.push(res);
-          this.dataSource = [...this.dataSource];
+          this.dataSource.data.push(res);
+          this.dataSource.data = [...this.dataSource.data];
 
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} ذخیره شد .`
@@ -75,18 +80,16 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     this.dialog
       .open(CustomerFormComponent, {
         data: row,
-        // maxWidth: '470px',
       })
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
-          this.dataSource.splice(
-            this.dataSource.findIndex((item) => item.id === res.id),
+          this.dataSource.data.splice(
+            this.dataSource.data.findIndex((item) => item.id === res.id),
             1,
             res
           );
-          this.dataSource = [...this.dataSource];
-
+          this.dataSource.data = [...this.dataSource.data];
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} ویرایش شد .`
           );
@@ -99,16 +102,14 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .open(AddProjectToCustomerComponent, {
         data: row,
       })
-      .afterClosed();
-    // .subscribe(
-    //   (result: IProject) => {
-    //     if (result) {
-    //       this.toasterService.success(
-    //         `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد .`
-    //       );
-    //     }
-    //   }
-    // );
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.toasterService.success(
+            `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد .`
+          );
+        }
+      });
   }
 
   deleteCustomer(row: ICustomer) {
@@ -126,8 +127,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         if (res) {
           this.customerService.delete(row.id).subscribe(() => {
-            this.dataSource = [
-              ...this.dataSource.filter((item) => item.id !== row.id),
+            this.dataSource.data = [
+              ...this.dataSource.data.filter((item) => item.id !== row.id),
             ];
 
             this.toasterService.success(

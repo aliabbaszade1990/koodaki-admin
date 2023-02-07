@@ -54,6 +54,7 @@ import { DashboardLayoutModule } from './modules/layout/dashboard-layout/dashboa
       useClass: CoreInterceptor,
       multi: true,
     },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } },
   ],
   bootstrap: [AppComponent],
 })

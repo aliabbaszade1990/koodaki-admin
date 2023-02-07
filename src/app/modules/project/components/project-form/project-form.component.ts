@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import moment from 'jalali-moment';
 import { CustomerService } from 'src/app/modules/customer/customer.service';
 import { ICustomer } from 'src/app/modules/customer/dto/customer';
 import { IProject } from '../../dtos/project';
@@ -31,6 +32,7 @@ export class ProjectFormComponent implements OnInit {
       title: ['', Validators.required],
       location: ['', Validators.required],
       startedAt: [new Date(), Validators.required],
+      isClosed: [''],
       customerId: ['', Validators.required],
     });
     this.form.patchValue(this.data);
@@ -51,9 +53,27 @@ export class ProjectFormComponent implements OnInit {
   }
 
   sendFormValue() {
-    this.projectService.create(this.form.value).subscribe((result) => {
-      this.dialogRef.close(result);
-    });
+    const form: any = {
+      title: this.form.value['title'],
+      location: this.form.value['location'],
+      startedAt: moment
+        .from(this.form.value['startedAt'], 'en')
+        .utc(true)
+        .toJSON(),
+      id: this.form.value['id'],
+      isClosed: this.form.value['isClosed'],
+      customerId: this.form.value['customerId'],
+    };
+    if (this.form.value['id']) {
+      this.projectService
+        .update(this.form.value['id'], form)
+        .subscribe((result) => {
+          this.dialogRef.close(result);
+        });
+    } else
+      this.projectService.create(form).subscribe((result) => {
+        this.dialogRef.close(result);
+      });
   }
 
   closeDialog() {
