@@ -36,10 +36,6 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="editCustomer(row)">
-            <mat-icon>edit</mat-icon>
-            <span>ویرایش مشتری</span>
-          </button>
           <button mat-menu-item (click)="addProjectToCustomer(row)">
             <mat-icon>add</mat-icon>
             <span>افزودن پروژه</span>
@@ -47,6 +43,10 @@
           <button mat-menu-item (click)="customerProjects(row)">
             <mat-icon>photo-library</mat-icon>
             <span>نمایش پروژه ها</span>
+          </button>
+          <button mat-menu-item (click)="editCustomer(row)">
+            <mat-icon>edit</mat-icon>
+            <span>ویرایش مشتری</span>
           </button>
           <button mat-menu-item (click)="deleteCustomer(row)">
             <mat-icon color="warn">delete</mat-icon>
@@ -59,4 +59,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <koodaki-loading
+    *ngIf="loading"
+    class="flex justify-center"
+  ></koodaki-loading>
+  <koodaki-no-data-found *ngIf="!showtable && !loading"></koodaki-no-data-found>
 </div>

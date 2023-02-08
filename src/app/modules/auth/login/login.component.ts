@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.inProgress = true;
     this.authService.login(this.form.value).then((result: LoginResultDTO) => {
       if (result) {
-        this.router.navigate(['project/list']);
+        this.router.navigate(['customer/list']);
       }
     });
   }

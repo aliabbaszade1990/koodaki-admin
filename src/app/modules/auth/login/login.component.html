@@ -9,7 +9,7 @@
           <mat-label>نام کاربری</mat-label>
           <input type="text" matInput formControlName="username" />
           <mat-error *ngIf="form.controls['username'].hasError('required')">
-            name is <strong>required</strong>
+            وارد کردن نام کاربری اجباری است.
           </mat-error>
         </mat-form-field>
 
@@ -17,7 +17,7 @@
           <mat-label>رمز عبور</mat-label>
           <input type="password" matInput formControlName="password" />
           <mat-error *ngIf="form.controls['password'].hasError('required')">
-            name is <strong>required</strong>
+            وارد کردن رمز عبور اجباری است.
           </mat-error>
         </mat-form-field>
       </form>

@@ -23,6 +23,7 @@ export class ConfirmComponent implements OnInit {
       confirmButton: this.confirmButton,
       cancelButton: this.cancelButton,
     } = this.data);
+    dialogRef.disableClose = true;
   }
 
   ngOnInit(): void {}

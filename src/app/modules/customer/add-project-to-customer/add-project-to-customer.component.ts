@@ -18,13 +18,15 @@ export class AddProjectToCustomerComponent implements OnInit {
     private dialogRef: MatDialogRef<AddProjectToCustomerComponent>,
     private fb: FormBuilder,
     private projectService: ProjectService
-  ) {}
+  ) {
+    dialogRef.disableClose = true;
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       title: ['', Validators.required],
       location: ['', Validators.required],
-      startedAt: [new Date(), Validators.required],
+      startedAt: [new Date()],
       customerId: [''],
     });
     this.form.controls['customerId'].setValue(this.data.id);

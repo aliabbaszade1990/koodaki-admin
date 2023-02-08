@@ -22,12 +22,15 @@ export class ProjectListComponent implements OnInit {
     'title',
     'location',
     'startDate',
+    'selectedFile',
     'action',
   ];
   disabled = true;
   customerId: string;
   firstName: string;
   lastName: string;
+  showtable: boolean = false;
+  loading: boolean = false;
 
   constructor(
     private projectService: ProjectService,
@@ -55,15 +58,24 @@ export class ProjectListComponent implements OnInit {
   }
 
   getAllProject() {
+    this.loading = true;
     if (this.customerId) {
       this.projectService
         .getByCustomerId(this.customerId)
         .subscribe((res: IProject[]) => {
           this.dataSource = new MatTableDataSource(res);
+          this.loading = false;
+          if (res.length > 0) {
+            this.showtable = true;
+          }
         });
     } else {
       this.projectService.getAll().subscribe((res: IProject[]) => {
         this.dataSource = new MatTableDataSource(res);
+        this.loading = false;
+        if (res.length > 0) {
+          this.showtable = true;
+        }
       });
     }
   }
@@ -71,6 +83,7 @@ export class ProjectListComponent implements OnInit {
   createProject() {
     this.dialog
       .open(ProjectFormComponent, {
+        disableClose: true,
         data: { customerId: this.customerId },
       })
       .afterClosed()
@@ -106,6 +119,7 @@ export class ProjectListComponent implements OnInit {
   onClickDelete(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {
+        disableClose: true,
         data: {
           header: 'حذف پروژه',
           question: `آیا از حذف پروژه ${row.title} مطمئن هستید؟`,

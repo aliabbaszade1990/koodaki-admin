@@ -24,14 +24,16 @@ export class ProjectFormComponent implements OnInit {
     private fb: FormBuilder,
     private projectService: ProjectService,
     private customerService: CustomerService
-  ) {}
+  ) {
+    dialogRef.disableClose = true;
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       id: [],
       title: ['', Validators.required],
       location: ['', Validators.required],
-      startedAt: [new Date(), Validators.required],
+      startedAt: [new Date()],
       isClosed: [''],
       customerId: ['', Validators.required],
     });

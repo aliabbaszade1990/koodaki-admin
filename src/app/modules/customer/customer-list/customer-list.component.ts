@@ -17,8 +17,10 @@ import { ICustomer } from '../dto/customer';
 })
 export class CustomerListComponent implements OnInit, OnDestroy {
   private customerServiceSubscription: Subscription;
-  // dataSource: ICustomer[] = [];
   dataSource: MatTableDataSource<ICustomer>;
+  showtable: boolean = false;
+  loading: boolean = false;
+
   columns = [
     {
       columnDef: 'firstName',
@@ -53,22 +55,26 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   }
 
   getAllCustomer() {
+    this.loading = true;
     this.customerServiceSubscription = this.customerService
       .getAll()
       .subscribe((res: ICustomer[]) => {
         this.dataSource = new MatTableDataSource(res);
+        this.loading = false;
+        if (res.length > 0) {
+          this.showtable = true;
+        }
       });
   }
 
   createCustomer() {
     this.dialog
-      .open(CustomerFormComponent, {})
+      .open(CustomerFormComponent, { disableClose: true })
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
           this.dataSource.data.push(res);
           this.dataSource.data = [...this.dataSource.data];
-
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} ذخیره شد .`
           );
@@ -100,6 +106,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   addProjectToCustomer(row: ICustomer) {
     this.dialog
       .open(AddProjectToCustomerComponent, {
+        disableClose: true,
         data: row,
       })
       .afterClosed()
@@ -115,6 +122,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   deleteCustomer(row: ICustomer) {
     this.dialog
       .open(ConfirmComponent, {
+        disableClose: true,
         data: {
           header: 'حذف کاربر',
           question: `با حذف مشتری پروژه های مشتری نیز حذف میشود.

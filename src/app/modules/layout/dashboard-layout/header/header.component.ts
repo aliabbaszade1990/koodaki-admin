@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/modules/core/services/auth.service';
 import { MenuItem } from 'src/app/shared/interfaces/menu-item.interface';
 @Component({
   selector: 'koodaki-header',
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
     { text: 'پروژه ها', link: 'project/list', icon: 'photo-library' },
   ];
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -39,5 +40,8 @@ export class HeaderComponent implements OnInit {
       }
     }, 0);
     event.stopPropagation();
+  }
+  logout() {
+    this.authService.logout();
   }
 }
