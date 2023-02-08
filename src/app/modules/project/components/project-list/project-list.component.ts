@@ -83,6 +83,7 @@ export class ProjectListComponent implements OnInit {
   createProject() {
     this.dialog
       .open(ProjectFormComponent, {
+        disableClose: true,
         data: { customerId: this.customerId },
       })
       .afterClosed()
@@ -118,6 +119,7 @@ export class ProjectListComponent implements OnInit {
   onClickDelete(row: IProject) {
     this.dialog
       .open(ConfirmComponent, {
+        disableClose: true,
         data: {
           header: 'حذف پروژه',
           question: `آیا از حذف پروژه ${row.title} مطمئن هستید؟`,

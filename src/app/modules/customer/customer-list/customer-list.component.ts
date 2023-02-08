@@ -69,7 +69,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
   createCustomer() {
     this.dialog
-      .open(CustomerFormComponent)
+      .open(CustomerFormComponent, { disableClose: true })
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
@@ -106,6 +106,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   addProjectToCustomer(row: ICustomer) {
     this.dialog
       .open(AddProjectToCustomerComponent, {
+        disableClose: true,
         data: row,
       })
       .afterClosed()
@@ -121,6 +122,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   deleteCustomer(row: ICustomer) {
     this.dialog
       .open(ConfirmComponent, {
+        disableClose: true,
         data: {
           header: 'حذف کاربر',
           question: `با حذف مشتری پروژه های مشتری نیز حذف میشود.

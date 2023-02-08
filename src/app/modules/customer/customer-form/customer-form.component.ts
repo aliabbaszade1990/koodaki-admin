@@ -27,7 +27,9 @@ export class CustomerFormComponent implements OnInit {
     private dialogRef: MatDialogRef<CustomerFormComponent>,
     private fb: FormBuilder,
     private customerService: CustomerService
-  ) {}
+  ) {
+    dialogRef.disableClose = true;
+  }
 
   ngOnInit(): void {
     const pattern = '^09[0|1|2|3][0-9]{8}$';
