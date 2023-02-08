@@ -30,6 +30,8 @@ import {
   MaterialPersianDateAdapter,
   PERSIAN_DATE_FORMATS,
 } from './material/persian-date.adapter';
+import { LoadingModule } from './modules/loading/loading.module';
+import { NoDataFoundModule } from './modules/no-data-found/shared-ui-no-data-found.module';
 
 const modules = [
   MatCardModule,
@@ -47,6 +49,8 @@ const modules = [
   MatCheckboxModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  LoadingModule,
+  NoDataFoundModule,
 ];
 
 @NgModule({

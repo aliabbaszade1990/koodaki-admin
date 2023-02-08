@@ -17,8 +17,10 @@ import { ICustomer } from '../dto/customer';
 })
 export class CustomerListComponent implements OnInit, OnDestroy {
   private customerServiceSubscription: Subscription;
-  // dataSource: ICustomer[] = [];
   dataSource: MatTableDataSource<ICustomer>;
+  showtable: boolean = false;
+  loading: boolean = false;
+
   columns = [
     {
       columnDef: 'firstName',
@@ -53,10 +55,15 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   }
 
   getAllCustomer() {
+    this.loading = true;
     this.customerServiceSubscription = this.customerService
       .getAll()
       .subscribe((res: ICustomer[]) => {
         this.dataSource = new MatTableDataSource(res);
+        this.loading = false;
+        if (res.length > 0) {
+          this.showtable = true;
+        }
       });
   }
 

@@ -30,6 +30,7 @@ export class ProjectListComponent implements OnInit {
   firstName: string;
   lastName: string;
   showtable: boolean = false;
+  loading: boolean = false;
 
   constructor(
     private projectService: ProjectService,
@@ -57,11 +58,13 @@ export class ProjectListComponent implements OnInit {
   }
 
   getAllProject() {
+    this.loading = true;
     if (this.customerId) {
       this.projectService
         .getByCustomerId(this.customerId)
         .subscribe((res: IProject[]) => {
           this.dataSource = new MatTableDataSource(res);
+          this.loading = false;
           if (res.length > 0) {
             this.showtable = true;
           }
@@ -69,6 +72,7 @@ export class ProjectListComponent implements OnInit {
     } else {
       this.projectService.getAll().subscribe((res: IProject[]) => {
         this.dataSource = new MatTableDataSource(res);
+        this.loading = false;
         if (res.length > 0) {
           this.showtable = true;
         }
