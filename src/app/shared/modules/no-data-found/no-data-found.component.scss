@@ -1,0 +1,14 @@
+@import 'settings/settings.scss';
+
+.title {
+  font-weight: 500;
+  color: $main-grey;
+  font-size: $font-size-base;
+}
+
+.icon {
+  font-size: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  color: $main-grey;
+}
