@@ -24,7 +24,7 @@ export class AddProjectToCustomerComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', Validators.required],
       location: ['', Validators.required],
-      startedAt: [new Date(), Validators.required],
+      startedAt: [new Date()],
       customerId: [''],
     });
     this.form.controls['customerId'].setValue(this.data.id);

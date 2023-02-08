@@ -12,16 +12,8 @@
           formControlName="title"
           placeholder="عنوان"
         />
-        <mat-error
-          *ngIf="
-            form.controls['title'].hasError('title') &&
-            !form.controls['title'].hasError('required')
-          "
-        >
-          Please enter a valid title
-        </mat-error>
         <mat-error *ngIf="form.controls['title'].hasError('required')">
-          name is <strong>required</strong>
+          وارد کردن عنوان اجباری است.
         </mat-error>
       </mat-form-field>
 
@@ -33,16 +25,8 @@
           formControlName="location"
           placeholder="مکان"
         />
-        <mat-error
-          *ngIf="
-            form.controls['location'].hasError('location') &&
-            !form.controls['location'].hasError('required')
-          "
-        >
-          Please enter a valid location
-        </mat-error>
         <mat-error *ngIf="form.controls['location'].hasError('required')">
-          location is <strong>required</strong>
+          وارد کردن مکان اجباری است.
         </mat-error>
       </mat-form-field>
 
@@ -56,9 +40,6 @@
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker dir="rtl"></mat-datepicker>
-        <mat-error *ngIf="form.controls['startedAt'].hasError('required')">
-          وارد کردن تاریخ شروع اجباری است .
-        </mat-error>
       </mat-form-field>
     </div>
   </form>
