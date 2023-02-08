@@ -22,6 +22,7 @@ export class ProjectListComponent implements OnInit {
     'title',
     'location',
     'startDate',
+    'selectedFile',
     'action',
   ];
   disabled = true;
