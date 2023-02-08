@@ -62,13 +62,12 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
   createCustomer() {
     this.dialog
-      .open(CustomerFormComponent, {})
+      .open(CustomerFormComponent)
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
           this.dataSource.data.push(res);
           this.dataSource.data = [...this.dataSource.data];
-
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} ذخیره شد .`
           );

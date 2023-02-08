@@ -49,28 +49,29 @@ export class CustomerFormComponent implements OnInit {
 
   sendFormValue() {
     if (this.editMode) {
-      this.update();
+      this.updateCustomer();
       return;
-    }
-    this.creat();
+    } else this.createCustomer();
+    return;
   }
 
-  update() {
+  updateCustomer() {
     this.customer = { ...this.customer, ...this.form.value };
     this.customerService
       .update(this.customer.id, this.customer)
       .subscribe((res) => {
-        this.dialogRef.close(this.customer);
+        this.dialogRef.close(res);
       });
   }
 
-  creat() {
-    this.customer = {} as ICustomer;
-    this.customer.firstName = this.form.value.firstName;
-    this.customer.lastName = this.form.value.lastName;
-    this.customer.phoneNumber = this.form.value.phoneNumber;
+  createCustomer() {
+    const form: Partial<ICustomer> = {
+      firstName: this.form.value['firstName'],
+      lastName: this.form.value['lastName'],
+      phoneNumber: this.form.value['phoneNumber'],
+    };
 
-    this.customerService.create(this.customer).subscribe((res) => {
+    this.customerService.create(form).subscribe((res) => {
       this.dialogRef.close(res);
     });
   }
