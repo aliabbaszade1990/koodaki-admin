@@ -31,7 +31,7 @@ export class ProjectFormComponent implements OnInit {
       id: [],
       title: ['', Validators.required],
       location: ['', Validators.required],
-      startedAt: [new Date(), Validators.required],
+      startedAt: [new Date()],
       isClosed: [''],
       customerId: ['', Validators.required],
     });
