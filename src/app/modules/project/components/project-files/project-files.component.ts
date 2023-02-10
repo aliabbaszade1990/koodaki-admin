@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
+import { FilePagingRequset } from '../../dtos/file-paging-request';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
 import { FileService } from '../../services/file.service';
 
@@ -80,7 +81,12 @@ export class ProjectFilesComponent {
     this.route.params.subscribe((params) => {
       this.projectId = params['id'];
 
-      this.getFiles();
+      const filters: FilePagingRequset = {
+        projectId: this.projectId,
+        page: 1,
+        size: 20,
+      };
+      this.getFiles(filters);
     });
 
     this.uploader = new FileUploader({
@@ -286,9 +292,9 @@ export class ProjectFilesComponent {
     // this.appendToFile();
   }
 
-  getFiles() {
-    this.fileService.getFiles(this.projectId).subscribe((result) => {
-      this.images = result;
+  getFiles(filters: FilePagingRequset) {
+    this.fileService.getAll(filters).subscribe((result) => {
+      this.images = result.items;
       this.currentItem = this.images[0];
       this.currentItem.isCurrentItem = true;
     });
