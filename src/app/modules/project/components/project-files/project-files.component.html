@@ -3,7 +3,7 @@
 >
   <!-- List -->
   <div class="list basis-[15rem] border-l">
-    <div class="list_items p-3 relative overflow-y-auto bg-white">
+    <div class="list_items p-6 relative overflow-y-auto bg-white">
       <koodaki-image-list
         [list]="images"
         (clickImage)="onClickImage($event)"
@@ -13,8 +13,7 @@
     <div class="list_pagination">
       <koodaki-paginator
         [config]="paginatorConfig"
-        (clickNext)="onClickNext($event)"
-        (clickPrevious)="onClickPrevious($event)"
+        (changePage)="onChangePage($event)"
       ></koodaki-paginator>
     </div>
     <!-- Filter -->

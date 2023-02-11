@@ -3,14 +3,12 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ToaterService {
-  /**
-   *
-   */
   constructor(private _snackBar: MatSnackBar) {}
 
   success(message: string, action?: string, config?: MatSnackBarConfig<any>) {
     this._snackBar.open(message, action, {
       ...config,
+      horizontalPosition: 'left',
       panelClass: ['success'],
     });
   }
@@ -18,6 +16,7 @@ export class ToaterService {
   warning(message: string, action?: string, config?: MatSnackBarConfig<any>) {
     this._snackBar.open(message, action, {
       ...config,
+      horizontalPosition: 'left',
       panelClass: ['warning'],
     });
   }
@@ -25,6 +24,7 @@ export class ToaterService {
   error(message: string, action?: string, config?: MatSnackBarConfig<any>) {
     this._snackBar.open(message, action, {
       ...config,
+      horizontalPosition: 'left',
       panelClass: ['error'],
     });
   }
@@ -32,6 +32,7 @@ export class ToaterService {
   info(message: string, action?: string, config?: MatSnackBarConfig<any>) {
     this._snackBar.open(message, action, {
       ...config,
+      horizontalPosition: 'left',
       panelClass: ['info'],
     });
   }
