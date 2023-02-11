@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -47,8 +48,11 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     private customerService: CustomerService,
     public dialog: MatDialog,
     private toasterService: ToaterService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private paginator: MatPaginatorIntl
+  ) {
+    paginator.itemsPerPageLabel = 'تعداد مشتری';
+  }
 
   ngOnInit(): void {
     this.getAllCustomer();
@@ -75,6 +79,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         if (res) {
           this.dataSource.data.push(res);
           this.dataSource.data = [...this.dataSource.data];
+          this.showtable = true;
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} ذخیره شد .`
           );
@@ -138,7 +143,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
             this.dataSource.data = [
               ...this.dataSource.data.filter((item) => item.id !== row.id),
             ];
-
+            this.showtable = false;
             this.toasterService.success(
               `کاربر ${row.firstName} ${row.lastName} حذف شد .`
             );

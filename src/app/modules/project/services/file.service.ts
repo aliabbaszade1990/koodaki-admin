@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -10,11 +10,21 @@ export class FileService {
 
   private endpoint = 'file';
   upload(file: FormData, id: string): Observable<any> {
-    return this.http.post<any>(`${this.endpoint}?projectId=${id}`, file).pipe(
-      catchError((e: any) => {
-        return throwError(() => e);
-      })
-    );
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data');
+
+    const options: any = {
+      headers: headers,
+      reportProgress: true,
+      observe: 'events',
+    };
+    return this.http
+      .post<any>(`${this.endpoint}?projectId=${id}`, file, options)
+      .pipe(
+        catchError((e: any) => {
+          return throwError(() => e);
+        })
+      );
   }
 
   getFiles(projectId: string): Observable<any> {
