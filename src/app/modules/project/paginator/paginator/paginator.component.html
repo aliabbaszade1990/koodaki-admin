@@ -2,6 +2,8 @@
   <input
     type="text"
     [value]="config && config.page"
+    (change)="onChagePage(pageInput.value)"
+    #pageInput
     dir="ltr"
     class="
       flex-none
@@ -15,16 +17,33 @@
   />
   <div class="text-center grow self-center">از {{ totalPages }}</div>
   <button
-    class="flex-none basis-[3rem] border-none bg-gray-200 cursor-pointer ml-1"
+    class="
+      flex-none
+      basis-[3rem]
+      border-none
+      bg-gray-200
+      cursor-pointer
+      ml-1
+      disabled:select-none
+      disabled:opacity-40
+    "
     [disabled]="config && config.page === 1"
-    (click)="onClickNext()"
+    (click)="onClickPrevious()"
   >
     &#9654;
   </button>
   <button
-    class="flex-none basis-[3rem] border-none bg-gray-200 cursor-pointer"
+    class="
+      flex-none
+      basis-[3rem]
+      border-none
+      bg-gray-200
+      cursor-pointer
+      disabled:select-none
+      disabled:opacity-40
+    "
     [disabled]="config && !config.hasNext"
-    (click)="onClickPrevious()"
+    (click)="onClickNext()"
   >
     &#9664;
   </button>
