@@ -15,6 +15,7 @@ import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
 import { finalize, map, tap } from 'rxjs';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
 import { ToaterService } from 'src/app/shared/services/toater.service';
+import { FilePagingRequset } from '../../dtos/file-paging-request';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
 import { FileService } from '../../services/file.service';
 
@@ -92,10 +93,17 @@ export class ProjectFilesComponent {
     };
   }
 
+  filter: FilePagingRequset = {
+    page: 1,
+    size: 20,
+    search: '',
+    projectId: '',
+  };
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.projectId = params['id'];
 
+      this.filter.projectId = params['id'];
       this.getFiles();
     });
 
@@ -216,42 +224,8 @@ export class ProjectFilesComponent {
 
   uploadAllFile() {
     this.appendToFile();
-    this.fileService.upload(this.formData, this.projectId).subscribe({
-      next: () => {
-        this.uploader.queue.forEach((element: FileItem) => {
-          this.uploadFileItem(element);
-        });
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {},
-    });
-  }
-
-  handleUploadComplete() {
-    this.newFormData();
-    this.fileService.getFiles(this.projectId).subscribe({
-      next: (result) => {
-        for (const key in result) {
-          if (Object.prototype.hasOwnProperty.call(result, key)) {
-            const fileName = result[key];
-            this.uploader.queue.forEach((element) => {
-              if (element._file.name === fileName.name)
-                this.removeFromQueue(element);
-              this.setDataSource(this.uploader.queue);
-              this.getFiles();
-              this.toasterService.success(
-                `فایل ${fileName.name} با موفقیت بارگذاری شد.`
-              );
-            });
-          }
-        }
-      },
-      error: (error) => {
-        if (error) this.toasterService.error(error.message);
-        this.newFormData();
-      },
+    this.uploader.queue.forEach((element: FileItem) => {
+      this.uploadFileItem(element);
     });
   }
 
@@ -268,30 +242,12 @@ export class ProjectFilesComponent {
         this.handleUpdate(res, row);
       },
       error: (error) => {
-        this.handleUpdate(error, row);
         row.progress = 0;
         this.toasterService.error(error.message);
       },
-      complete: () => {
-        if (row.progress === 100) {
-          this.fileService.getFiles(this.projectId).subscribe((result) => {
-            for (let i = 0; i < result.length; i++) {
-              const fileName = result[i];
-              if (row._file.name === fileName.name) {
-                this.removeFromQueue(row);
-                this.setDataSource(this.uploader.queue);
-                this.getFiles();
-                this.toasterService.success(
-                  `فایل ${fileName.name} با موفقیت بارگذاری شد.`
-                );
-              }
-            }
-          });
-          row.progress = 0;
-        }
-      },
     });
   }
+
   handleUpdate(event: HttpEvent<any>, row: FileItem): void {
     switch (event.type) {
       case HttpEventType.Response:
@@ -301,6 +257,12 @@ export class ProjectFilesComponent {
           (100 * event.loaded) / (event.total as number)
         );
         row.progress = percentage;
+        if (
+          row.progress === 100 &&
+          ((this.images.length < (this.filter as any).size) as any)
+        ) {
+          this.getFiles();
+        }
         break;
     }
   }
@@ -357,9 +319,10 @@ export class ProjectFilesComponent {
   }
 
   getFiles() {
-    this.fileService.getFiles(this.projectId).subscribe((result) => {
-      this.images = result;
-      if (this.images.length) {
+    this.fileService.getAll(this.filter).subscribe((result) => {
+      this.images = result.items;
+
+      if (this.images && this.images.length) {
         this.currentItem = this.images[0];
         this.currentItem.isCurrentItem = true;
       }

@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
+import { PagingRequset } from 'src/app/shared/dtos/paging-request';
+import { PagingResponse } from 'src/app/shared/dtos/paging-response';
 import { ToaterService } from 'src/app/shared/services/toater.service';
 import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
@@ -55,17 +57,17 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAllCustomer();
+    this.getAllCustomer({ page: 1, size: 20, search: '' });
   }
 
-  getAllCustomer() {
+  getAllCustomer(filters: PagingRequset) {
     this.loading = true;
     this.customerServiceSubscription = this.customerService
-      .getAll()
-      .subscribe((res: ICustomer[]) => {
-        this.dataSource = new MatTableDataSource(res);
+      .getAll(filters)
+      .subscribe((res: PagingResponse<ICustomer>) => {
+        this.dataSource = new MatTableDataSource(res.items);
         this.loading = false;
-        if (res.length > 0) {
+        if (res.items.length > 0) {
           this.showtable = true;
         }
       });

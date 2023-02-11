@@ -6,8 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/modules/customer/customer.service';
 import { ICustomer } from 'src/app/modules/customer/dto/customer';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
+import { PagingResponse } from 'src/app/shared/dtos/paging-response';
 import { ToaterService } from 'src/app/shared/services/toater.service';
 import { IProject } from '../../dtos/project';
+import { ProjectPagingRequset } from '../../dtos/project-paging-request';
 import { ProjectService } from '../../project.service';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 
@@ -47,41 +49,36 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
-    this.getAllProject();
-    this.getCustomer();
+    this.getAllProject({
+      customerId: this.customerId,
+      page: 1,
+      size: 20,
+      search: undefined,
+    });
+    if (this.customerId) this.getCustomer();
   }
 
   getCustomer() {
-    this.customerService.getAll().subscribe((res: ICustomer[]) => {
-      const customer = res.find(
-        (item: ICustomer) => item.id === this.customerId
-      );
-      this.firstName = customer?.firstName as string;
-      this.lastName = customer?.lastName as string;
-    });
+    this.customerService
+      .getById(this.customerId)
+      .subscribe((res: ICustomer) => {
+        const customer = res;
+        this.firstName = customer?.firstName as string;
+        this.lastName = customer?.lastName as string;
+      });
   }
 
-  getAllProject() {
+  getAllProject(filters?: ProjectPagingRequset) {
     this.loading = true;
-    if (this.customerId) {
-      this.projectService
-        .getByCustomerId(this.customerId)
-        .subscribe((res: IProject[]) => {
-          this.dataSource = new MatTableDataSource(res);
-          this.loading = false;
-          if (res.length > 0) {
-            this.showtable = true;
-          }
-        });
-    } else {
-      this.projectService.getAll().subscribe((res: IProject[]) => {
-        this.dataSource = new MatTableDataSource(res);
+    this.projectService
+      .getAll(filters)
+      .subscribe((res: PagingResponse<IProject>) => {
+        this.dataSource = new MatTableDataSource(res.items);
         this.loading = false;
-        if (res.length > 0) {
+        if (res.items.length > 0) {
           this.showtable = true;
         }
       });
-    }
   }
 
   createProject() {
