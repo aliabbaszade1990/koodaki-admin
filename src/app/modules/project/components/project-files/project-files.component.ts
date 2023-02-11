@@ -1,9 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
+import {
+  MatTableDataSource,
+  MatTableDataSourcePaginator,
+} from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
+import { finalize, map, tap } from 'rxjs';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
+import { ToaterService } from 'src/app/shared/services/toater.service';
 import { FilePagingRequset } from '../../dtos/file-paging-request';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
 import { FileService } from '../../services/file.service';
@@ -15,6 +26,7 @@ const URL =
   selector: 'koodaki-project-files',
   templateUrl: './project-files.component.html',
   styleUrls: ['./project-files.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectFilesComponent {
   images: GetFileDto[] = [];
@@ -26,9 +38,11 @@ export class ProjectFilesComponent {
   };
   currentItem: GetFileDto;
   choosenOnesControl = new FormControl(false);
-
+  uploadProgress: number = 0;
   onClickImage(image: GetFileDto) {
-    this.currentItem.isCurrentItem = false;
+    if (this.currentItem) {
+      this.currentItem.isCurrentItem = false;
+    }
     this.currentItem = image;
     this.currentItem.isCurrentItem = true;
   }
@@ -68,6 +82,8 @@ export class ProjectFilesComponent {
 
   constructor(
     private fileService: FileService,
+    private toasterService: ToaterService,
+    private cd: ChangeDetectorRef,
     private route: ActivatedRoute
   ) {}
 
@@ -77,16 +93,18 @@ export class ProjectFilesComponent {
     };
   }
 
+  filter: FilePagingRequset = {
+    page: 1,
+    size: 20,
+    search: '',
+    projectId: '',
+  };
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.projectId = params['id'];
 
-      const filters: FilePagingRequset = {
-        projectId: this.projectId,
-        page: 1,
-        size: 20,
-      };
-      this.getFiles(filters);
+      this.filter.projectId = params['id'];
+      this.getFiles();
     });
 
     this.uploader = new FileUploader({
@@ -168,6 +186,7 @@ export class ProjectFilesComponent {
     this.cancelFile(item);
     this.fileInput.nativeElement.value = '';
     this.uploader.queue.push(item);
+    this.toasterService.info(`بار گذاری فایل ${item._file.name} متوقف شد.`);
   }
 
   onErrorItem(
@@ -178,7 +197,11 @@ export class ProjectFilesComponent {
   ): any {
     this.fileInput.nativeElement.value = '';
     this.uploader.queue.push(item);
-    this.dataSource = new MatTableDataSource(this.uploader.queue);
+    // this.dataSource = new MatTableDataSource(this.uploader.queue);
+    this.setDataSource(this.uploader.queue);
+    this.toasterService.error(
+      `بارگذاری فایل ${item._file.name} با خطا مواجه شد.`
+    );
   }
 
   checkTypeFileInArray(type: string): boolean {
@@ -201,48 +224,47 @@ export class ProjectFilesComponent {
 
   uploadAllFile() {
     this.appendToFile();
-    this.fileService.upload(this.formData, this.projectId).subscribe({
-      next: (result) => {
-        this.newFormData();
-        for (const key in result) {
-          if (Object.prototype.hasOwnProperty.call(result, key)) {
-            const fileName = result[key];
-            this.uploader.queue.forEach((element) => {
-              if (element._file.name === fileName.name)
-                this.removeFromQueue(element);
-              this.dataSource = new MatTableDataSource(this.uploader.queue);
-              // alert('upload successfuly!');
-            });
-          }
-        }
-      },
-      error: (result) => {
-        this.newFormData();
-        console.log(result.message);
-      },
+    this.uploader.queue.forEach((element: FileItem) => {
+      this.uploadFileItem(element);
     });
+  }
+
+  setDataSource(
+    data: FileItem[]
+  ): MatTableDataSource<FileItem, MatTableDataSourcePaginator> {
+    return (this.dataSource = new MatTableDataSource(data));
   }
 
   uploadFileItem(row: FileItem) {
     this.formData.append('files', row._file);
     this.fileService.upload(this.formData, this.projectId).subscribe({
-      next: (result) => {
-        this.newFormData();
-        for (const key in result) {
-          if (Object.prototype.hasOwnProperty.call(result, key)) {
-            const fileName = result[key];
-            if (row._file.name === fileName.name) {
-              this.removeFromQueue(row);
-              this.dataSource = new MatTableDataSource(this.uploader.queue);
-            }
-          }
-        }
+      next: (res) => {
+        this.handleUpdate(res, row);
       },
       error: (error) => {
-        if (error) console.log(error.message);
-        this.newFormData();
+        row.progress = 0;
+        this.toasterService.error(error.message);
       },
     });
+  }
+
+  handleUpdate(event: HttpEvent<any>, row: FileItem): void {
+    switch (event.type) {
+      case HttpEventType.Response:
+        break;
+      case HttpEventType.UploadProgress:
+        const percentage = Math.round(
+          (100 * event.loaded) / (event.total as number)
+        );
+        row.progress = percentage;
+        if (
+          row.progress === 100 &&
+          ((this.images.length < (this.filter as any).size) as any)
+        ) {
+          this.getFiles();
+        }
+        break;
+    }
   }
 
   cancelFile(row: FileItem) {
@@ -251,12 +273,15 @@ export class ProjectFilesComponent {
 
   deleteFile(row: FileItem) {
     this.removeFromQueue(row);
-    this.dataSource = new MatTableDataSource(this.uploader.queue);
+    // this.dataSource = new MatTableDataSource(this.uploader.queue);
+    this.setDataSource(this.uploader.queue);
+    this.toasterService.success(`فایل ${row._file.name} حذف شد.`);
   }
 
   onFileSelected(event: File[]) {
     this.removeDuplicatItemFromQueue();
-    this.dataSource = new MatTableDataSource(this.uploader.queue);
+    // this.dataSource = new MatTableDataSource(this.uploader.queue);
+    this.setDataSource(this.uploader.queue);
   }
 
   public fileOverBase(e: any): void {
@@ -288,15 +313,19 @@ export class ProjectFilesComponent {
     console.log('droppedFile', e);
     this.removeDuplicatItemFromQueue();
     this.checkFileTypeWhenSelectFile();
-    this.dataSource = new MatTableDataSource(this.uploader.queue);
+    this.setDataSource(this.uploader.queue);
+    // this.dataSource = new MatTableDataSource(this.uploader.queue);
     // this.appendToFile();
   }
 
-  getFiles(filters: FilePagingRequset) {
-    this.fileService.getAll(filters).subscribe((result) => {
+  getFiles() {
+    this.fileService.getAll(this.filter).subscribe((result) => {
       this.images = result.items;
-      this.currentItem = this.images[0];
-      this.currentItem.isCurrentItem = true;
+
+      if (this.images && this.images.length) {
+        this.currentItem = this.images[0];
+        this.currentItem.isCurrentItem = true;
+      }
     });
   }
 }

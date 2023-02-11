@@ -3,7 +3,7 @@
 >
   <!-- List -->
   <div class="list basis-[15rem] border-l">
-    <div class="list_items p-3 relative overflow-y-auto bg-white" #imageList>
+    <div class="list_items p-3 relative overflow-y-auto bg-white">
       <koodaki-image-list
         [list]="images"
         (clickImage)="onClickImage($event)"
@@ -150,10 +150,13 @@
             <td mat-cell *matCellDef="let element">
               <mat-progress-bar
                 mode="determinate"
-                [value]="element.uploader.progress"
+                [value]="element.progress"
+                [ngStyle]="{
+                  width: element.progress + '%',
+                  height: '5px'
+                }"
               ></mat-progress-bar>
-              {{ element.progress }}
-              {{ element.uploader.progress }}
+              {{ element.progress }}%
             </td>
           </ng-container>
 

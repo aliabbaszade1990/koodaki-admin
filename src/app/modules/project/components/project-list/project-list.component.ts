@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/modules/customer/customer.service';
@@ -40,8 +41,11 @@ export class ProjectListComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private toasterService: ToaterService,
-    private customerService: CustomerService
-  ) {}
+    private customerService: CustomerService,
+    private paginator: MatPaginatorIntl
+  ) {
+    paginator.itemsPerPageLabel = 'تعداد پروژه ها';
+  }
 
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
@@ -88,7 +92,7 @@ export class ProjectListComponent implements OnInit {
         if (result) {
           this.dataSource.data.push(result);
           this.dataSource.data = [...this.dataSource.data];
-
+          this.showtable = true;
           this.toasterService.success(`پروژه ${result.title} ذخیره شد .`);
         }
       });
@@ -131,6 +135,7 @@ export class ProjectListComponent implements OnInit {
             this.dataSource.data = [
               ...this.dataSource.data.filter((item) => item.id !== row.id),
             ];
+            this.showtable = false;
             this.toasterService.success(`پروژه ${row.title} حذف شد .`);
           });
         }

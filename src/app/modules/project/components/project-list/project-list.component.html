@@ -85,9 +85,19 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <mat-paginator
+    class="pt-10 pb-4"
+    *ngIf="showtable && !loading"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
   <koodaki-loading
     *ngIf="loading"
     class="flex justify-center"
   ></koodaki-loading>
-  <koodaki-no-data-found *ngIf="!showtable && !loading"></koodaki-no-data-found>
+  <koodaki-no-data-found
+    *ngIf="!showtable && !loading && dataSource.data.length === 0"
+  ></koodaki-no-data-found>
 </div>
