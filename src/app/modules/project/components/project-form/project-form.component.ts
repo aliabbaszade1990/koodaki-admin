@@ -49,9 +49,11 @@ export class ProjectFormComponent implements OnInit {
   }
 
   getCustomers() {
-    this.customerService.getAll().subscribe((result) => {
-      this.customers = result;
-    });
+    this.customerService
+      .getAll({ page: 1, size: 20, search: '' })
+      .subscribe((result) => {
+        this.customers = result.items;
+      });
   }
 
   sendFormValue() {
