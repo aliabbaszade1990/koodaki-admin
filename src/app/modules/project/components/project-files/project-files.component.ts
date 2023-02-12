@@ -3,6 +3,8 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -75,7 +77,8 @@ export class ProjectFilesComponent {
     private fileService: FileService,
     private toasterService: ToaterService,
     private cd: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private renderer: Renderer2
   ) {}
 
   ngAfterViewInit() {
@@ -199,11 +202,20 @@ export class ProjectFilesComponent {
           (100 * event.loaded) / (event.total as number)
         );
         row.progress = percentage;
+        this.cd.detectChanges();
         if (
           row.progress === 100 &&
           ((this.images.length < (this.fileListParams as any).size) as any)
         ) {
           this.getFiles();
+        }
+        if (row.progress === 100) {
+          this.removeFromQueue(row);
+          this.setDataSource(this.uploader.queue);
+          this.cd.detectChanges();
+          this.toasterService.success(
+            `فایل ${row._file.name} با موفقیت بارگذاری شد.`
+          );
         }
         break;
     }
@@ -215,14 +227,12 @@ export class ProjectFilesComponent {
 
   deleteFile(row: FileItem) {
     this.removeFromQueue(row);
-    // this.dataSource = new MatTableDataSource(this.uploader.queue);
     this.setDataSource(this.uploader.queue);
     this.toasterService.success(`فایل ${row._file.name} حذف شد.`);
   }
 
   onFileSelected(event: File[]) {
     this.removeDuplicatItemFromQueue();
-    // this.dataSource = new MatTableDataSource(this.uploader.queue);
     this.setDataSource(this.uploader.queue);
   }
 
@@ -270,16 +280,80 @@ export class ProjectFilesComponent {
         total: result.total,
         hasNext: result.hasNext,
       };
-      this.cd.detectChanges();
+
       if (this.images && this.images.length) {
         this.currentItem = this.images[0];
         this.currentItem.isCurrentItem = true;
       }
+      this.cd.detectChanges();
     });
   }
 
   onChangePage(page: number) {
     this.fileListParams.page = page;
     this.getFiles();
+  }
+
+  onClickNavigationNext() {
+    let indexOfCurrentElement = this.images.indexOf(
+      this.images.find((i) => i.isCurrentItem) as GetFileDto
+    );
+    this.currentItem.isCurrentItem = false;
+    let nextEelement = this.images[indexOfCurrentElement + 1];
+    this.currentItem = nextEelement || this.images[this.images.length - 1];
+    this.currentItem.isCurrentItem = true;
+
+    this.manageScrollingList(indexOfCurrentElement + 1);
+    this.resetRotation();
+  }
+
+  @ViewChild('imageList') imageList: ElementRef = new ElementRef(null);
+  manageScrollingList(index: number, scrollingDown = true) {
+    let el = document.getElementById(`${this.images[index]}`);
+
+    this.imageList.nativeElement.scrollTop = index * (113 + 12);
+  }
+
+  onClickNavigationPreviouse() {
+    let indexOfCurrentElement = this.images.indexOf(
+      this.images.find((i) => i.isCurrentItem) as GetFileDto
+    );
+    this.currentItem.isCurrentItem = false;
+    let previouseEelement = this.images[indexOfCurrentElement - 1];
+
+    this.currentItem = previouseEelement || this.images[0];
+    this.currentItem.isCurrentItem = true;
+
+    this.manageScrollingList(indexOfCurrentElement - 1, false);
+    this.resetRotation();
+  }
+
+  resetRotation() {
+    this.rotationDegree = 0;
+  }
+
+  @ViewChild('slider') slider: ElementRef = new ElementRef(null);
+  @ViewChild('image') image: ElementRef = new ElementRef(null);
+  rotationDegree = 0;
+  onClickRotate() {
+    this.rotationDegree = this.rotationDegree - 90;
+
+    this.renderer.setStyle(
+      this.image.nativeElement,
+      'transform',
+      `rotate(${this.rotationDegree}deg)`
+    );
+
+    this.renderer.setStyle(
+      this.image.nativeElement,
+      'max-width',
+      this.imageIsVertical(this.rotationDegree)
+        ? `${this.slider.nativeElement.offsetHeight}px`
+        : '100%'
+    );
+  }
+
+  imageIsVertical(degree: number): boolean {
+    return degree === -90 || degree === -270;
   }
 }

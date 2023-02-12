@@ -1,11 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
 
 @Component({
@@ -13,15 +6,10 @@ import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
   templateUrl: './image-list.component.html',
   styleUrls: ['./image-list.component.scss'],
 })
-export class ImageListComponent implements OnChanges {
+export class ImageListComponent {
   @Input() list: any[] = [];
   @Output() clickImage: EventEmitter<GetFileDto> = new EventEmitter();
   onClickImage(image: GetFileDto) {
     this.clickImage.emit(image);
-  }
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnChanges(): void {
-    console.log(this.list);
   }
 }
