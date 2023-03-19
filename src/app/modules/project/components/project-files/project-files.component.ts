@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -81,6 +82,18 @@ export class ProjectFilesComponent {
     private renderer: Renderer2
   ) {}
 
+  @HostListener('window:keydown.ArrowRight', ['$event'])
+  @HostListener('window:keydown.ArrowDown', ['$event'])
+  onArrowRightAndBottom() {
+    this.onClickNavigationNext();
+  }
+
+  @HostListener('window:keydown.ArrowLeft', ['$event'])
+  @HostListener('window:keydown.ArrowUp', ['$event'])
+  onArrowLeftAndUp() {
+    this.onClickNavigationPreviouse();
+  }
+
   ngAfterViewInit() {
     this.uploader.onAfterAddingFile = (item) => {
       item.withCredentials = false;
@@ -140,9 +153,25 @@ export class ProjectFilesComponent {
 
   observeCheckbox() {
     this.choosenOnesControl.valueChanges.subscribe((value) => {
+      this.resetFileListParams();
       this.fileListParams.selected = value as boolean;
+      this.resetPaginatorConfig();
       this.getFiles();
     });
+  }
+
+  resetFileListParams() {
+    this.fileListParams = new FileListParams(this.projectId);
+    // this.fileListParams.size = 20;
+  }
+
+  resetPaginatorConfig() {
+    this.paginatorConfig = {
+      total: 0,
+      page: this.fileListParams.page,
+      size: this.fileListParams.size,
+      hasNext: true,
+    };
   }
 
   onCompleteItem(item: FileItem, response: any, status: any, headers: any) {
@@ -291,6 +320,7 @@ export class ProjectFilesComponent {
 
   onChangePage(page: number) {
     this.fileListParams.page = page;
+    this.scrollTo(0);
     this.getFiles();
   }
 
@@ -310,8 +340,11 @@ export class ProjectFilesComponent {
   @ViewChild('imageList') imageList: ElementRef = new ElementRef(null);
   manageScrollingList(index: number, scrollingDown = true) {
     let el = document.getElementById(`${this.images[index]}`);
+    this.scrollTo(index * (113 + 12));
+  }
 
-    this.imageList.nativeElement.scrollTop = index * (113 + 12);
+  scrollTo(to: number) {
+    this.imageList.nativeElement.scrollTop = to;
   }
 
   onClickNavigationPreviouse() {

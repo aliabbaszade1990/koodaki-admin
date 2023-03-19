@@ -35,6 +35,8 @@
           matInput
           formControlName="phoneNumber"
           placeholder="09121234567"
+          dir="ltr"
+          maxlength="11"
         />
         <mat-error *ngIf="form.controls['phoneNumber'].hasError('required')">
           وارد کردن شماره تماس اجباری است.

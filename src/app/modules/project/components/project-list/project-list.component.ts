@@ -9,7 +9,7 @@ import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.comp
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
 import { ToaterService } from 'src/app/shared/services/toater.service';
 import { IProject } from '../../dtos/project';
-import { ProjectPagingRequset } from '../../dtos/project-paging-request';
+import { ProjectListParams } from '../../dtos/project-list-params.dto';
 import { ProjectService } from '../../project.service';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 
@@ -49,12 +49,8 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
-    this.getAllProject({
-      customerId: this.customerId,
-      page: 1,
-      size: 20,
-      search: undefined,
-    });
+    this.initializeProjectListParams();
+    this.getAllProjects();
     if (this.customerId) this.getCustomer();
   }
 
@@ -68,10 +64,15 @@ export class ProjectListComponent implements OnInit {
       });
   }
 
-  getAllProject(filters?: ProjectPagingRequset) {
+  projectListParams: ProjectListParams;
+  initializeProjectListParams() {
+    this.projectListParams = new ProjectListParams(10, 0, this.customerId);
+  }
+
+  getAllProjects() {
     this.loading = true;
     this.projectService
-      .getAll(filters)
+      .getAll(this.projectListParams)
       .subscribe((res: PagingResponse<IProject>) => {
         this.dataSource = new MatTableDataSource(res.items);
         this.loading = false;
@@ -93,7 +94,7 @@ export class ProjectListComponent implements OnInit {
           this.dataSource.data.push(result);
           this.dataSource.data = [...this.dataSource.data];
           this.showtable = true;
-          this.toasterService.success(`پروژه ${result.title} ذخیره شد .`);
+          this.toasterService.success(`پروژه ${result.title} ذخیره شد.`);
         }
       });
   }
@@ -106,13 +107,8 @@ export class ProjectListComponent implements OnInit {
       .afterClosed()
       .subscribe((result: IProject) => {
         if (result) {
-          this.dataSource.data.splice(
-            this.dataSource.data.findIndex((item) => item.id === result.id),
-            1,
-            result
-          );
-          this.dataSource.data = [...this.dataSource.data];
-          this.toasterService.success(`پروژه ${result.title} ویرایش شد .`);
+          this.getAllProjects();
+          this.toasterService.success(`پروژه ${result.title} ویرایش شد.`);
         }
       });
   }
@@ -136,7 +132,7 @@ export class ProjectListComponent implements OnInit {
               ...this.dataSource.data.filter((item) => item.id !== row.id),
             ];
             this.showtable = false;
-            this.toasterService.success(`پروژه ${row.title} حذف شد .`);
+            this.toasterService.success(`پروژه ${row.title} حذف شد.`);
           });
         }
       });

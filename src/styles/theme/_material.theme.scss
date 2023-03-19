@@ -1,28 +1,27 @@
 @use "@angular/material" as mat;
-@include mat.core();
 
 $material-primary-color: (
-  50: #faefeb,
-  100: #f3d7ce,
-  200: #ecbcad,
-  300: #e4a18c,
-  400: #de8d73,
-  500: #d8795a,
-  600: #d47152,
-  700: #ce6648,
-  800: #c85c3f,
-  900: #bf492e,
-  A100: #ffffff,
-  A200: #ffd7ce,
-  A400: #ffad9b,
-  A700: #ff9782,
+  50: #e0f9f5,
+  100: #b3f0e6,
+  200: #80e7d6,
+  300: #4dddc5,
+  400: #26d5b8,
+  500: #00ceac,
+  600: #00c9a5,
+  700: #00c29b,
+  800: #00bc92,
+  900: #00b082,
+  A100: #dafff4,
+  A200: #a7ffe4,
+  A400: #74ffd5,
+  A700: #5affcd,
   contrast: (
     50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
     400: #000000,
-    500: #ffffff,
+    500: #000000,
     600: #000000,
     700: #000000,
     800: #ffffff,
@@ -35,20 +34,20 @@ $material-primary-color: (
 );
 
 $material-accent-color: (
-  50: #edf6f4,
-  100: #d2e9e4,
-  200: #b4dad3,
-  300: #96cbc1,
-  400: #80c0b3,
-  500: #69b5a6,
-  600: #61ae9e,
-  700: #56a595,
-  800: #4c9d8b,
-  900: #3b8d7b,
-  A100: #defff7,
-  A200: #abffeb,
-  A400: #78ffdf,
-  A700: #5effd9,
+  50: #fff5f0,
+  100: #ffe6da,
+  200: #ffd5c2,
+  300: #ffc4aa,
+  400: #ffb897,
+  500: #ffab85,
+  600: #ffa47d,
+  700: #ff9a72,
+  800: #ff9168,
+  900: #ff8055,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #fffbfa,
+  A700: #ffe8e0,
   contrast: (
     50: #000000,
     100: #000000,
@@ -59,7 +58,7 @@ $material-accent-color: (
     600: #000000,
     700: #000000,
     800: #000000,
-    900: #ffffff,
+    900: #000000,
     A100: #000000,
     A200: #000000,
     A400: #000000,
@@ -68,20 +67,20 @@ $material-accent-color: (
 );
 
 $material-warn-color: (
-  50: #ffe2e5,
-  100: #ffb6bf,
-  200: #ff8595,
-  300: #ff546a,
-  400: #ff2f4a,
-  500: #ff0a2a,
-  600: #ff0925,
-  700: #ff071f,
-  800: #ff0519,
-  900: #ff030f,
+  50: #ffe5e8,
+  100: #ffbdc6,
+  200: #ff91a0,
+  300: #ff6579,
+  400: #ff445d,
+  500: #ff2340,
+  600: #ff1f3a,
+  700: #ff1a32,
+  800: #ff152a,
+  900: #ff0c1c,
   A100: #ffffff,
-  A200: #fff2f3,
-  A400: #ffbfc1,
-  A700: #ffa6a8,
+  A200: #fff6f6,
+  A400: #ffc3c6,
+  A700: #ffa9ad,
   contrast: (
     50: #000000,
     100: #000000,
@@ -117,11 +116,13 @@ $koodaki-theme: mat.define-light-theme(
     density: 0,
   )
 );
-$form-field-theme: mat.define-light-theme(
+$more-dense: mat.define-light-theme(
   (
     density: -2,
   )
 );
 
 @include mat.all-component-themes($koodaki-theme);
-@include mat.form-field-theme($form-field-theme);
+@include mat.form-field-theme($more-dense);
+@include mat.icon-theme($more-dense);
+@include mat.icon-button-theme($more-dense);

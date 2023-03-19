@@ -3,5 +3,5 @@ export interface ICustomer {
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  createAt: string;
+  createdAt: string;
 }

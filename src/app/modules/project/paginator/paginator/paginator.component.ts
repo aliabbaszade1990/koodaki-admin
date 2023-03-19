@@ -13,7 +13,7 @@ export class PaginatorComponent {
   @Output() changePage: EventEmitter<number> = new EventEmitter();
 
   get totalPages() {
-    return this.config ? Math.floor(this.config.total / this.config.size) : 0;
+    return this.config ? Math.ceil(this.config.total / this.config.size) : 0;
   }
 
   onClickNext() {
@@ -33,7 +33,7 @@ export class PaginatorComponent {
   onChagePage(page: any) {
     const pageNumber = Number(page);
     if (pageNumber < 1) {
-      const message: string = `شماره صفحه نمی تواند بیشتر از ۱ باشد`;
+      const message: string = `شماره صفحه نمی تواند کمتر از ۱ باشد`;
       this.toaster.warning(message);
     } else if (pageNumber > this.totalPages) {
       const message: string = `شماره صفحه نمی تواند بیشتر از ${this.totalPages} باشد`;

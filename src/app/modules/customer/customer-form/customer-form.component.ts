@@ -42,6 +42,7 @@ export class CustomerFormComponent implements OnInit {
     if (this.data) {
       this.title = `ویرایش اطلاعات ${this.data.firstName} ${this.data.lastName}`;
       this.customer = this.data;
+      this.customer.phoneNumber = this.customer.phoneNumber.replace('+98', '0');
       this.form.patchValue(this.customer);
       this.editMode = true;
     } else {
@@ -50,6 +51,9 @@ export class CustomerFormComponent implements OnInit {
   }
 
   sendFormValue() {
+    this.form.controls['phoneNumber'].setValue(
+      (this.form.controls['phoneNumber'].value as string).replace('0', '+98')
+    );
     if (this.editMode) {
       this.updateCustomer();
       return;
