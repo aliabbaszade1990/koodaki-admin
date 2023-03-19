@@ -5,9 +5,7 @@
   $page-height: calc(100vh - $navbar-height);
   .image-wrapper {
     &.is-current {
-      > img {
-        @apply border-4 border-solid border-yellow-500;
-      }
+      @apply border-4 border-solid border-yellow-500;
     }
 
     &_icons {

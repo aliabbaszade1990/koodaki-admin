@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AuthApiService } from './apis/auth-api.service';
 import { AuthGuard } from './guards/auth.guard';
 import { CoreInterceptor } from './interceptors/core.interceptor';
+import { InitializationService } from './services/initialization.service';
 import { StorageService } from './services/storage.service';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { StorageService } from './services/storage.service';
     AuthApiService,
     AuthGuard,
     StorageService,
+    InitializationService,
   ],
 })
 export class CoreModule {}

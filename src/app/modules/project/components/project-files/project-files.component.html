@@ -3,7 +3,7 @@
 >
   <!-- List -->
   <div class="list basis-[15rem] border-l">
-    <div class="list_items p-6 relative overflow-y-auto bg-white">
+    <div class="list_items p-6 relative overflow-y-auto bg-white" #imageList>
       <koodaki-image-list
         [list]="images"
         (clickImage)="onClickImage($event)"
@@ -24,32 +24,114 @@
     </div>
   </div>
   <!-- Files -->
-  <div
-    class="
-      flex-auto flex
-      overflow-y-auto
-      items-stretch
-      h-screen-minus-navbar
-      p-4
-    "
-  >
-    <!-- Selected File -->
-    <div class="flex-none w-1/2 bg-gray-300 flex flex-col justify-center p-4">
+  <div class="content border-r bg-gray-200 flex flex-auto">
+    <div class="flex-none w-2/3 bg-gray-200 flex flex-col">
+      <!-- Slider -->
       <div
-        *ngIf="!currentItem; else selectedItem"
-        class="no-file-selected text-center pt-10"
+        #slider
+        class="
+          flex-auto
+          overflow-y-auto
+          h-screen-minus-navbar
+          slider
+          relative
+          p-3
+          overflow-hidden
+          flex flex-col
+          justify-center
+          items-center
+        "
       >
-        <mat-icon class="text-[100px] w-[100px] h-[90px] text-gray-200"
-          >panorama</mat-icon
+        <img
+          #image
+          [src]="currentItem && currentItem.url"
+          class=""
+          [class.is-selected]="currentItem && currentItem.selected"
+          alt=""
+        />
+
+        <p
+          *ngIf="currentItem && currentItem.comment"
+          class="mt-3 bg-white rounded-lg p-4"
         >
-        <p class="text-gray-400 pt-2">فایلی برای مشاهده موجود نیست</p>
+          {{ currentItem.comment }}
+        </p>
+
+        <!-- Navigators -->
+        <div
+          class="
+            navigator navigator--left
+            shadow-lg
+            absolute
+            left-0
+            w-[40px]
+            z-10
+            bg-white
+            pointer
+            flex
+            items-center
+            justify-center
+          "
+          (click)="onClickNavigationPreviouse()"
+        >
+          &#9664;
+        </div>
+        <div
+          class="
+            navigator navigator--right
+            shadow-lg
+            absolute
+            right-0
+            w-[40px]
+            z-10
+            bg-white
+            pointer
+            flex flex-col
+            items-center
+            justify-center
+          "
+          (click)="onClickNavigationNext()"
+        >
+          &#9654;
+        </div>
       </div>
-      <ng-template #selectedItem>
-        <img [src]="currentItem.url" [alt]="" />
-      </ng-template>
+      <!-- Toolbar -->
+      <div
+        class="
+          toolbar
+          border-t
+          py-1
+          px-3
+          bg-white
+          flex
+          items-center
+          justify-center
+        "
+      >
+        <!-- Right -->
+        <div
+          fxFlex
+          class="border-l px-3 align-left flex gap-4 justify-end"
+        ></div>
+        <!-- Left -->
+        <div fxFlex class="px-3 flex gap-4">
+          <button
+            mat-icon-button
+            (click)="onClickRotate()"
+            matTooltip="بچرخانید"
+          >
+            <img
+              src="assets/images/rotation.png"
+              alt=""
+              width="24px"
+              height="24px"
+            />
+          </button>
+        </div>
+      </div>
     </div>
-    <!-- Upload -->
-    <div class="flex-none w-1/2 mx-auto p-4 bg-gray-200">
+    <!-- Uploader -->
+    <div class="flex-none w-1/3 bg-gray-300 flex flex-col p-4">
       <mat-card class="mb-8">
         <div
           #selectedFile
@@ -65,7 +147,7 @@
               text-center
               p-5
               h-24
-              border-4 border-dashed border-gray-300
+              border-3 border-dashed border-gray-300
               rounded-xl
               flex flex-col
               justify-center
@@ -75,22 +157,14 @@
             فایل را اینجا رها کنید
           </p>
         </div>
-        <div class="">
+        <div class="p-1">
           <button
+            mat-flat-button
+            color="primary"
             (click)="chooseMultipleFile.click()"
-            class="
-              py-1
-              px-2
-              bg-green-500
-              text-white
-              rounded-sm
-              shadow-md
-              w-20
-              leading-none
-              focus:ring-2 focus:ring-green-400 focus:ring-opacity-75
-            "
+            class="w-20 leading-none"
           >
-            <mat-icon>add</mat-icon>
+            <mat-icon class="m-0 scale-150">add</mat-icon>
           </button>
           <input
             #file
@@ -103,7 +177,7 @@
             (onFileSelected)="onFileSelected($event)"
             accept="image/x-png,image/gif,image/jpeg,image/png,application/x-zip-compressed"
           />
-          <p class="text-xs mr-3 align-super inline-block text-gray-500">
+          <p class="text-xs mr-3 align-middle inline-block text-gray-500">
             برای انتخاب فایل اینجا کلیک کنید
           </p>
         </div>

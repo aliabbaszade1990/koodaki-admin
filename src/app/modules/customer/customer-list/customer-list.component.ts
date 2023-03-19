@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
-import { PagingRequset } from 'src/app/shared/dtos/paging-request';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
 import { ToaterService } from 'src/app/shared/services/toater.service';
+import { ListParams } from '../../project/dtos/list-params.dto';
 import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 import { CustomerService } from '../customer.service';
@@ -57,13 +57,14 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAllCustomer({ page: 1, size: 20, search: '' });
+    this.getAllCustomer();
   }
 
-  getAllCustomer(filters: PagingRequset) {
+  customerListParams = new ListParams(10, 0);
+  getAllCustomer() {
     this.loading = true;
     this.customerServiceSubscription = this.customerService
-      .getAll(filters)
+      .getAll(this.customerListParams)
       .subscribe((res: PagingResponse<ICustomer>) => {
         this.dataSource = new MatTableDataSource(res.items);
         this.loading = false;
@@ -83,7 +84,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
           this.dataSource.data = [...this.dataSource.data];
           this.showtable = true;
           this.toasterService.success(
-            `کاربر ${res.firstName} ${res.lastName} ذخیره شد .`
+            `کاربر ${res.firstName} ${res.lastName} ذخیره شد.`
           );
         }
       });
@@ -104,7 +105,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
           );
           this.dataSource.data = [...this.dataSource.data];
           this.toasterService.success(
-            `کاربر ${res.firstName} ${res.lastName} ویرایش شد .`
+            `کاربر ${res.firstName} ${res.lastName} ویرایش شد.`
           );
         }
       });
@@ -120,7 +121,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         if (result) {
           this.toasterService.success(
-            `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد .`
+            `پروژه ${result.title} برای ${row.firstName} ${row.lastName} ثبت شد.`
           );
         }
       });
@@ -133,7 +134,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         data: {
           header: 'حذف کاربر',
           question: `با حذف مشتری پروژه های مشتری نیز حذف میشود.
-          آیااز حذف ${row.firstName} ${row.lastName} مطمئن هستید؟`,
+          آیا از حذف ${row.firstName} ${row.lastName} مطمئن هستید؟`,
           confirmButton: 'بله',
           cancelButton: 'خیر',
         },
@@ -147,7 +148,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
             ];
             this.showtable = false;
             this.toasterService.success(
-              `کاربر ${row.firstName} ${row.lastName} حذف شد .`
+              `کاربر ${row.firstName} ${row.lastName} حذف شد.`
             );
           });
         }

@@ -6,7 +6,7 @@ export interface IProject {
   isClosed: boolean;
   location: string;
   filesAt: string;
-  createAt: Date;
+  createdAt: Date;
   startedAt: Date;
   endedAt: Date;
   customer: ICustomer;

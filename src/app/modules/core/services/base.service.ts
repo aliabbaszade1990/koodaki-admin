@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
-import { PagingRequset } from 'src/app/shared/dtos/paging-request';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
+import { ListParams } from '../../project/dtos/list-params.dto';
 
 export class BaseService<T> {
   apiUrl: string = 'http://localhost:3000/';
@@ -13,11 +13,9 @@ export class BaseService<T> {
     this.http = AppModule.injector.get(HttpClient);
   }
 
-  getAll(filters?: PagingRequset): Observable<PagingResponse<T>> {
+  getAll(filters?: ListParams): Observable<PagingResponse<T>> {
     return this.http
-      .get<PagingResponse<T>>(
-        `${this.apiUrl}?${new URLSearchParams(filters as any).toString()}`
-      )
+      .get<PagingResponse<T>>(`${this.apiUrl}${ListParams.stringify(filters)}`)
       .pipe(catchError(this.error));
   }
 

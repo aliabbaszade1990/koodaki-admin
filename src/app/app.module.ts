@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Injector, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,12 +21,15 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { CoreInterceptor } from './modules/core/interceptors/core.interceptor';
 import { AuthService } from './modules/core/services/auth.service';
+import { InitializationService } from './modules/core/services/initialization.service';
 import { AuthState } from './modules/core/_NGXS/auth.state';
 import { DashboardLayoutModule } from './modules/layout/dashboard-layout/dashboard-layout.module';
 
-// import { LuxonFormatPipe } from './luxon-format.pipe';
-// import { LuxonFromNowPipe } from './luxon-from-now.pipe';
-
+export function initializerFactory(authService: InitializationService) {
+  return () => {
+    return authService.initializeApp();
+  };
+}
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -55,6 +58,12 @@ import { DashboardLayoutModule } from './modules/layout/dashboard-layout/dashboa
       multi: true,
     },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializerFactory,
+      deps: [InitializationService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
