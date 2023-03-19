@@ -23,7 +23,7 @@ jobs:
           cd /var/www/frontEnd/koodaki-admin
           npm install
           nvm use 16.18.1
-          pm2 stop "npx ng serve" --name "admin"
+          pm2 stop "npm run serve" --name "admin"
           git pull 
           npm run build
-          pm2 start "npx ng serve" --name "admin"
+          pm2 start "npm run serve" --name "admin"
