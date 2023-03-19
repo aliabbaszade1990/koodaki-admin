@@ -83,7 +83,8 @@
           },
           "options": {
             "browserTarget": "koodaki-admin:build",
-            "port": 3007
+            "port": 3007,
+            "disableHostCheck": true
           }
         },
         "extract-i18n": {
