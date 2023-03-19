@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "serve:dev": "ng serve --configuration=development",
     "build": "ng build",
+    "build:prod": "ng run koodaki-admin:build:production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
@@ -24,10 +26,17 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@fortawesome/fontawesome-free": "^6.2.1",
+    "@material/density": "^15.0.0-canary.ecfee946f.0",
     "@ngxs/storage-plugin": "^3.7.6",
     "@ngxs/store": "^3.7.6",
+    "@types/store": "^2.0.2",
+    "dayjs": "^1.11.7",
+    "jalali-moment": "^3.3.11",
+    "luxon": "^3.2.1",
     "luxon-angular": "^6.0.0",
+    "ng2-file-upload": "^3.0.0",
     "rxjs": "~7.5.0",
+    "store": "^2.0.12",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
@@ -46,7 +55,8 @@
     "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@types/jasmine": "~4.3.0",
-    "@types/luxon": "^3.1.0",
+    "@types/luxon": "^3.2.0",
+    "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
@@ -54,6 +64,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
     "typescript": "~4.8.2"
   }
 }

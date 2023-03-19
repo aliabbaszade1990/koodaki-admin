@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>
+  افزودن پروژه برای {{ data.firstName }} {{ data.lastName }}
+</h1>
+<div mat-dialog-content class="pt-4">
+  <form id="project-form" [formGroup]="form" (submit)="sendFormValue()">
+    <div class="flex flex-gap-12 flex-col pt-4">
+      <mat-form-field appearance="outline">
+        <mat-label>عنوان</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="title"
+          placeholder="عنوان"
+        />
+        <mat-error *ngIf="form.controls['title'].hasError('required')">
+          وارد کردن عنوان اجباری است.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>مکان</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="location"
+          placeholder="مکان"
+        />
+        <mat-error *ngIf="form.controls['location'].hasError('required')">
+          وارد کردن مکان اجباری است.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>تاریخ شروع</mat-label>
+        <input
+          matInput
+          formControlName="startedAt"
+          placeholder="تاریخ شروع"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker dir="rtl"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions class="flex justify-between">
+  <button
+    mat-raised-button
+    color="primary"
+    cdkFocusInitial
+    type="submit"
+    [disabled]="form.invalid"
+    form="project-form"
+  >
+    ثبت
+  </button>
+  <button type="button" mat-raised-button mat-dialog-close color="warn">
+    انصراف
+  </button>
+</div>

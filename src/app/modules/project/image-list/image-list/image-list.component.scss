@@ -1,0 +1,22 @@
+@import "settings/settings.scss";
+@tailwind components;
+
+@layer components {
+  $page-height: calc(100vh - $navbar-height);
+  .image-wrapper {
+    &.is-current {
+      @apply border-4 border-solid border-yellow-500;
+    }
+
+    &_icons {
+      position: absolute;
+      bottom: 8px;
+      right: 0;
+      padding: 0 8px;
+    }
+  }
+
+  .is-selected:not(.is-current) {
+    @apply border-4 border-green-500;
+  }
+}

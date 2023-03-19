@@ -1,5 +1,17 @@
 @import "settings/settings.scss";
 
+//#region mat-form-field
+.mat-mdc-form-field {
+  width: 100%;
+}
+//#endregion
+
+//#region Button
+.mdc-button__label {
+  letter-spacing: 0;
+}
+//#endregion
+
 th.mdc-data-table__header-cell {
   font-family: "iranSans";
   font-weight: $font-weight-bold;
@@ -13,10 +25,63 @@ td.mdc-data-table__cell {
   font-family: "iranSans" !important;
 }
 
-.mat-mdc-card-title {
+.mat-mdc-card-title,
+.mat-mdc-button,
+.mdc-button__label,
+mat-calendar {
+  font-family: "iranSans" !important;
+}
+
+.mdc-snackbar__label,
+.mat-mdc-option.mdc-list-item {
   font-family: "iranSans" !important;
 }
 
 .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
   font-family: "IranSans";
 }
+
+table {
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+}
+.mat-toolbar-single-row {
+  padding: 0px 45px !important;
+}
+.mat-mdc-dialog-actions {
+  justify-content: space-between !important;
+}
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+}
+.mat-mdc-menu-panel.mat-mdc-menu-panel {
+  min-width: 90px;
+  border-radius: 1px;
+}
+
+//#region snackbar
+.success .mdc-snackbar__surface {
+  background-color: rgb(59, 177, 23) !important;
+}
+
+.warning .mdc-snackbar__surface {
+  background-color: rgb(234, 123, 12) !important;
+}
+
+.error .mdc-snackbar__surface {
+  background-color: rgb(246, 0, 0) !important;
+}
+
+.info .mdc-snackbar__surface {
+  background-color: rgb(111, 165, 236) !important;
+}
+
+.mdc-snackbar__action {
+  color: #ffffff !important;
+}
+.mat-mdc-paginator-container {
+  justify-content: flex-start !important;
+}
+//#endregion

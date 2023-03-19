@@ -1,0 +1,24 @@
+<mat-toolbar class="bg-white h-navbar">
+  <button
+    *ngFor="let item of menuItems"
+    mat-button
+    [routerLink]="'/' + item.link"
+    [routerLinkActiveOptions]="{ exact: false }"
+    routerLinkActive="menu-item--active"
+    class="py-2 px-4 ml-2"
+  >
+    <mat-icon *ngIf="item.icon">
+      {{ item.icon }}
+    </mat-icon>
+    {{ item.text }}
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="mr-auto">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon class="icont_exit" color="warn">logout</mat-icon>
+      <span>خروج</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

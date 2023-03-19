@@ -1,0 +1,70 @@
+<div class="container p-4">
+  <button mat-raised-button color="primary" (click)="createCustomer()">
+    افزودن
+  </button>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 demo-table mt-3"
+  >
+    <ng-container
+      *ngFor="let column of columns"
+      [matColumnDef]="column.columnDef"
+    >
+      <th mat-header-cell *matHeaderCellDef>
+        {{ column.header }}
+      </th>
+
+      <td
+        mat-cell
+        *matCellDef="let row"
+        [dir]="column.columnDef === 'phoneNumber' ? 'ltr' : 'rtl'"
+      >
+        {{ row[column.columnDef] }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>عملیات</th>
+
+      <td mat-cell *matCellDef="let row">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="addProjectToCustomer(row)">
+            <mat-icon>add</mat-icon>
+            <span>افزودن پروژه</span>
+          </button>
+          <button mat-menu-item (click)="customerProjects(row)">
+            <mat-icon>photo-library</mat-icon>
+            <span>نمایش پروژه ها</span>
+          </button>
+          <button mat-menu-item (click)="editCustomer(row)">
+            <mat-icon>edit</mat-icon>
+            <span>ویرایش</span>
+          </button>
+          <button mat-menu-item (click)="deleteCustomer(row)">
+            <mat-icon color="warn">delete</mat-icon>
+            <span>حذف</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <koodaki-loading
+    *ngIf="loading"
+    class="flex justify-center pt-10"
+  ></koodaki-loading>
+  <koodaki-no-data-found
+    *ngIf="!showtable && !loading && dataSource.data.length === 0"
+  ></koodaki-no-data-found>
+</div>

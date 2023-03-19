@@ -1,43 +1,26 @@
-<div class="text"><p>404</p></div>
-<div class="container">
-  <!-- caveman left -->
-  <div class="caveman">
-    <div class="leg">
-      <div class="foot"><div class="fingers"></div></div>
+<section
+  class="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100"
+>
+  <div
+    class="
+      container
+      flex flex-col
+      items-center
+      justify-center
+      px-5
+      mx-auto
+      my-8
+    "
+  >
+    <div class="max-w-md text-center">
+      <h2 class="mb-8 font-extrabold text-9xl dark:text-gray-600">
+        <span class="sr-only">Error</span>404
+      </h2>
+      <p class="text-2xl font-semibold md:text-3xl">صفحه مورد نظر یافت نشد.</p>
+      <p class="mt-4 mb-8 dark:text-gray-400"></p>
+      <button mat-button routerLink="/" onclick="history.back(-1)">
+        بازگشت به صفحه قبل &#9664;
+      </button>
     </div>
-    <div class="leg">
-      <div class="foot"><div class="fingers"></div></div>
-    </div>
-    <div class="shape">
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
-    <div class="head">
-      <div class="eye"><div class="nose"></div></div>
-      <div class="mouth"></div>
-    </div>
-    <div class="arm-right"><div class="club"></div></div>
   </div>
-  <!-- caveman right -->
-  <div class="caveman">
-    <div class="leg">
-      <div class="foot"><div class="fingers"></div></div>
-    </div>
-    <div class="leg">
-      <div class="foot"><div class="fingers"></div></div>
-    </div>
-    <div class="shape">
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
-    <div class="head">
-      <div class="eye"><div class="nose"></div></div>
-      <div class="mouth"></div>
-    </div>
-    <div class="arm-right"><div class="club"></div></div>
-  </div>
-</div>
-<!-- //////////////// CREDIT //////////////// -->
-<button id="link" mat-raised-button color="primary" (click)="routerComment()">
-  بازگشت به سایت
-</button>
+</section>

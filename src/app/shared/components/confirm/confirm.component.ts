@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { IQuestion } from '../../models/confirm-question';
 
 @Component({
-  selector: 'app-confirm',
+  selector: 'koodaki-confirm',
   templateUrl: './confirm.component.html',
   styleUrls: ['./confirm.component.scss'],
 })
@@ -22,6 +23,7 @@ export class ConfirmComponent implements OnInit {
       confirmButton: this.confirmButton,
       cancelButton: this.cancelButton,
     } = this.data);
+    dialogRef.disableClose = true;
   }
 
   ngOnInit(): void {}

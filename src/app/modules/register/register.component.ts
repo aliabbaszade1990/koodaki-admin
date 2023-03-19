@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
+  selector: 'koodaki-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })

@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+  .menu-item--active {
+    @apply bg-gray-100;
+  }
+}
