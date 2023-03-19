@@ -46,8 +46,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "10kb",
-                  "maximumError": "20kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "10kb"
                 }
               ],
               "outputHashing": "all",
@@ -83,7 +83,7 @@
           },
           "options": {
             "browserTarget": "koodaki-admin:build",
-            "port": 4300
+            "port": 3007
           }
         },
         "extract-i18n": {
