@@ -25,5 +25,5 @@ jobs:
           nvm use 16.18.1
           pm2 stop "npm run serve" --name "admin"
           git pull 
-          npm run build
+          npm run build:prod
           pm2 start "npm run serve" --name "admin"
