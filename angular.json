@@ -57,30 +57,11 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
-                }
-              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "koodaki-admin:build:development"
-            }
-          },
           "options": {
             "browserTarget": "koodaki-admin:build",
             "port": 3007,
