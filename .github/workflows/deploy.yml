@@ -23,7 +23,7 @@ jobs:
             cd /var/www/frontEnd/koodaki-admin
             npm install
             nvm use 16.18.1
-            pm2 stop "npm run start" --name "admin"
+            pm2 stop "admin"
             git pull 
             npm run build:prod
             pm2 start "npm run start" --name "admin"
