@@ -1,15 +1,16 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
+import { environment } from 'src/environments/environment';
 import { ListParams } from '../../project/dtos/list-params.dto';
 
 export class BaseService<T> {
-  apiUrl: string = 'http://localhost:3000/';
+  apiUrl: string = '';
   http: HttpClient;
 
   constructor(private controllerName: string) {
-    this.apiUrl = this.apiUrl + controllerName;
+    this.apiUrl = environment.api + this.controllerName;
     this.http = AppModule.injector.get(HttpClient);
   }
 
