@@ -15,14 +15,13 @@ import {
 } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileItem, FileUploader } from 'ng2-file-upload';
+import { filter } from 'rxjs';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
 import { ToaterService } from 'src/app/shared/services/toater.service';
+import { environment } from 'src/environments/environment';
 import { FileListParams } from '../../dtos/list-params-file.dto';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
 import { FileService } from '../../services/file.service';
-
-const URL =
-  'http://localhost:3000/file?projectId=578dba98-d093-4e81-a8a7-810793d93dba';
 
 @Component({
   selector: 'koodaki-project-files',
@@ -49,7 +48,7 @@ export class ProjectFilesComponent {
     this.currentItem.isCurrentItem = true;
   }
 
-  uploader: FileUploader = new FileUploader({ url: URL });
+  uploader: FileUploader = new FileUploader({ url: '' });
   hasBaseDropZoneOver: boolean;
   response: string;
   errorMessage: string;
@@ -103,15 +102,19 @@ export class ProjectFilesComponent {
   fileListParams: FileListParams = new FileListParams('', false, 20);
   ngOnInit(): void {
     this.observeCheckbox();
-    this.route.params.subscribe((params) => {
-      this.projectId = params['id'];
+    this.route.params
+      .pipe(filter((params) => !!params['id']))
+      .subscribe((params) => {
+        this.projectId = params['id'];
+        this.fileListParams.projectId = params['id'];
+        this.getFiles();
+        this.configUploader();
+      });
+  }
 
-      this.fileListParams.projectId = params['id'];
-      this.getFiles();
-    });
-
+  configUploader() {
     this.uploader = new FileUploader({
-      url: URL,
+      url: environment.api + 'file?projectId=' + this.projectId,
       disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
       formatDataFunctionIsAsync: true,
       // headers: [{ name: 'Accept', value: 'application/json' }],
