@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
-import { ToaterService } from 'src/app/shared/services/toater.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ListParams } from '../../project/dtos/list-params.dto';
 import { AddProjectToCustomerComponent } from '../add-project-to-customer/add-project-to-customer.component';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
@@ -49,7 +49,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   constructor(
     private customerService: CustomerService,
     public dialog: MatDialog,
-    private toasterService: ToaterService,
+    private toasterService: NotificationService,
     private router: Router,
     private paginator: MatPaginatorIntl
   ) {

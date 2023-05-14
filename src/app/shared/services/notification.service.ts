@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Injectable()
-export class ToaterService {
+export class NotificationService {
   constructor(private _snackBar: MatSnackBar) {}
 
   success(message: string, action?: string, config?: MatSnackBarConfig<any>) {

@@ -1,0 +1,66 @@
+@import "settings/settings.scss";
+@tailwind components;
+
+@layer components {
+  .uploader {
+    &--highlighted,
+    &:hover {
+      .content {
+        @apply bg-gray-100;
+
+        .mat-icon {
+          @apply text-green-400 rotate-[359deg] scale-[1.5];
+        }
+      }
+    }
+
+    &--progress {
+      .content {
+        .mat-icon {
+          @apply text-green-400;
+          animation: rotation 1s infinite linear;
+        }
+      }
+    }
+  }
+
+  .content {
+    transition: 0.25s all ease;
+
+    @apply bg-white;
+    .mat-icon {
+      transition: 0.25s all ease;
+      @apply scale-[200%];
+    }
+
+    h4 {
+      color: $primary;
+      font-size: 1.25em;
+      margin: 2em 0 0;
+    }
+
+    p {
+      color: $primary;
+      font-weight: 600;
+      font-size: 1em;
+      margin: 0.25em 0;
+    }
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  @media screen and (min-width: 37.5em) {
+  }
+}

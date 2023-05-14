@@ -7,7 +7,7 @@ import { CustomerService } from 'src/app/modules/customer/customer.service';
 import { ICustomer } from 'src/app/modules/customer/dto/customer';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
-import { ToaterService } from 'src/app/shared/services/toater.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 import { IProject } from '../../dtos/project';
 import { ProjectListParams } from '../../dtos/project-list-params.dto';
 import { ProjectService } from '../../project.service';
@@ -40,7 +40,7 @@ export class ProjectListComponent implements OnInit {
     private dialog: MatDialog,
     private activateRoute: ActivatedRoute,
     private router: Router,
-    private toasterService: ToaterService,
+    private toasterService: NotificationService,
     private customerService: CustomerService,
     private paginator: MatPaginatorIntl
   ) {

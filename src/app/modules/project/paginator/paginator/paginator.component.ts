@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ToaterService } from 'src/app/shared/services/toater.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 import { PaginatorConfig } from '../interfaces/pagination-config.interface';
 
 @Component({
@@ -8,7 +8,7 @@ import { PaginatorConfig } from '../interfaces/pagination-config.interface';
   styleUrls: ['./paginator.component.scss'],
 })
 export class PaginatorComponent {
-  constructor(private toaster: ToaterService) {}
+  constructor(private toaster: NotificationService) {}
   @Input() config?: PaginatorConfig;
   @Output() changePage: EventEmitter<number> = new EventEmitter();
 

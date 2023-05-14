@@ -1,4 +1,3 @@
-import { HttpEvent, HttpEventType } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -9,16 +8,15 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {
-  MatTableDataSource,
-  MatTableDataSourcePaginator,
-} from '@angular/material/table';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileItem, FileUploader } from 'ng2-file-upload';
 import { filter } from 'rxjs';
+import { UploaderComponent } from 'src/app/modules/uploader/uploader.component';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
-import { ToaterService } from 'src/app/shared/services/toater.service';
-import { environment } from 'src/environments/environment';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { SubSink } from 'subsink';
 import { FileListParams } from '../../dtos/list-params-file.dto';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
 import { FileService } from '../../services/file.service';
@@ -72,13 +70,15 @@ export class ProjectFilesComponent {
   formData: FormData = new FormData();
   projectId: string;
   fileItem: File;
+  subsink = new SubSink();
 
   constructor(
     private fileService: FileService,
-    private toasterService: ToaterService,
+    private toasterService: NotificationService,
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private bottomsheet: MatBottomSheet
   ) {}
 
   @HostListener('window:keydown.ArrowRight', ['$event'])
@@ -108,50 +108,7 @@ export class ProjectFilesComponent {
         this.projectId = params['id'];
         this.fileListParams.projectId = params['id'];
         this.getFiles();
-        this.configUploader();
       });
-  }
-
-  configUploader() {
-    this.uploader = new FileUploader({
-      url: environment.api + 'file?projectId=' + this.projectId,
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
-      // headers: [{ name: 'Accept', value: 'application/json' }],
-      // allowedFileType: ['image', 'zip'],
-      isHTML5: true,
-      method: 'POST',
-      removeAfterUpload: true,
-      maxFileSize: this.maxFileSize,
-      allowedMimeType: this.allowedMimeType,
-
-      formatDataFunction: async (item: any) => {
-        //  this.onBuildItemForm = (item, form: FormData) => {
-        //   file = form.append('files', item._file);
-        // };
-        // this.uploader.onBuildItemForm = (item, form) => {
-        //   form.append('files', item._file);
-        // };
-        return new Promise((resolve, reject) => {
-          // this.uploader.queue.forEach((file) => {
-          //   formData.append('files', file._file);
-          // });
-          // formData.append('formData', item._file.name);
-          // files.forEach((file) => formData.append('file', file, file.name));
-          resolve({
-            // name: item._file.name,
-            // length: item._file.size,
-            // contentType: item._file.type,
-            // lastModified: item._file.lastModified,
-            // date: new Date(),
-            files: this.formData,
-          });
-        });
-      },
-    });
-
-    this.response = '';
-    this.uploader.response.subscribe((res) => (this.response = res));
   }
 
   observeCheckbox() {
@@ -177,129 +134,20 @@ export class ProjectFilesComponent {
     };
   }
 
-  onCompleteItem(item: FileItem, response: any, status: any, headers: any) {
-    console.log('ImageUpload:uploaded:', item, status);
-  }
-
-  checkTypeFileInArray(type: string): boolean {
-    return this.allowedMimeType.includes(type);
-  }
-
-  removeFromQueue(item: FileItem) {
-    this.uploader.removeFromQueue(item);
-  }
-
-  newFormData() {
-    this.formData = new FormData();
-  }
-
-  appendToFile() {
-    this.uploader.queue.forEach((item) => {
-      this.formData.append('files', item._file);
-    });
-  }
-
-  uploadAllFile() {
-    this.appendToFile();
-    this.uploader.queue.forEach((element: FileItem) => {
-      this.uploadFileItem(element);
-    });
-  }
-
-  setDataSource(
-    data: FileItem[]
-  ): MatTableDataSource<FileItem, MatTableDataSourcePaginator> {
-    return (this.dataSource = new MatTableDataSource(data));
-  }
-
-  uploadFileItem(row: FileItem) {
-    this.formData.append('files', row._file);
-    this.fileService.upload(this.formData, this.projectId).subscribe({
-      next: (res) => {
-        this.handleUpdate(res, row);
-      },
-      error: (error) => {
-        row.progress = 0;
-        this.toasterService.error(error.message);
-      },
-    });
-  }
-
-  handleUpdate(event: HttpEvent<any>, row: FileItem): void {
-    switch (event.type) {
-      case HttpEventType.Response:
-        break;
-      case HttpEventType.UploadProgress:
-        const percentage = Math.round(
-          (100 * event.loaded) / (event.total as number)
-        );
-        row.progress = percentage;
-        this.cd.detectChanges();
-        if (
-          row.progress === 100 &&
-          ((this.images.length < (this.fileListParams as any).size) as any)
-        ) {
-          this.getFiles();
+  openUploader() {
+    this.subsink.sink = this.bottomsheet
+      .open(UploaderComponent, {
+        panelClass: ['ins-bs-panel'],
+        disableClose: false,
+        data: {
+          projectId: this.projectId,
+        },
+      })
+      .afterDismissed()
+      .subscribe((result: any) => {
+        if (result && result.user) {
         }
-        if (row.progress === 100) {
-          this.removeFromQueue(row);
-          this.setDataSource(this.uploader.queue);
-          this.cd.detectChanges();
-          this.toasterService.success(
-            `فایل ${row._file.name} با موفقیت بارگذاری شد.`
-          );
-        }
-        break;
-    }
-  }
-
-  cancelFile(row: FileItem) {
-    this.uploader.cancelItem(row);
-  }
-
-  deleteFile(row: FileItem) {
-    this.removeFromQueue(row);
-    this.setDataSource(this.uploader.queue);
-    this.toasterService.success(`فایل ${row._file.name} حذف شد.`);
-  }
-
-  onFileSelected(event: File[]) {
-    this.removeDuplicatItemFromQueue();
-    this.setDataSource(this.uploader.queue);
-  }
-
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  removeDuplicatItemFromQueue() {
-    for (let i = 0; i < this.uploader.queue.length; i++) {
-      const item = this.uploader.queue.find(
-        (item) =>
-          item.file.name === this.uploader.queue[i].file.name &&
-          this.uploader.queue.indexOf(item) !== i
-      );
-      if (item) {
-        this.removeFromQueue(item);
-      }
-    }
-  }
-
-  checkFileTypeWhenSelectFile() {
-    this.uploader.queue.forEach((item) => {
-      if (!this.checkTypeFileInArray(item.file.type as string)) {
-        this.removeFromQueue(item);
-      }
-    });
-  }
-
-  droppedFile(e: File[]) {
-    console.log('droppedFile', e);
-    this.removeDuplicatItemFromQueue();
-    this.checkFileTypeWhenSelectFile();
-    this.setDataSource(this.uploader.queue);
-    // this.dataSource = new MatTableDataSource(this.uploader.queue);
-    // this.appendToFile();
+      });
   }
 
   getFiles() {

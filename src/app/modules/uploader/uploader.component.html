@@ -1,0 +1,45 @@
+<section
+  class="uploader py-2 w-[600px]"
+  [class.uploader--progress]="uploadPercentage$ | async"
+  [class.uploader--highlighted]="shouldHighlight"
+  (dragenter)="onDragEnter($event)"
+  (dragleave)="onDragLeave($event)"
+  (dragover)="onDragOver($event)"
+  (drop)="onDrop($event)"
+>
+  <div
+    class="
+      content
+      cursor-pointer
+      w-full
+      mx-auto
+      border border-gray-100
+      min-h-[16em]
+      rounded-lg
+      p-4
+      flex flex-col
+      justify-center
+      items-center
+    "
+    (click)="browseFiles()"
+  >
+    <mat-icon>emergency</mat-icon>
+
+    <ng-template [ngIf]="(uploadPercentage$ | async) === 0">
+      <h4 class="text-gray-600">برای انتخاب فایل کلیک کنید</h4>
+      <p *ngIf=""></p>
+    </ng-template>
+
+    <ng-template [ngIf]="uploadPercentage$ | async">
+      <h4>در حال بارگذاری</h4>
+      <p>{{ uploadPercentage$ | async }} %</p>
+    </ng-template>
+  </div>
+</section>
+
+<input
+  type="file"
+  [accept]="config['file'].accept"
+  #fileInput
+  (change)="selectFile($event)"
+/>
