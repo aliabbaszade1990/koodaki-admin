@@ -60,7 +60,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     this.getAllCustomer();
   }
 
-  customerListParams = new ListParams(10, 0);
+  customerListParams = new ListParams();
   getAllCustomer() {
     this.loading = true;
     this.customerServiceSubscription = this.customerService

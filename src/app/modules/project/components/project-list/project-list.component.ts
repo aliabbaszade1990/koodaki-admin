@@ -66,7 +66,7 @@ export class ProjectListComponent implements OnInit {
 
   projectListParams: ProjectListParams;
   initializeProjectListParams() {
-    this.projectListParams = new ProjectListParams(10, 0, this.customerId);
+    this.projectListParams = new ProjectListParams(10, 1, this.customerId);
   }
 
   getAllProjects() {

@@ -4,12 +4,12 @@ export class ProjectListParams extends ListParams {
   customerId?: string;
 
   constructor(
-    page: number,
     size: number,
+    page: number,
     customerId?: string,
     search?: string
   ) {
-    super(page, size);
+    super(size, page);
     this.customerId = customerId;
     this.search = search;
   }

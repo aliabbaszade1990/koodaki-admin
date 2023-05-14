@@ -3,7 +3,7 @@ export class ListParams {
   size: number;
   search?: string;
 
-  constructor(size: number = 10, page: number = 0, search: string = '') {
+  constructor(size: number = 10, page: number = 1, search: string = '') {
     this.size = size;
     this.page = page;
     this.search = search;
