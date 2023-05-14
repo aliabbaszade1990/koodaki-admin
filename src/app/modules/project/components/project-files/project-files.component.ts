@@ -122,7 +122,7 @@ export class ProjectFilesComponent {
 
   resetFileListParams() {
     this.fileListParams = new FileListParams(this.projectId);
-    // this.fileListParams.size = 20;
+    this.fileListParams.size = 20;
   }
 
   resetPaginatorConfig() {
@@ -145,7 +145,8 @@ export class ProjectFilesComponent {
       })
       .afterDismissed()
       .subscribe((result: any) => {
-        if (result && result.user) {
+        if (result) {
+          this.getFiles();
         }
       });
   }

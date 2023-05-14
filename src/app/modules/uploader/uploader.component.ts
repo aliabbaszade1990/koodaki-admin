@@ -43,6 +43,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
     public data: {
       projectId?: string;
     },
+    private bottomSheetRef: MatBottomSheetRef,
     private ref: MatBottomSheetRef,
     private notificationService: NotificationService,
     private fileService: FileService
@@ -184,6 +185,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
     this.uploadPercentage$.next(0);
     this.ref.disableClose = false;
     this.notificationService.success('فایل با موفقیت بارگذاری شد');
+    this.bottomSheetRef.dismiss(true);
   }
 
   ngOnDestroy(): void {
