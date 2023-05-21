@@ -5,9 +5,11 @@ export interface IProject {
   title: string;
   isClosed: boolean;
   location: string;
-  filesAt: string;
-  createdAt: Date;
   startedAt: Date;
   endedAt: Date;
+  totalFiles: number;
+  selectedImagesCount?: number;
+  defaultImage?: string;
+  finalized: boolean;
   customer: ICustomer;
 }

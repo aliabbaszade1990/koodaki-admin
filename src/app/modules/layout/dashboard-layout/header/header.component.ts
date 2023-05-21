@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   dropdownX: number;
   dropdownY: number;
   menuItems: MenuItem[] = [
-    { text: 'مشتری', link: 'customer/list', icon: 'group' },
+    { text: 'مشتری ها', link: 'customer/list', icon: 'group' },
     { text: 'پروژه ها', link: 'project/list', icon: 'photo-library' },
   ];
 
