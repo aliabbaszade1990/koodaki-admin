@@ -25,6 +25,7 @@ export class ProjectListComponent implements OnInit {
     'title',
     'location',
     'startDate',
+    'totalFiles',
     'selectedFile',
     'action',
   ];
