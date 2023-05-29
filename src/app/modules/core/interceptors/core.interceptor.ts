@@ -51,7 +51,7 @@ export class CoreInterceptor implements HttpInterceptor {
         }),
         catchError((error) => {
           this.handleErrors(error);
-          return throwError(() => Error(error && error.name));
+          return throwError(() => Error(error.error.message));
         })
       );
     } else {

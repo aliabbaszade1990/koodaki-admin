@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,6 +23,7 @@ export class ProjectListComponent implements OnInit {
   dataSource: MatTableDataSource<IProject>;
   displayedColumns: string[] = [
     'isClosed',
+    'customer',
     'title',
     'location',
     'startDate',
@@ -33,7 +35,6 @@ export class ProjectListComponent implements OnInit {
   customerId: string;
   firstName: string;
   lastName: string;
-  showtable: boolean = false;
   loading: boolean = false;
 
   constructor(
@@ -67,7 +68,7 @@ export class ProjectListComponent implements OnInit {
 
   projectListParams: ProjectListParams;
   initializeProjectListParams() {
-    this.projectListParams = new ProjectListParams(10, 1, this.customerId);
+    this.projectListParams = new ProjectListParams(10, 1, '', this.customerId);
   }
 
   getAllProjects() {
@@ -77,10 +78,13 @@ export class ProjectListComponent implements OnInit {
       .subscribe((res: PagingResponse<IProject>) => {
         this.dataSource = new MatTableDataSource(res.items);
         this.loading = false;
-        if (res.items.length > 0) {
-          this.showtable = true;
-        }
       });
+  }
+
+  onChangeSelectedProjectFilter(event: MatCheckboxChange) {
+    this.dataSource = new MatTableDataSource();
+    this.projectListParams.finalized = event.checked;
+    this.getAllProjects();
   }
 
   createProject() {
@@ -94,7 +98,6 @@ export class ProjectListComponent implements OnInit {
         if (result) {
           this.dataSource.data.push(result);
           this.dataSource.data = [...this.dataSource.data];
-          this.showtable = true;
           this.toasterService.success(`پروژه ${result.title} ذخیره شد.`);
         }
       });
@@ -132,7 +135,6 @@ export class ProjectListComponent implements OnInit {
             this.dataSource.data = [
               ...this.dataSource.data.filter((item) => item.id !== row.id),
             ];
-            this.showtable = false;
             this.toasterService.success(`پروژه ${row.title} حذف شد.`);
           });
         }
