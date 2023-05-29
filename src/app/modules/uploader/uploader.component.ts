@@ -11,7 +11,7 @@ import {
   MAT_BOTTOM_SHEET_DATA,
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { SubSink } from 'subsink';
 import { FileService } from '../project/services/file.service';
@@ -97,33 +97,42 @@ export class UploaderComponent implements OnInit, OnDestroy {
   }
 
   files: FileList;
+  selectedFile: File | null = null;
   async selectFile(event: any): Promise<void> {
+    this.selectedFile = null;
+
     if (event.type != 'change') {
       this.files = event;
     } else {
       this.files = event.target.files;
     }
 
-    const file = this.files && this.files[0] ? this.files[0] : null;
+    this.selectedFile = this.files && this.files[0] ? this.files[0] : null;
 
-    if (file) {
+    if (this.selectedFile) {
       try {
-        await this.validateFile(file);
-        await this.uploadFile(file);
+        await this.validateFile(this.selectedFile);
+        await this.uploadFile(this.selectedFile);
       } catch (error: any) {
         this.handleError(error);
       }
     }
   }
 
+  uploadSubscription: Subscription;
   async uploadFile(file: File): Promise<void> {
-    this.subsink.sink = this.fileService
+    this.uploadSubscription = this.fileService
       .upload(file, this.data?.projectId as string)
       .subscribe({
         next: (response: any) => this.handleUpdate(response),
         error: (error: any) => this.handleError(error),
         complete: () => this.onCompleted(),
       });
+  }
+
+  onCancelUploading(event: MouseEvent) {
+    event.stopPropagation();
+    this.uploadSubscription.unsubscribe();
   }
 
   async validateFile(file: File): Promise<boolean> {

@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -27,7 +28,7 @@ import { FileService } from '../../services/file.service';
   styleUrls: ['./project-files.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectFilesComponent {
+export class ProjectFilesComponent implements OnInit {
   images: GetFileDto[] = [];
   paginatorConfig: PaginatorConfig = {
     total: 0,

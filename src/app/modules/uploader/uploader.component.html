@@ -23,16 +23,29 @@
     "
     (click)="browseFiles()"
   >
-    <mat-icon>emergency</mat-icon>
+    <div class="py-4">
+      <mat-icon>cloud</mat-icon>
+    </div>
 
     <ng-template [ngIf]="(uploadPercentage$ | async) === 0">
       <h4 class="text-gray-600">برای انتخاب فایل کلیک کنید</h4>
-      <p *ngIf=""></p>
     </ng-template>
 
     <ng-template [ngIf]="uploadPercentage$ | async">
-      <h4>در حال بارگذاری</h4>
-      <p>{{ uploadPercentage$ | async }} %</p>
+      <div class="flex mb-2 w-full">
+        <div class="grow flex-none w-[50%] text-right">در حال بارگذاری</div>
+        <div class="grow flex-none w-[50%] text-left">
+          {{ selectedFile && selectedFile.size / 1000000 | number }} مگابایت
+        </div>
+      </div>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="uploadPercentage$ | async"
+      ></mat-progress-bar>
+      <h1 class="mb-4 pt-2 font-bold">{{ uploadPercentage$ | async }}%</h1>
+      <button mat-button color="warn" (click)="onCancelUploading($event)">
+        لغو بارگذاری
+      </button>
     </ng-template>
   </div>
 </section>
