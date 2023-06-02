@@ -187,7 +187,9 @@ export class UploaderComponent implements OnInit, OnDestroy {
     this.ref.disableClose = false;
     this.uploadPercentage$.next(0);
 
-    this.notificationService.error(error.message);
+    if (error.message) {
+      this.notificationService.error(error.message);
+    }
   }
 
   onCompleted(): void {

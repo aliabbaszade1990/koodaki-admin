@@ -16,7 +16,6 @@ import { FileItem, FileUploader } from 'ng2-file-upload';
 import { filter } from 'rxjs';
 import { UploaderComponent } from 'src/app/modules/uploader/uploader.component';
 import { GetFileDto } from 'src/app/shared/dtos/get-file.dto';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 import { SubSink } from 'subsink';
 import { FileListParams } from '../../dtos/list-params-file.dto';
 import { PaginatorConfig } from '../../paginator/interfaces/pagination-config.interface';
@@ -75,7 +74,6 @@ export class ProjectFilesComponent implements OnInit {
 
   constructor(
     private fileService: FileService,
-    private toasterService: NotificationService,
     private cd: ChangeDetectorRef,
     private route: ActivatedRoute,
     private renderer: Renderer2,
