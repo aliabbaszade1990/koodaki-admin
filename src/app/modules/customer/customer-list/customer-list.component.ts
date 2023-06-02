@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, debounceTime, startWith } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -58,6 +59,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllCustomer();
+    this.observeOnSearchFormControl();
   }
 
   customerListParams = new ListParams();
@@ -157,6 +159,16 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
   customerProjects(row: ICustomer) {
     this.router.navigate([`/project/list/${row.id}`]);
+  }
+
+  searchFormControl = new FormControl(null);
+  observeOnSearchFormControl() {
+    this.searchFormControl.valueChanges
+      .pipe(startWith(''), debounceTime(500))
+      .subscribe((value) => {
+        this.customerListParams.search = value as string;
+        this.getAllCustomer();
+      });
   }
 
   ngOnDestroy(): void {

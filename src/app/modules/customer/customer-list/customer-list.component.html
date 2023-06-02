@@ -1,7 +1,14 @@
 <div class="container p-4">
-  <button mat-raised-button color="primary" (click)="createCustomer()">
-    افزودن
-  </button>
+  <div class="flex gap-2 items-stretch">
+    <button mat-raised-button color="primary" (click)="createCustomer()">
+      افزودن
+    </button>
+    <input
+      [placeholder]="'جستجو'"
+      [formControl]="searchFormControl"
+      class="flex-none w-[400px] border py-1 px-2 rounded-lg"
+    />
+  </div>
 
   <table
     mat-table
