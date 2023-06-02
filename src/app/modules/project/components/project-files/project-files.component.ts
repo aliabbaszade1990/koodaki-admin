@@ -152,22 +152,30 @@ export class ProjectFilesComponent implements OnInit {
       });
   }
 
+  inProgress = false;
   getFiles() {
-    this.fileService.getAll(this.fileListParams).subscribe((result) => {
-      this.images = result.items;
+    this.inProgress = true;
+    this.fileService.getAll(this.fileListParams).subscribe({
+      next: (result) => {
+        this.inProgress = false;
+        this.images = result.items;
 
-      this.paginatorConfig = {
-        ...this.paginatorConfig,
-        page: this.fileListParams.page,
-        total: result.total,
-        hasNext: result.hasNext,
-      };
+        this.paginatorConfig = {
+          ...this.paginatorConfig,
+          page: this.fileListParams.page,
+          total: result.total,
+          hasNext: result.hasNext,
+        };
 
-      if (this.images && this.images.length) {
-        this.currentItem = this.images[0];
-        this.currentItem.isCurrentItem = true;
-      }
-      this.cd.detectChanges();
+        if (this.images && this.images.length) {
+          this.currentItem = this.images[0];
+          this.currentItem.isCurrentItem = true;
+        }
+        this.cd.detectChanges();
+      },
+      error: () => {
+        this.inProgress = false;
+      },
     });
   }
 

@@ -6,6 +6,7 @@
     <div class="list_items p-6 relative overflow-y-auto bg-white" #imageList>
       <koodaki-image-list
         [list]="images"
+        [inProgress]="inProgress"
         (clickImage)="onClickImage($event)"
       ></koodaki-image-list>
     </div>
