@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime, startWith } from 'rxjs';
 import { CustomerService } from 'src/app/modules/customer/customer.service';
 import { ICustomer } from 'src/app/modules/customer/dto/customer';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
@@ -52,8 +54,8 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
     this.initializeProjectListParams();
-    this.getAllProjects();
     if (this.customerId) this.getCustomer();
+    this.observeOnSearchFormControl();
   }
 
   getCustomer() {
@@ -138,6 +140,16 @@ export class ProjectListComponent implements OnInit {
             this.toasterService.success(`پروژه ${row.title} حذف شد.`);
           });
         }
+      });
+  }
+
+  searchFormControl = new FormControl(null);
+  observeOnSearchFormControl() {
+    this.searchFormControl.valueChanges
+      .pipe(startWith(''), debounceTime(500))
+      .subscribe((value) => {
+        this.projectListParams.search = value as string;
+        this.getAllProjects();
       });
   }
 

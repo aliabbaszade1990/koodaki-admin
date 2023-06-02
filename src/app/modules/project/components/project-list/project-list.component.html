@@ -1,13 +1,17 @@
 <div class="container p-4">
-  <div class="flex">
-    <div class="flex-auto">
-      <button mat-raised-button color="primary" (click)="createProject()">
-        افزودن
-      </button>
-      <p class="inline-block mr-4" *ngIf="customerId">
-        پروژه های {{ firstName }} {{ lastName }}
-      </p>
-    </div>
+  <div class="flex items-stretch gap-2">
+    <button mat-raised-button color="primary" (click)="createProject()">
+      افزودن
+    </button>
+    <input
+      [placeholder]="'جستجو'"
+      [formControl]="searchFormControl"
+      class="flex-none w-[400px] border py-1 px-2 rounded-lg"
+      *ngIf="!customerId"
+    />
+    <p class="inline-block mr-4" *ngIf="customerId">
+      پروژه های {{ firstName }} {{ lastName }}
+    </p>
     <div class="flex-auto" dir="ltr">
       <mat-checkbox
         color="primary"
@@ -125,6 +129,6 @@
     class="flex justify-center"
   ></koodaki-loading>
   <koodaki-no-data-found
-    *ngIf="!loading && dataSource.data.length === 0"
+    *ngIf="!loading && dataSource && dataSource.data.length === 0"
   ></koodaki-no-data-found>
 </div>
