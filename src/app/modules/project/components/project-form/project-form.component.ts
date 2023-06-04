@@ -34,7 +34,7 @@ export class ProjectFormComponent implements OnInit {
       title: ['', Validators.required],
       location: ['', Validators.required],
       startedAt: [new Date()],
-      isClosed: [''],
+      isClosed: [true],
       customerId: ['', Validators.required],
     });
     this.form.patchValue(this.data);
