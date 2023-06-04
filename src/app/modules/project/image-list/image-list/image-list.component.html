@@ -1,42 +1,44 @@
-<ng-container *ngFor="let image of list; let i = index">
-  <div
-    class="
-      image-wrapper
-      relative
-      rounded-xl
-      overflow-hidden
-      min-h-[90px]
-      bg-gray-100
-      flex flex-col
-      items-center
-      justify-center
-      select-none
-      shadow-lg
-    "
-    [class.is-current]="image && image.isCurrentItem"
-    [class.is-selected]="image && image.selected"
-    [id]="image && image.id"
-  >
-    <img
-      [src]="image.url"
-      class="image block cursor-pointer max-w-full max-h-full h-full w-full"
-      (click)="onClickImage(image)"
-      alt=""
-    />
+<ng-container *ngIf="!inProgress">
+  <ng-container *ngFor="let image of list; let i = index">
+    <div
+      class="
+        image-wrapper
+        relative
+        rounded-xl
+        overflow-hidden
+        min-h-[90px]
+        bg-gray-100
+        flex flex-col
+        items-center
+        justify-center
+        select-none
+        shadow-lg
+      "
+      [class.is-current]="image && image.isCurrentItem"
+      [class.is-selected]="image && image.selected"
+      [id]="image && image.id"
+    >
+      <img
+        [src]="image.url"
+        class="image block cursor-pointer max-w-full max-h-full h-full w-full"
+        (click)="onClickImage(image)"
+        alt=""
+      />
 
-    <div class="image-wrapper_icons flex gap-3">
-      <mat-icon
-        *ngIf="image && image.comment && image.comment.length"
-        color="primary"
-      >
-        chat</mat-icon
-      >
+      <div class="image-wrapper_icons flex gap-3">
+        <mat-icon
+          *ngIf="image && image.comment && image.comment.length"
+          color="primary"
+        >
+          chat</mat-icon
+        >
+      </div>
     </div>
-  </div>
 
-  <p class="text-xs text-ellipsis mt-2 mb-8 text-center">
-    {{ image.name }}
-  </p>
+    <p class="text-xs text-ellipsis mt-2 mb-8 text-center">
+      {{ image.name }}
+    </p>
+  </ng-container>
 </ng-container>
 
 <!-- Loading -->
