@@ -58,7 +58,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAllCustomer();
     this.observeOnSearchFormControl();
   }
 
