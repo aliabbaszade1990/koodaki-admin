@@ -21,6 +21,6 @@ jobs:
             cd  /home/koodaki/koodaki-admin          
             eval "$(ssh-agent -s)" ssh-add /home/koodaki/keys/admin.key
             git reset --hard
-            git pull 
+            git pull
             npm install
             ng build --configuration=production
