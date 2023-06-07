@@ -6,7 +6,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, retry, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
@@ -36,7 +36,6 @@ export class CoreInterceptor implements HttpInterceptor {
       });
 
       return next.handle(request).pipe(
-        retry(1),
         map((response) => {
           if (response instanceof HttpResponse) {
             if (response.ok === true) {
@@ -51,7 +50,7 @@ export class CoreInterceptor implements HttpInterceptor {
         }),
         catchError((error) => {
           this.handleErrors(error);
-          return throwError(() => Error(error.error.message));
+          return throwError(() => Error(error));
         })
       );
     } else {
