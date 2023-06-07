@@ -22,7 +22,7 @@
         [src]="image.url"
         class="image block cursor-pointer max-w-full max-h-full h-full w-full"
         (click)="onClickImage(image)"
-        alt=""
+        [alt]="image.name"
       />
 
       <div class="image-wrapper_icons flex gap-3">
@@ -38,6 +38,13 @@
     <p class="text-xs text-ellipsis mt-2 mb-8 text-center">
       {{ image.name }}
     </p>
+  </ng-container>
+
+  <ng-container *ngIf="!list.length">
+    <koodaki-no-data-found
+      icon="photo_library"
+      title="فایلی بارگذاری نشده است"
+    ></koodaki-no-data-found>
   </ng-container>
 </ng-container>
 

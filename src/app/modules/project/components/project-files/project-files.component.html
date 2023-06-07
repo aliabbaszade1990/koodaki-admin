@@ -48,8 +48,11 @@
           [src]="currentItem && currentItem.url"
           class=""
           [class.is-selected]="currentItem && currentItem.selected"
-          alt=""
+          [alt]="currentItem.name"
+          *ngIf="currentItem"
         />
+
+        <p *ngIf="!currentItem" class="text-gray-600">فایلی انتخاب نشده است</p>
 
         <p
           *ngIf="currentItem && currentItem.comment"
