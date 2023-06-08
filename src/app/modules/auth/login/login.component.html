@@ -27,7 +27,7 @@
         mat-raised-button
         color="primary"
         type="submit"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || inProgress"
         form="login-form"
       >
         ورود
