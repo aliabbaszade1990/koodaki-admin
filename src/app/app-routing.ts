@@ -11,9 +11,9 @@ export const AppRoutes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'log-in',
+    path: 'sign-in',
     loadChildren: () =>
-      import('./modules/auth/login/login.module').then((m) => m.LoginModule),
+      import('./modules/auth/login/sign-in.module').then((m) => m.LoginModule),
   },
   {
     path: '',

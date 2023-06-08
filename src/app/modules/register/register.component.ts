@@ -23,6 +23,6 @@ export class RegisterComponent implements OnInit {
   save() {}
 
   toLogin() {
-    this.router.navigate(['log-in']);
+    this.router.navigate(['sign-in']);
   }
 }

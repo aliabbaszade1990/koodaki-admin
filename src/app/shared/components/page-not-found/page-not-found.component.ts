@@ -12,6 +12,6 @@ export class PageNotFoundComponent implements OnInit {
   ngOnInit(): void {}
 
   routerComment() {
-    this.router.navigateByUrl('/log-in');
+    this.router.navigateByUrl('/sign-in');
   }
 }

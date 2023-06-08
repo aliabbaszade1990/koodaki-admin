@@ -6,9 +6,9 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 import { LoginResultDTO } from '../dtos/auth.dto';
 
 @Component({
-  selector: 'koodaki-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'koodaki-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
