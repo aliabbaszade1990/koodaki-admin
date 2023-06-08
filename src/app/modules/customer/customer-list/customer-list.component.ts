@@ -85,7 +85,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
           this.dataSource.data = [...this.dataSource.data];
           this.showtable = true;
           this.toasterService.success(
-            `کاربر ${res.firstName} ${res.lastName} ذخیره شد.`
+            `کاربر ${res.firstName} ${res.lastName} افزوده شد.`
           );
         }
       });

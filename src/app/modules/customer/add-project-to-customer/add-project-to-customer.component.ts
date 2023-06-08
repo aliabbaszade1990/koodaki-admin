@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProjectService } from '../../project/project.service';
-import { CustomerService } from '../customer.service';
 import { ICustomer } from '../dto/customer';
 
 @Component({
@@ -28,7 +27,9 @@ export class AddProjectToCustomerComponent implements OnInit {
       location: ['', Validators.required],
       startedAt: [new Date()],
       customerId: [''],
+      isClosed: [true],
     });
+
     this.form.controls['customerId'].setValue(this.data.id);
   }
 
