@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["dayjs", "store"],
+            "allowedCommonJsDependencies": ["dayjs", "store", "jalali-moment"],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
