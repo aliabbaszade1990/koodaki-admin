@@ -31,6 +31,7 @@ export class ProjectListComponent implements OnInit {
     'startDate',
     'totalFiles',
     'selectedFile',
+    'finalizedAt',
     'action',
   ];
   disabled = true;
