@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginatorIntl } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaginatePipeArgs } from 'ngx-pagination';
 import { debounceTime, startWith } from 'rxjs';
 import { CustomerService } from 'src/app/modules/customer/customer.service';
 import { ICustomer } from 'src/app/modules/customer/dto/customer';
@@ -22,7 +21,7 @@ import { ProjectFormComponent } from '../project-form/project-form.component';
   styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit {
-  dataSource: MatTableDataSource<IProject>;
+  projects: IProject[] = [];
   displayedColumns: string[] = [
     'isClosed',
     'customer',
@@ -34,7 +33,11 @@ export class ProjectListComponent implements OnInit {
     'finalizedAt',
     'action',
   ];
-  disabled = true;
+  paginatorConfig: PaginatePipeArgs = {
+    currentPage: 1,
+    itemsPerPage: 10,
+    totalItems: 0,
+  };
   customerId: string;
   firstName: string;
   lastName: string;
@@ -46,11 +49,8 @@ export class ProjectListComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private toasterService: NotificationService,
-    private customerService: CustomerService,
-    private paginator: MatPaginatorIntl
-  ) {
-    paginator.itemsPerPageLabel = 'تعداد پروژه ها';
-  }
+    private customerService: CustomerService
+  ) {}
 
   ngOnInit(): void {
     this.customerId = this.activateRoute.snapshot.params['id'];
@@ -79,15 +79,22 @@ export class ProjectListComponent implements OnInit {
     this.projectService
       .getAll(this.projectListParams)
       .subscribe((res: PagingResponse<IProject>) => {
-        this.dataSource = new MatTableDataSource(res.items);
+        this.projects = res.items;
+        this.paginatorConfig.totalItems = res.total;
         this.loading = false;
       });
   }
 
   onChangeSelectedProjectFilter(event: MatCheckboxChange) {
-    this.dataSource = new MatTableDataSource();
-    this.projectListParams.finalized = event.checked;
+    this.projects = [];
+    this.projectListParams.finalized = event.checked ? true : undefined;
+    this.setFirstPageForTableList();
     this.getAllProjects();
+  }
+
+  setFirstPageForTableList() {
+    this.paginatorConfig.currentPage = 1;
+    this.projectListParams.page = 1;
   }
 
   createProject() {
@@ -99,8 +106,8 @@ export class ProjectListComponent implements OnInit {
       .afterClosed()
       .subscribe((result: IProject) => {
         if (result) {
-          this.dataSource.data.push(result);
-          this.dataSource.data = [...this.dataSource.data];
+          this.projects.push(result);
+          this.projects = [...this.projects];
           this.toasterService.success(`پروژه ${result.title} ذخیره شد.`);
         }
       });
@@ -135,8 +142,8 @@ export class ProjectListComponent implements OnInit {
       .subscribe((res: boolean) => {
         if (res) {
           this.projectService.delete(row.id).subscribe(() => {
-            this.dataSource.data = [
-              ...this.dataSource.data.filter((item) => item.id !== row.id),
+            this.projects = [
+              ...this.projects.filter((item) => item.id !== row.id),
             ];
             this.toasterService.success(`پروژه ${row.title} حذف شد.`);
           });
@@ -150,8 +157,15 @@ export class ProjectListComponent implements OnInit {
       .pipe(startWith(''), debounceTime(500))
       .subscribe((value) => {
         this.projectListParams.search = value as string;
+        this.setFirstPageForTableList();
         this.getAllProjects();
       });
+  }
+
+  onPageChanged(page: number) {
+    (this.paginatorConfig as PaginatePipeArgs).currentPage = page;
+    this.projectListParams.page = page;
+    this.getAllProjects();
   }
 
   onClickManageFiles(row: IProject) {

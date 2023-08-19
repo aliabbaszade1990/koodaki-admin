@@ -7917,6 +7917,8 @@
   "version" "1.0.0"
 
 "fsevents@^1.2.7":
+  "integrity" "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz"
   "version" "1.2.13"
   dependencies:
     "bindings" "^1.5.0"
@@ -10501,6 +10503,13 @@
   "integrity" "sha512-Xz7Pa9bC9loZ7eu1EzdAyPb3dpLbGe1G1nHgf+YUvtqQepxdQ3OBtd04Jbg3yx8r+nhi8tKGmdajsBAkeA87rA=="
   "resolved" "https://registry.npmjs.org/ng2-file-upload/-/ng2-file-upload-3.0.0.tgz"
   "version" "3.0.0"
+  dependencies:
+    "tslib" "^2.3.0"
+
+"ngx-pagination@^6.0.3":
+  "integrity" "sha512-lONjTQ7hFPh1SyhwDrRd5ZwM4NMGQ7bNR6vLrs6mrU0Z8Q1zCcWbf/pvyp4DOlGyd9uyZxRy2wUsSZLeIPjbAw=="
+  "resolved" "https://registry.npmjs.org/ngx-pagination/-/ngx-pagination-6.0.3.tgz"
+  "version" "6.0.3"
   dependencies:
     "tslib" "^2.3.0"
 

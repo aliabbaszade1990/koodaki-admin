@@ -12,7 +12,7 @@
 
   <table
     mat-table
-    [dataSource]="dataSource"
+    [dataSource]="customers | paginate: paginatorConfig"
     class="mat-elevation-z8 demo-table my-3"
   >
     <ng-container
@@ -68,11 +68,19 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
+  <pagination-controls
+    [autoHide]="true"
+    (pageChange)="onPageChanged($event)"
+    nextLabel="بعد"
+    previousLabel="قبل"
+  >
+  </pagination-controls>
+
   <koodaki-loading
     *ngIf="loading"
     class="flex justify-center"
   ></koodaki-loading>
   <koodaki-no-data-found
-    *ngIf="!showtable && !loading && dataSource && dataSource.data.length === 0"
+    *ngIf="!loading && customers && customers.length === 0"
   ></koodaki-no-data-found>
 </div>

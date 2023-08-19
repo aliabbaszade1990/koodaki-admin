@@ -5,6 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CustomerService } from '../customer/customer.service';
 import { UploaderModule } from '../uploader/uploader.module';
@@ -34,6 +35,7 @@ import { ProjectService } from './project.service';
     PaginatorModule,
     MatSelectModule,
     UploaderModule,
+    NgxPaginationModule,
   ],
   providers: [ProjectService, CustomerService],
 })

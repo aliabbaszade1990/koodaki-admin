@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginatorIntl } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { PaginatePipeArgs } from 'ngx-pagination';
 import { Subscription, debounceTime, startWith } from 'rxjs';
 import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 import { PagingResponse } from 'src/app/shared/dtos/paging-response';
@@ -21,10 +20,13 @@ import { ICustomer } from '../dto/customer';
 })
 export class CustomerListComponent implements OnInit, OnDestroy {
   private customerServiceSubscription: Subscription;
-  dataSource: MatTableDataSource<ICustomer>;
-  showtable: boolean = false;
+  customers: ICustomer[] = [];
   loading: boolean = false;
-
+  paginatorConfig: PaginatePipeArgs = {
+    currentPage: 1,
+    itemsPerPage: 10,
+    totalItems: 0,
+  };
   columns = [
     {
       columnDef: 'firstName',
@@ -51,11 +53,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     private customerService: CustomerService,
     public dialog: MatDialog,
     private toasterService: NotificationService,
-    private router: Router,
-    private paginator: MatPaginatorIntl
-  ) {
-    paginator.itemsPerPageLabel = 'تعداد مشتری';
-  }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.observeOnSearchFormControl();
@@ -67,11 +66,9 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     this.customerServiceSubscription = this.customerService
       .getAll(this.customerListParams)
       .subscribe((res: PagingResponse<ICustomer>) => {
-        this.dataSource = new MatTableDataSource(res.items);
+        this.customers = res.items;
+        this.paginatorConfig.totalItems = res.total;
         this.loading = false;
-        if (res.items.length > 0) {
-          this.showtable = true;
-        }
       });
   }
 
@@ -81,9 +78,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
-          this.dataSource.data.push(res);
-          this.dataSource.data = [...this.dataSource.data];
-          this.showtable = true;
+          this.customers.push(res);
+          this.customers = [...this.customers];
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} افزوده شد.`
           );
@@ -99,12 +95,12 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .afterClosed()
       .subscribe((res: ICustomer) => {
         if (res) {
-          this.dataSource.data.splice(
-            this.dataSource.data.findIndex((item) => item.id === res.id),
+          this.customers.splice(
+            this.customers.findIndex((item) => item.id === res.id),
             1,
             res
           );
-          this.dataSource.data = [...this.dataSource.data];
+          this.customers = [...this.customers];
           this.toasterService.success(
             `کاربر ${res.firstName} ${res.lastName} ویرایش شد.`
           );
@@ -144,10 +140,9 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         if (res) {
           this.customerService.delete(row.id).subscribe(() => {
-            this.dataSource.data = [
-              ...this.dataSource.data.filter((item) => item.id !== row.id),
+            this.customers = [
+              ...this.customers.filter((item) => item.id !== row.id),
             ];
-            this.showtable = false;
             this.toasterService.success(
               `کاربر ${row.firstName} ${row.lastName} حذف شد.`
             );
@@ -166,8 +161,16 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       .pipe(startWith(''), debounceTime(500))
       .subscribe((value) => {
         this.customerListParams.search = value as string;
+        this.customerListParams.page = 1;
+        this.paginatorConfig.currentPage = 1;
         this.getAllCustomer();
       });
+  }
+
+  onPageChanged(page: number) {
+    (this.paginatorConfig as PaginatePipeArgs).currentPage = page;
+    this.customerListParams.page = page;
+    this.getAllCustomer();
   }
 
   ngOnDestroy(): void {
