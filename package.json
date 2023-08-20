@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start:local:dev": "ng serve --configuration local_development",
+    "serve": "ng serve",
     "build": "ng build",
-    "build:prod": "ng run koodaki-admin:build:production",
-    "watch": "ng build --watch --configuration development",
+    "build:dev": "ng run koodaki-admin:build:development",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",

@@ -23,5 +23,4 @@ jobs:
             git reset --hard
             git pull
             npm install
-            ng build --configuration=production
-            
+            npm run build
