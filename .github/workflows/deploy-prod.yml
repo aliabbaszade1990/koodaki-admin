@@ -1,0 +1,26 @@
+name: Deploy Production
+on:
+  push:
+    branches: [main]
+concurrency:
+  group: envirs-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: Build Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SSH_DOMAIN }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd  /home/koodaki/koodaki-admin          
+            eval "$(ssh-agent -s)" ssh-add /home/koodaki/keys/admin.key
+            git reset --hard
+            git pull
+            npm install
+            npm run build

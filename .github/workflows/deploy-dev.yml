@@ -1,13 +1,13 @@
-name: Deploy
+name: Deploy Development
 on:
   push:
-    branches: [main]
+    branches: [develop]
 concurrency:
   group: envirs-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build:
-    name: Build
+    name: Build Development
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password
@@ -18,9 +18,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd  /home/koodaki/koodaki-admin          
+            cd  /home/koodaki-dev/koodaki-admin          
             eval "$(ssh-agent -s)" ssh-add /home/koodaki/keys/admin.key
             git reset --hard
             git pull
             npm install
-            npm run build
+            npm run build:dev
