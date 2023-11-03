@@ -4,8 +4,10 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
+    "serve:prod": "ng serve -c production",
+    "serve:staging": "ng serve -c staging",
     "build": "ng build",
-    "build:dev": "ng run koodaki-admin:build:development",
+    "build:staging": "ng build --configuration staging",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
