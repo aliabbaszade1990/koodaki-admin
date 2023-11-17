@@ -32,4 +32,9 @@ export class FileService extends BaseService<any> {
         })
       );
   }
+
+  deleteFilesByProject(id: string): Observable<any> {
+    let API_URL = `${this.apiUrl}/deleteFilesByProject/${id}`;
+    return this.http.delete<any>(API_URL).pipe(catchError(this.error));
+  }
 }

@@ -14,6 +14,7 @@ import { IProject } from '../../dtos/project';
 import { ProjectListParams } from '../../dtos/project-list-params.dto';
 import { ProjectService } from '../../project.service';
 import { ProjectFormComponent } from '../project-form/project-form.component';
+import { FileService } from '../../services/file.service';
 
 @Component({
   selector: 'koodaki-project-list',
@@ -49,7 +50,8 @@ export class ProjectListComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private toasterService: NotificationService,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private fileService: FileService
   ) {}
 
   ngOnInit(): void {
@@ -146,6 +148,28 @@ export class ProjectListComponent implements OnInit {
               ...this.projects.filter((item) => item.id !== row.id),
             ];
             this.toasterService.success(`پروژه ${row.title} حذف شد.`);
+          });
+        }
+      });
+  }
+
+  onClickDeleteFiels(row: IProject) {
+    this.dialog
+      .open(ConfirmComponent, {
+        disableClose: true,
+        data: {
+          header: 'حذف فایلهای پروژه',
+          question: `آیا از حذف فایلهای پروژه ${row.title} مطمئن هستید؟`,
+          confirmButton: 'بله',
+          cancelButton: 'خیر',
+        },
+      })
+      .afterClosed()
+      .subscribe((res: boolean) => {
+        if (res) {
+          this.fileService.deleteFilesByProject(row.id).subscribe(() => {
+            this.getAllProjects();
+            this.toasterService.success(`فایلهای پروژه ${row.title} حذف شد.`);
           });
         }
       });

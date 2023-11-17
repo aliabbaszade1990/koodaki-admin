@@ -125,7 +125,14 @@
             <mat-icon color="warn">delete</mat-icon>
             <span>حذف</span>
           </button>
+
+          <button mat-menu-item (click)="onClickDeleteFiels(row)">
+            <mat-icon color="warn">hide_image</mat-icon>
+            <span>حذف فایلهای پروژه</span>
+          </button>
         </mat-menu>
+
+        <i class="material-icons">e</i>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
